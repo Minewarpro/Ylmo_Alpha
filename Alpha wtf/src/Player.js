@@ -60,14 +60,17 @@ class Player {
                 case Phaser.Input.Keyboard.KeyCodes.SPACE:
                     me.spaceDown=true;
                     break;
+                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
+                    me.shiftDown=true;
+                    break;
                 case Phaser.Input.Keyboard.KeyCodes.UP:
                     me.upDown=true;
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.rightDown=true;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.dDown=true;
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.leftDown=true;
+                case Phaser.Input.Keyboard.KeyCodes.Q:
+                    me.qDown=true;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.downDown=true;
@@ -79,14 +82,17 @@ class Player {
                 case Phaser.Input.Keyboard.KeyCodes.SPACE:
                     me.spaceDown=false;
                     break;
+                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
+                    me.shiftDown=false;
+                    break;
                 case Phaser.Input.Keyboard.KeyCodes.UP:
                     me.upDown=false;
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.RIGHT:
-                    me.rightDown=false;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.dDown=false;
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.LEFT:
-                    me.leftDown=false;
+                case Phaser.Input.Keyboard.KeyCodes.Q:
+                    me.qDown=false;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.downDown=false;
@@ -127,35 +133,35 @@ class Player {
             console.log("space");
         }
         switch(true){
-            case this.upDown:
+            case this.spaceDown:
                     this.player.setVelocityY(-800 * this.speed.speedDash);
-                if (this.rightDown){
+                if (this.dDown){
                     this.player.setVelocityX(800 * this.speed.speedDash);
                 }
-                if (this.leftDown){
+                if (this.qDown){
                     this.player.setVelocityX(-800 * this.speed.speedDash);
                 }
                 break;
-            case this.rightDown:
+            case this.dDown:
                 this.player.setVelocityX(800 * this.speed.speedDash);
                 break;
-            case this.leftDown:
+            case this.qDown:
                 this.player.setVelocityX(-800 * this.speed.speedDash);
                 break;
         }
     }
 
     dashRelease(){
-        if (!this.spaceDown){
+        if (!this.shiftDown){
             if (this.flagDash){
                 this.flagDash=false;
             }
 
-            if (this.rightDown){
+            if (this.dDown){
                 this.player.setVelocityX(300);
             }
 
-            if (this.leftDown){
+            if (this.qDown){
                 this.player.setVelocityX(-300);
             }
         }
@@ -167,7 +173,7 @@ class Player {
             case this.flag:
                 // fais rien
                 break;
-            case !this.upDown:
+            case !this.spaceDown:
                 if (!this.player.body.onFloor()){
                     this.player.setVelocityY(
                         this.player.body.velocity.y * 0.6);
@@ -196,7 +202,7 @@ class Player {
             case this.flagright:
                 // fais rien
                 break;
-            case !this.rightDown && !this.player.body.onFloor():
+            case !this.dDown && !this.player.body.onFloor():
                 this.player.setVelocityX(this.player.body.velocity.x * 0.6);
                 this.flagright=true;
                 break;
@@ -217,7 +223,7 @@ class Player {
             case this.flagleft:
                 // fais rien
                 break;
-            case !this.leftDown && !this.player.body.onFloor():
+            case !this.qDown && !this.player.body.onFloor():
                 this.player.setVelocityX(this.player.body.velocity.x * 0.6);
                 this.flagleft=true;
                 break;

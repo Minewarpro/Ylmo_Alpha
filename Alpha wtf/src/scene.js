@@ -43,25 +43,25 @@ class scene extends Phaser.Scene {
         this.player.initKeyboard()
 
         this.cameras.main.startFollow(this.player.player,false);
-        //this.cameras.main.startFollow(this.pointCamera,false);
+        this.cameras.main.startFollow(this.pointCamera,false);
 
     }
 
     update() {
 
         switch (true) {
-            case this.player.spaceDown:
+            case this.player.shiftDown:
                 this.player.dash()
                 break;
-            case this.player.upDown:
+            case this.player.spaceDown:
                 this.player.jump()
                 this.player.flag=false;
                 break;
-            case this.player.leftDown:
+            case this.player.qDown:
                 this.player.moveLeft()
                 this.player.flagleft=false;
                 break;
-            case this.player.rightDown:
+            case this.player.dDown:
                 this.player.moveRight();
                 this.player.flagright=false;
                 break;
@@ -74,10 +74,10 @@ class scene extends Phaser.Scene {
         this.player.moveRightRelease();
         this.player.moveLeftRelease();
 
-        this.dragon.body.x = this.player.player.body.x - 800;
+        this.dragon.body.x = this.pointCamera.body.x - 800;
 
-        /*if (this.player.player.body.x <= this.pointCamera.body.x - 600){
+        if (this.player.player.body.x <= this.pointCamera.body.x - 400){
             alert ('perdu');
-        }*/
+        }
     }
 }
