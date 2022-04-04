@@ -1,31 +1,19 @@
 class Player {
 
     constructor(scene) {
-        this.scene=scene
-        this.cameras=scene
+        this.scene = scene
+        this.cameras = scene
         this.player = this.scene.physics.add.sprite(250, 750, 'player');
         this.player.setScale(1);
         this.player.setCollideWorldBounds(false);
         this.scene.physics.add.collider(this.player, this.scene.platforms);
 
-        this.dejaAppuye =false;
-        this.doubleJump =1;
+        this.dejaAppuye = false;
+        this.doubleJump = 1;
 
-        this.speed={
-            speedDash:1,
-        }
+        this.player.speedFactor=1
+    }
 
-        this.dashTween = this.scene.tweens.add({
-            targets: this.speed,
-            speedDash: 0,
-            // alpha: { start: 0, to: 1 },
-            // alpha: 1,
-            // alpha: '+=1',
-            ease: "Circ.easeInOut", // 'Cubic', 'Elastic', 'Bounce', 'Back'
-            duration: 500,
-            //repeat: -1, // -1: infinity
-            //yoyo: true
-        });
 
         /*
         this.scene.anims.create({
@@ -51,14 +39,28 @@ class Player {
             repeat:-1,
 
         });*/
-    }
+
+
 
     initKeyboard() {
         let me = this;
+        this.scene.input.on('pointerdown', function (pointer) {
+            if (pointer.rightButtonDown()){
+                me.rightMouseDown = true;
+            }
+        });
+        this.scene.input.on('pointerup', function (pointer) {
+            if (pointer.rightButtonReleased()){
+                me.rightMouseDown = false;
+                me.dash();
+            }
+        });
+
         this.scene.input.keyboard.on('keydown', function (kevent) {
             switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.SPACE:
                     me.spaceDown=true;
+
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                     me.shiftDown=true;
@@ -100,6 +102,41 @@ class Player {
             }
         });
     }
+
+    dash() {
+
+        if (this.dashIsUp){
+            if (this.flagDash){
+
+            } else {
+                console.log("start dash")
+                let me = this;
+                this.dashTween = this.scene.tweens.add({
+                    targets: this.player,
+                    speedFactor:'+=2',
+                    // alpha: { start: 0, to: 1 },
+                    // alpha: 1,
+                    // alpha: '+=1',
+                    ease: "Circ.easeInOut", // 'Cubic', 'Elastic', 'Bounce', 'Back'
+                    duration: 500,
+                    onUpdate: function () {
+                        console.log("dash en cours");
+                    },
+                    onComplete: function () {
+                        console.log("dash terminé");
+                        me.player.dashplay = false;
+                        me.player.speedFactor=1
+                    }
+                    //repeat: -1, // -1: infinity
+                    //yoyo: true
+                });
+
+                this.dashIsUp = false;
+                this.flagDash = true;
+            }
+        }
+    }
+
     jump(){
         if (this.dejaAppuye) {
 
@@ -122,50 +159,6 @@ class Player {
         //this.player.play('jump', true);
     }
 
-    dash(){
-        if (this.flagDash) {
-
-        } else {
-            this.player.setVelocityY(0);
-            this.player.setVelocityX(0);
-            this.dashTween.play();
-            this.flagDash = true;
-            console.log("space");
-        }
-        switch(true){
-            case this.spaceDown:
-                    this.player.setVelocityY(-800 * this.speed.speedDash);
-                if (this.dDown){
-                    this.player.setVelocityX(800 * this.speed.speedDash);
-                }
-                if (this.qDown){
-                    this.player.setVelocityX(-800 * this.speed.speedDash);
-                }
-                break;
-            case this.dDown:
-                this.player.setVelocityX(800 * this.speed.speedDash);
-                break;
-            case this.qDown:
-                this.player.setVelocityX(-800 * this.speed.speedDash);
-                break;
-        }
-    }
-
-    dashRelease(){
-        if (!this.shiftDown){
-            if (this.flagDash){
-                this.flagDash=false;
-            }
-
-            if (this.dDown){
-                this.player.setVelocityX(300);
-            }
-
-            if (this.qDown){
-                this.player.setVelocityX(-300);
-            }
-        }
-    }
 
     jumpRelease(){
         // ralenti saut
@@ -189,13 +182,15 @@ class Player {
             this.doubleJump=1;
         }
     }
+
     moveRight(){
-        this.player.setVelocityX(300);
+        this.player.setVelocityX(300*this.player.speedFactor);
         this.player.setFlipX(false);
         if (this.player.body.onFloor()) {
             //this.player.play('walk', true)
             }
     }
+
     moveRightRelease(){
         // ralenti droite
         switch(true){
@@ -210,13 +205,15 @@ class Player {
                 break;
         }
     }
+
     moveLeft(){
-        this.player.setVelocityX(-300);
+        this.player.setVelocityX(-300*this.player.speedFactor);
         if (this.player.body.onFloor()) {
             //this.player.play('walk', true)
             }
         this.player.setFlipX(true);
     }
+
     moveLeftRelease(){
         // ralenti gauche
         switch(true){
@@ -231,6 +228,7 @@ class Player {
                 break;
         }
     }
+
     stop(){
         this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {

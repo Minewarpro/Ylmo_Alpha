@@ -7,7 +7,7 @@ class Dragon {
         this.dragon.setScale(1);
         this.dragon.setCollideWorldBounds(false);
         this.dragon.body.setAllowGravity(false);
-        this.dragon.Immovable(true);
+        this.dragon.setImmovable(true);
 
     }
 }

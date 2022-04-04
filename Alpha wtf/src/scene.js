@@ -31,27 +31,21 @@ class scene extends Phaser.Scene {
         this.pointCamera.setVelocityX(300);
 
         this.player = new Player(this);
-        //this.dragon = new Dragon(this);
+        this.dragon = new Dragon(this);
 
-        this.dragon = this.physics.add.sprite(this.player.player.body.x - 600, 650, 'dragon');
-        this.dragon.setScale(1);
-        this.dragon.setCollideWorldBounds(false);
-        this.dragon.body.setAllowGravity(false);
-        this.dragon.setImmovable(true);
-
+        this.input.mouse.disableContextMenu();
 
         this.player.initKeyboard()
 
         this.cameras.main.startFollow(this.player.player,false);
-        this.cameras.main.startFollow(this.pointCamera,false);
+        //this.cameras.main.startFollow(this.pointCamera,false);
 
     }
 
     update() {
-
         switch (true) {
-            case this.player.shiftDown:
-                this.player.dash()
+            case this.player.rightMouseDown:
+                //this.player.dash()
                 break;
             case this.player.spaceDown:
                 this.player.jump()
@@ -66,18 +60,25 @@ class scene extends Phaser.Scene {
                 this.player.flagright=false;
                 break;
             case this.player.player.body.onFloor():
-                this.player.stop();
+                //this.player.stop();
         }
 
-        this.player.dashRelease();
         this.player.jumpRelease();
         this.player.moveRightRelease();
         this.player.moveLeftRelease();
 
-        this.dragon.body.x = this.pointCamera.body.x - 800;
+        this.dragon.dragon.body.x = this.player.player.body.x - 800;
 
-        if (this.player.player.body.x <= this.pointCamera.body.x - 400){
-            alert ('perdu');
+        if (this.player.player.body.onFloor()){
+            if (!this.player.rightMouseDown){
+                this.player.flagDash = false;
+            }
+            this.player.dashIsUp = true;
         }
+
+
+        /*if (this.player.player.body.x <= this.pointCamera.body.x - 400){
+            alert ('perdu');
+        }*/
     }
 }
