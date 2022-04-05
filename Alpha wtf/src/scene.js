@@ -45,7 +45,7 @@ class scene extends Phaser.Scene {
     update() {
         switch (true) {
             case this.player.rightMouseDown:
-                //this.player.dash()
+                this.player.dashDirection()
                 break;
             case this.player.spaceDown:
                 this.player.jump()
@@ -60,7 +60,7 @@ class scene extends Phaser.Scene {
                 this.player.flagright=false;
                 break;
             case this.player.player.body.onFloor():
-                //this.player.stop();
+                this.player.stop();
         }
 
         this.player.jumpRelease();
@@ -69,10 +69,10 @@ class scene extends Phaser.Scene {
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
 
+        if (!this.player.rightMouseDown){
+            this.player.flagDash = false;
+        }
         if (this.player.player.body.onFloor()){
-            if (!this.player.rightMouseDown){
-                this.player.flagDash = false;
-            }
             this.player.dashIsUp = true;
         }
 
