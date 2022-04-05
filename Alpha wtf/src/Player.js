@@ -12,7 +12,7 @@ class Player {
         this.dejaAppuye = false;
         this.doubleJump = 1;
 
-        this.player.speedFactor=4
+        this.player.speedFactor=900
 
 
 
@@ -156,23 +156,26 @@ class Player {
                 console.log("start dash")
                 this.dashTween = this.scene.tweens.add({
                     targets: this.player,
-                    speedFactor:'-=2',
+                    speedFactor:'-=200',
                     // alpha: { start: 0, to: 1 },
                     // alpha: 1,
                     // alpha: '+=1',
                     ease: "Circ.easeOut", // 'Cubic', 'Elastic', 'Bounce', 'Back'
-                    duration: 270,
+                    duration: 370,
                     onUpdate: function () {
                         console.log(me.player.speedFactor);
                         me.player.body.setAllowGravity(false);
                         console.log("dash en cours");
-                        me.player.setVelocityX(300 * me.player.speedFactor);
-                        me.player.setVelocityY(-100 * me.player.speedFactor);
+                        me.scene.physics.moveTo(
+                            me.player,
+                            me.scene.game.input.mousePointer.x + me.scene.cameras.main.worldView.x,
+                            me.scene.game.input.mousePointer.y + me.scene.cameras.main.worldView.y,
+                            me.player.speedFactor);
                     },
                     onComplete: function () {
                         console.log("dash terminé");
                         me.player.dashplay = false;
-                        me.player.speedFactor=4
+                        me.player.speedFactor=900
                         me.player.body.setAllowGravity(true);
                         me.player.setVelocityX(me.player.body.velocity.x * 0.6);
                         me.player.setVelocityY(me.player.body.velocity.y * 0.6);

@@ -45,7 +45,7 @@ class scene extends Phaser.Scene {
     update() {
         switch (true) {
             case this.player.rightMouseDown:
-                this.player.dashDirection()
+                this.player.dash()
                 break;
             case this.player.spaceDown:
                 this.player.jump()
