@@ -140,8 +140,7 @@ class Player {
             }
         }
     }
-
-    dash() {
+    dashFollow() {
         let me = this;
 
         if (this.dashIsUp){
@@ -161,7 +160,7 @@ class Player {
                     // alpha: 1,
                     // alpha: '+=1',
                     ease: "Circ.easeOut", // 'Cubic', 'Elastic', 'Bounce', 'Back'
-                    duration: 370,
+                    duration: 270,
                     onUpdate: function () {
                         console.log(me.player.speedFactor);
                         me.player.body.setAllowGravity(false);
