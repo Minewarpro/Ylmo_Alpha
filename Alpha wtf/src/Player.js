@@ -128,7 +128,7 @@ class Player {
                         me.player,
                         me.scene.game.input.mousePointer.x + me.scene.cameras.main.worldView.x,
                         me.scene.game.input.mousePointer.y + me.scene.cameras.main.worldView.y,
-                        1000);
+                        960);
 
                 setTimeout(function () {
                     me.player.body.setAllowGravity(true);
@@ -284,6 +284,9 @@ class Player {
         this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {
             //this.player.play('idle',true)
+        } else {
+            this.player.setVelocityX(this.player.body.velocity.x * 0.6);
+            this.player.setVelocityY(this.player.body.velocity.y * 0.6);
         }
     }
 
