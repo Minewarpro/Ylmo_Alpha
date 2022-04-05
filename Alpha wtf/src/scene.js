@@ -38,48 +38,23 @@ class scene extends Phaser.Scene {
         this.player.initKeyboard()
 
         this.cameras.main.startFollow(this.player.player,false);
+        this.cameras.main.setRoundPixels(true);
         //this.cameras.main.startFollow(this.pointCamera,false);
 
     }
 
-    update() {
-        switch (true) {
-            case this.player.rightMouseDown:
-                this.player.dashDirection()
-                break;
-            case this.player.spaceDown:
-                this.player.jump()
-                this.player.flag=false;
-                break;
-            case this.player.qDown:
-                this.player.moveLeft()
-                this.player.flagleft=false;
-                break;
-            case this.player.dDown:
-                this.player.moveRight();
-                this.player.flagright=false;
-                break;
-            case this.player.player.body.onFloor():
-                this.player.stop();
-                break;
-        }
-
-        this.player.jumpRelease();
-        this.player.moveRightRelease();
-        this.player.moveLeftRelease();
+    update()
+    {
+        this.player.move();
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
 
-        if (!this.player.rightMouseDown){
-            this.player.flagDash = false;
+
+
+        /*if (this.player.player.body.onFloor() && !this.player.dDown && !this.player.qDown) {
+            this.player.stop();
         }
-
-        /*if (this.player.player.body.onFloor() && !this.player.dDown && !this.player.qDown){
-            this.player.stop();*/
-
-            if (!this.player.rightMouseDown){
-                this.player.dashIsUp = true;
-            }
+        */
 
 
 
