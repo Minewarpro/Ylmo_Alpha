@@ -117,6 +117,7 @@ class Player {
 
             } else {
                 me.player.body.setAllowGravity(false);
+                me.player.body.setMaxVelocityY(1000);
                 me.player.setVelocityY(0);
                 me.player.setVelocityX(0);
                 this.dashIsUp = false;
@@ -188,12 +189,25 @@ class Player {
         }
     }
 
+    dash (){
+        if (this.rightMouseDown){
+            this.dashDirection()
+        } else {
+            this.flagDash = false;
+        }
+
+        if (this.player.body.onFloor()){
+            this.dashIsUp = true;
+        }
+    }
+
     jump(){
         if (this.dejaAppuye) {
 
         }
         else {
             this.dejaAppuye = true;
+            this.player.body.setMaxVelocityY(1000);
             if (this.player.body.onFloor()){
                 this.player.setVelocityY(-520);
                 console.log('jump');
@@ -280,6 +294,17 @@ class Player {
         }
     }
 
+    planer(){
+
+        if (this.spaceDown){
+            if (this.player.body.velocity.y > 20){
+                this.player.body.setMaxVelocityY(20);
+            }
+        } else if (this.player.body.velocity.y !== 1000){
+            this.player.body.setMaxVelocityY(1000);
+        }
+    }
+
     stop(){
         this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {
@@ -291,13 +316,14 @@ class Player {
     }
 
     move(){
-
         if (!this.isDashing){
+            this.planer();
+            if (this.spaceDown){
+                this.jump()
+                this.flag=false;
+            }
+
             switch (true) {
-                case this.spaceDown:
-                    this.jump()
-                    this.flag=false;
-                    break;
                 case this.qDown:
                     this.moveLeft()
                     this.flagleft=false;
@@ -312,16 +338,7 @@ class Player {
             }
         }
 
-        if (this.rightMouseDown){
-                this.dashDirection()
-        } else {
-            this.flagDash = false;
-        }
-
-        if (this.player.body.onFloor()){
-            this.dashIsUp = true;
-        }
-
+        this.dash();
         this.jumpRelease();
         this.moveRightRelease();
         this.moveLeftRelease();

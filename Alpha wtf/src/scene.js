@@ -48,16 +48,7 @@ class scene extends Phaser.Scene {
         this.player.move();
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
-
-
-
-        /*if (this.player.player.body.onFloor() && !this.player.dDown && !this.player.qDown) {
-            this.player.stop();
-        }
-        */
-
-
-
+        
         /*if (this.player.player.body.x <= this.pointCamera.body.x - 400){
             alert ('perdu');
         }*/
