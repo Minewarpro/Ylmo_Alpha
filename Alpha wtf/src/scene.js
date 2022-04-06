@@ -6,7 +6,7 @@ class scene extends Phaser.Scene {
         // At last image must be loaded with its JSON
         this.load.image('player', 'assets/images/player_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
-        this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet.png');
+        this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');
@@ -14,33 +14,45 @@ class scene extends Phaser.Scene {
 
 
     create() {
-        const backgroundImage = this.add.image(0, -300, 'background').setOrigin(0, 0);
+        const backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0).setPipeline('Light2D');
         backgroundImage.setScale(1, 1.2);
         const map = this.make.tilemap({key: 'map'});
 
 
-        const tileset = map.addTilesetImage('Alpha_test1', 'tiles');
+        const tileset = map.addTilesetImage('platformPack_tilesheet_test', 'tiles');
+
+
         this.platforms = map.createLayer('Sol', tileset);
 
+        this.player = new Player(this);
+
+        this.plantes = map.createLayer('Plantes', tileset);
 
         this.platforms.setCollisionByExclusion(-1, true);
+        this.platforms.setPipeline('Light2D');
+
+
+        this.plantes.setPipeline('Light2D');
 
         this.pointCamera = this.physics.add.sprite(0,600);
         this.pointCamera.body.setAllowGravity(false);
         this.pointCamera.setImmovable(true);
         this.pointCamera.setVelocityX(300);
 
-        this.player = new Player(this);
+
         this.dragon = new Dragon(this);
 
         this.input.mouse.disableContextMenu();
 
         this.player.initKeyboard()
 
-        this.cameras.main.startFollow(this.player.player,false);
+        this.cameras.main.startFollow(this.player.player,false,1,1,0,150);
         this.cameras.main.setRoundPixels(true);
         //this.cameras.main.startFollow(this.pointCamera,false);
-
+        this.lights.enable();
+        this.lights.setAmbientColor(0x999999);
+        this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(3);
+        this.light.setColor(0x0f3fff);
     }
 
     update()
@@ -48,7 +60,10 @@ class scene extends Phaser.Scene {
         this.player.move();
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
-        
+
+        this.light.x = this.player.player.body.x +15;
+        this.light.y = this.player.player.body.y + 15;
+
         /*if (this.player.player.body.x <= this.pointCamera.body.x - 400){
             alert ('perdu');
         }*/
