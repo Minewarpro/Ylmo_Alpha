@@ -6,6 +6,7 @@ class scene extends Phaser.Scene {
         // At last image must be loaded with its JSON
         this.load.image('player', 'assets/images/player_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
+        this.load.image('champi-1', 'assets/images/champi-1.png');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
 
         // Load the export Tiled JSON
@@ -21,18 +22,22 @@ class scene extends Phaser.Scene {
 
         const tileset = map.addTilesetImage('platformPack_tilesheet_test', 'tiles');
 
-
         this.platforms = map.createLayer('Sol', tileset);
-
-        this.player = new Player(this);
-
-        this.plantes = map.createLayer('Plantes', tileset);
-
         this.platforms.setCollisionByExclusion(-1, true);
         this.platforms.setPipeline('Light2D');
 
+        this.plantesArrieres = map.createLayer('PlantesArrieres', tileset);
+        this.plantesArrieres.setPipeline('Light2D');
 
+        this.player = new Player(this);
+
+        this.Fougeres = map.createLayer('Fougères', tileset);
+        this.Fougeres.setPipeline('Light2D');
+
+        this.plantes = map.createLayer('Plantes', tileset);
         this.plantes.setPipeline('Light2D');
+
+
 
         this.pointCamera = this.physics.add.sprite(0,600);
         this.pointCamera.body.setAllowGravity(false);
