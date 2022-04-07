@@ -55,7 +55,7 @@ class scene extends Phaser.Scene {
         this.cameras.main.setRoundPixels(true);
         //this.cameras.main.startFollow(this.pointCamera,false);
         this.lights.enable();
-        this.lights.setAmbientColor(0x999999);
+        this.lights.setAmbientColor(0xbbbbbb);
         this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(3);
         this.light.setColor(0x0f3fff);
     }
