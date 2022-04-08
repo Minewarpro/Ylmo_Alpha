@@ -3,7 +3,7 @@ class Player {
     constructor(scene) {
         this.scene = scene
         this.cameras = scene
-        this.player = this.scene.physics.add.sprite(250, 750, 'player');
+        this.player = this.scene.physics.add.sprite(1250, 750, 'player');
         this.player.setScale(1);
         this.player.setCollideWorldBounds(false);
         this.player.body.setMaxSpeed(1200);
