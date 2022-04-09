@@ -26,7 +26,6 @@ class scene extends Phaser.Scene {
         const tileset = map.addTilesetImage('platformPack_tilesheet_test', 'tiles');
 
 
-
             // Objects
 
                 // Collide
