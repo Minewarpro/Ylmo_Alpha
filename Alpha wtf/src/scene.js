@@ -16,7 +16,7 @@ class scene extends Phaser.Scene {
 
 
     create() {
-
+        let me =this;
 
         // Tiled / Plan
         const backgroundImage = this.add.image(1000, 400, 'background').setOrigin(0, 0).setPipeline('Light2D');
@@ -39,7 +39,6 @@ class scene extends Phaser.Scene {
             this.collide.add(this.collideSprite)
         });
 
-
             // LAYER
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D');
@@ -49,6 +48,16 @@ class scene extends Phaser.Scene {
 
         this.player = new Player(this);
         this.dragon = new Dragon(this);
+
+        // BONUS FLAME
+        this.bonusFlame = this.physics.add.group({
+            allowGravity: false,
+            immovable: true
+        });
+        map.getObjectLayer('BonusFlame').objects.forEach((bonusFlame) => {
+            const FlameSprite = this.bonusFlame.create(bonusFlame.x, bonusFlame.y, 'fireBall');
+            new BonusFlame(this, this.player);
+        });
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset);
         this.Plan2Fixe.setPipeline('Light2D');

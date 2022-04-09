@@ -615,9 +615,44 @@
          "width":128,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":24,
+         "name":"BonusFlame",
+         "objects":[
+                {
+                 "gid":146,
+                 "height":64,
+                 "id":145,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1416,
+                 "y":794
+                }, 
+                {
+                 "gid":146,
+                 "height":64,
+                 "id":146,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1591,
+                 "y":471
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":24,
- "nextobjectid":145,
+ "nextlayerid":25,
+ "nextobjectid":147,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.2",

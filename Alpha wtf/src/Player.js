@@ -1,8 +1,6 @@
 class Player {
 
 
-
-
     constructor(scene) {
         this.scene = scene
         this.cameras = scene
@@ -11,6 +9,7 @@ class Player {
         this.player.setScale(1);
         this.player.setCollideWorldBounds(false);
         this.player.body.setMaxSpeed(1200);
+        this.player.body.setSize(this.player.sourceWidth, this.player.sourceHeight, true);
 
         this.dejaAppuye = false;
         this.doubleJump = 1;
@@ -115,7 +114,6 @@ class Player {
         });
     }
 
-
     dashDirection(){
         let me = this;
 
@@ -145,15 +143,16 @@ class Player {
                     me.player.setVelocityY(me.player.body.velocity.y * 0.3)
                     me.player.setVelocityX(me.player.body.velocity.x * 0.3)
                     me.isDashing = false;
-                    me.dashIsUp = false;
                     me.fireBall.visible = false;
                     me.player.setTexture('player');
+
 
                     console.log("dash terminé");
                 }, 200)
             }
         }
     }
+
     dashFollow() {
         let me = this;
 
@@ -208,7 +207,7 @@ class Player {
             this.flagDash = false;
         }
 
-        if (this.player.body.onFloor()){
+        if (this.player.body.velocity.y === 0){
             this.dashIsUp = true;
         }
     }
@@ -235,7 +234,6 @@ class Player {
         //this.player.setVelocityY(-520);
         //this.player.play('jump', true);
     }
-
 
     jumpRelease(){
         // ralenti saut
