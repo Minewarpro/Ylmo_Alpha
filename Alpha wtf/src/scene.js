@@ -5,6 +5,7 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         // At last image must be loaded with its JSON
         this.load.image('player', 'assets/images/player_base.png');
+        this.load.image('fireBall', 'assets/images/boule_de_feu_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
         this.load.image('degrade', 'assets/images/degradé.png');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');

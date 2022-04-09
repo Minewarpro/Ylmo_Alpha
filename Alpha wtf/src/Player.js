@@ -1,25 +1,33 @@
 class Player {
 
+
+
+
     constructor(scene) {
         this.scene = scene
         this.cameras = scene
-        this.player = this.scene.physics.add.sprite(1250, 750, 'player');
+        this.fireBall = this.scene.add.particles('fireBall');
+        this.player = this.scene.physics.add.sprite(1250, 1100, 'player');
         this.player.setScale(1);
         this.player.setCollideWorldBounds(false);
         this.player.body.setMaxSpeed(1200);
-        this.scene.physics.add.collider(this.player, this.scene.platforms);
 
         this.dejaAppuye = false;
         this.doubleJump = 1;
 
         this.player.speedFactor=900
-
-
-
         this.dashIsUp = false;
+
+        this.fireBall.createEmitter({
+            speed: 100,
+            lifespan : 200,
+            gravity: { x: 0, y: 0 },
+            scale: { start: 0.3, end: 0.1 },
+            follow: this.player
+        });
+        this.fireBall.visible = false;
     }
-
-
+    
         /*
         this.scene.anims.create({
             key: 'walk',
@@ -65,7 +73,6 @@ class Player {
             switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.SPACE:
                     me.spaceDown=true;
-
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                     me.shiftDown=true;
@@ -123,6 +130,8 @@ class Player {
                 this.dashIsUp = false;
                 this.flagDash = true;
                 this.isDashing =true;
+                this.fireBall.visible = true;
+                this.player.setTexture('fireBall');
 
                 console.log("start dash");
                     me.scene.physics.moveTo(
@@ -136,6 +145,9 @@ class Player {
                     me.player.setVelocityY(me.player.body.velocity.y * 0.3)
                     me.player.setVelocityX(me.player.body.velocity.x * 0.3)
                     me.isDashing = false;
+                    me.dashIsUp = false;
+                    me.fireBall.visible = false;
+                    me.player.setTexture('player');
 
                     console.log("dash terminé");
                 }, 200)
@@ -298,7 +310,7 @@ class Player {
 
         if (this.spaceDown){
             if (this.player.body.velocity.y > 20){
-                this.player.body.setMaxVelocityY(20);
+                this.player.body.setMaxVelocityY(100);
             }
         } else if (this.player.body.velocity.y !== 1000){
             this.player.body.setMaxVelocityY(1000);
@@ -319,7 +331,7 @@ class Player {
         if (!this.isDashing){
             this.planer();
             if (this.spaceDown){
-                this.jump()
+                this.jump();
                 this.flag=false;
             }
 
