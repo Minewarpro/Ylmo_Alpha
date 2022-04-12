@@ -7,6 +7,7 @@ class BonusFlame {
         this.scene = scene
         this.player = player
         const map = this.scene.make.tilemap({key: 'map'});
+
         this.bonusFlame = this.scene.physics.add.group({
             allowGravity: false,
             immovable: true
