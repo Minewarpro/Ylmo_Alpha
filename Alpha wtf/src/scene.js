@@ -49,14 +49,8 @@ class scene extends Phaser.Scene {
         this.dragon = new Dragon(this);
 
         // BONUS FLAME
-        this.bonusFlame = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-        map.getObjectLayer('BonusFlame').objects.forEach((bonusFlame) => {
-            const FlameSprite = this.bonusFlame.create(bonusFlame.x, bonusFlame.y, 'fireBall');
-            new BonusFlame(this, this.player);
-        });
+        new BonusFlame(this, this.player);
+
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset);
         this.Plan2Fixe.setPipeline('Light2D');
