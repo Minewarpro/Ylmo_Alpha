@@ -8,6 +8,7 @@ class scene extends Phaser.Scene {
         this.load.image('fireBall', 'assets/images/boule_de_feu_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
         this.load.image('degrade', 'assets/images/degradé.png');
+        this.load.image('lumiere', 'assets/images/lumière.png');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
 
         // Load the export Tiled JSON
@@ -37,16 +38,29 @@ class scene extends Phaser.Scene {
             this.collideSprite = this.physics.add.sprite(collide.x+(collide.width*0.5), collide.y+(collide.height*0.5)).setSize(collide.width, collide.height);
             this.collide.add(this.collideSprite)
         });
+        this.lumiere = this.add.image(1400,950,'lumiere');
+        this.lumiere.setScale(1.2)
 
-            // LAYER
+
+
+
+                // LAYER
+
+
+
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D');
 
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
         this.Plan3Fixe.setPipeline('Light2D');
 
+        this.Water = map.createLayer('Water', tileset);
+        this.Water.setPipeline('Light2D');
+
         this.player = new Player(this);
         this.dragon = new Dragon(this);
+
+
 
         // BONUS FLAME
         this.bonusFlame = this.physics.add.group({
