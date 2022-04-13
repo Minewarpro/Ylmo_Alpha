@@ -9,6 +9,7 @@ class scene extends Phaser.Scene {
         this.load.image('fireBall', 'assets/images/boule_de_feu_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
         this.load.image('degrade', 'assets/images/degradé.png');
+        this.load.image('save', 'assets/images/Save.png');
         this.load.image('arrow', 'assets/images/arrow.cur');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
         this.load.spritesheet('idle','assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
@@ -54,12 +55,15 @@ class scene extends Phaser.Scene {
         this.water = map.createLayer('Water', tileset);
         this.water.setPipeline('Light2D');
 
+
         this.player = new Player(this);
         this.dragon = new Dragon(this);
 
         // BONUS FLAME
         new BonusFlame(this, this.player);
 
+        // SAVE
+        this.save = new Save(this,this.player)
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset);
         this.Plan2Fixe.setPipeline('Light2D');

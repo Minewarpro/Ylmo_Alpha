@@ -2,8 +2,6 @@ class BonusFlame {
 
 
     constructor(scene, player) {
-
-
         this.scene = scene
         this.player = player
         const map = this.scene.make.tilemap({key: 'map'});
@@ -13,10 +11,9 @@ class BonusFlame {
             immovable: true
         });
         map.getObjectLayer('BonusFlame').objects.forEach((bonusFlame) => {
-            const FlameSprite = this.bonusFlame.create(bonusFlame.x, bonusFlame.y, 'fireBall');
+            const FlameSprite = this.bonusFlame.create(bonusFlame.x, bonusFlame.y, 'fireBall').setOrigin(0);;
             this.Collect();
         });
-
     }
 
     Collect(){
