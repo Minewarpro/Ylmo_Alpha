@@ -367,7 +367,6 @@ class Player {
             if (this.player.body.velocity.x===0 && !this.isDashing){
                 this.turnOut=false;
                 if(this.turnIn){
-
                 }else{
                     this.player.anims.play('turnIn');
                     this.turnIn=true;
@@ -375,7 +374,7 @@ class Player {
                 if (this.player.anims.currentFrame.index === 4){
                     this.player.anims.play('idle',true);
                 }
-                
+
             } else if (!this.isDashing){
                 this.turnIn=false;
                 if (this.turnOut){
