@@ -12,7 +12,7 @@ class scene extends Phaser.Scene {
         this.load.image('arrow', 'assets/images/arrow.cur');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
         this.load.spritesheet('idle','assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
-        this.load.spritesheet('turn','assets/images/spritesheet_idle_test.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('turn','assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');
@@ -50,6 +50,9 @@ class scene extends Phaser.Scene {
 
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
         this.Plan3Fixe.setPipeline('Light2D');
+
+        this.water = map.createLayer('Water', tileset);
+        this.water.setPipeline('Light2D');
 
         this.player = new Player(this);
         this.dragon = new Dragon(this);

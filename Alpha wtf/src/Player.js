@@ -39,12 +39,18 @@ class Player {
 
         this.scene.anims.create(
             {
-                key: 'turn',
-                frames: this.scene.anims.generateFrameNumbers('turn', { start: 0, end: 7 }),
-                frameRate: 10,
+                key: 'turnIn',
+                frames: this.scene.anims.generateFrameNumbers('turn', { start: 0, end: 4 }),
+                frameRate: 12,
                 repeat: 0,
+            });
 
-
+        this.scene.anims.create(
+            {
+                key: 'turnOut',
+                frames: this.scene.anims.generateFrameNumbers('turn', { start: 4, end: 0 }),
+                frameRate: 18,
+                repeat: 0,
             });
 
         this.scene.anims.create(
@@ -358,19 +364,29 @@ class Player {
 
     animation(){
         if (this.player.body.onFloor()){
-            if (this.player.body.velocity.x===0){
-                if(this.turn){
+            if (this.player.body.velocity.x===0 && !this.isDashing){
+                this.turnOut=false;
+                if(this.turnIn){
 
                 }else{
-                    this.player.anims.play('turn');
-                    this.turn=true;
+                    this.player.anims.play('turnIn');
+                    this.turnIn=true;
                 }
-                if (this.player.anims.currentFrame.index === 7){
+                if (this.player.anims.currentFrame.index === 4){
                     this.player.anims.play('idle',true);
                 }
-            } else {
-                this.player.anims.play('right',true)
-                this.turn=false;
+
+
+            } else if (!this.isDashing){
+                this.turnIn=false;
+                if (this.turnOut){
+                } else{
+                    this.player.anims.play('turnOut',true)
+                    this.turnOut=true;
+                }
+                if (this.player.anims.currentFrame.index === 0){
+                    this.player.anims.play('right',true);
+                }
             }
         }
     }
