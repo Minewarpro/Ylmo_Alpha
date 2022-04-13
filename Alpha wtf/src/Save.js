@@ -3,6 +3,9 @@ class Save {
     constructor(scene, player) {
         this.scene = scene
         this.player = player
+
+        this.currentSaveX = this.player.player.body.x
+        this.currentSaveY = this.player.player.body.y
         const map = this.scene.make.tilemap({key: 'map'});
 
         this.saves = this.scene.physics.add.group({
@@ -17,8 +20,8 @@ class Save {
 
     sauvegarde(player, saves) {
 
-        this.currentSaveX = player.x
-        this.currentSaveY = player.y
+        this.currentSaveX = player.body.x
+        this.currentSaveY = player.body.y
         saves.body.enable = false;
         saves.visible = false;
         this.currentKey = player.key

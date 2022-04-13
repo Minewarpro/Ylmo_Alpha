@@ -185,8 +185,20 @@
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":1792,
+                 "x":2816,
                  "y":896
+                }, 
+                {
+                 "gid":49,
+                 "height":64,
+                 "id":173,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3648,
+                 "y":832
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -305,6 +317,29 @@
                  "y":704
                 }],
          "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":28,
+         "name":"CollideDeath",
+         "objects":[
+                {
+                 "height":64,
+                 "id":166,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":576,
+                 "x":3008,
+                 "y":1088
+                }],
+         "opacity":1,
+         "tintcolor":"#aa0000",
          "type":"objectgroup",
          "visible":true,
          "x":0,
@@ -503,17 +538,6 @@
                  "y":576
                 }, 
                 {
-                 "height":142,
-                 "id":127,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":576,
-                 "x":3072,
-                 "y":690
-                }, 
-                {
                  "height":256,
                  "id":128,
                  "name":"",
@@ -686,8 +710,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":28,
- "nextobjectid":166,
+ "nextlayerid":29,
+ "nextobjectid":174,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.8.2",

@@ -35,16 +35,6 @@ class scene extends Phaser.Scene {
 
             // Objects
 
-                // Collide
-        this.collide = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-        map.getObjectLayer('Collide').objects.forEach((collide) => {
-            this.collideSprite = this.physics.add.sprite(collide.x+(collide.width*0.5), collide.y+(collide.height*0.5)).setSize(collide.width, collide.height);
-            this.collide.add(this.collideSprite)
-        });
-
             // LAYER
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D');
@@ -94,7 +84,8 @@ class scene extends Phaser.Scene {
 
 
         // COLLIDER
-        this.physics.add.collider(this.player.player, this.collide);
+        this.collider = new Collide(this, this.player, this.save);
+        //this.physics.add.collider(this.player.player, this.collide);
 
 
         // FONCTIONS
