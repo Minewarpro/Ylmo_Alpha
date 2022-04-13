@@ -5,11 +5,14 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         // At last image must be loaded with its JSON
         this.load.image('player', 'assets/images/player_base.png');
+        this.load.spritesheet('player_right', 'assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.image('fireBall', 'assets/images/boule_de_feu_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
         this.load.image('degrade', 'assets/images/degradé.png');
         this.load.image('arrow', 'assets/images/arrow.cur');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
+        this.load.spritesheet('idle','assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('turn','assets/images/spritesheet_idle_test.png', {frameWidth: 40, frameHeight: 48});
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');
