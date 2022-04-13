@@ -4,6 +4,7 @@ class Player {
     constructor(scene) {
         this.scene = scene
         this.cameras = scene
+        let me = this;
         this.fireBall = this.scene.add.particles('fireBall');
         this.player = this.scene.physics.add.sprite(1250, 1100, 'player');
         this.player.setScale(1);
@@ -25,8 +26,38 @@ class Player {
             follow: this.player
         });
         this.fireBall.visible = false;
+
+
+
+        this.scene.anims.create(
+            {
+                key: 'idle',
+                frames: this.scene.anims.generateFrameNumbers('idle', { start: 0, end: 7 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'turn',
+                frames: this.scene.anims.generateFrameNumbers('turn', { start: 0, end: 7 }),
+                frameRate: 10,
+                repeat: 0,
+
+
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'right',
+                frames: this.scene.anims.generateFrameNumbers('player_right', { start: 0, end: 0 }),
+                frameRate: 10,
+                repeat: -1
+            });
     }
-    
+
+
+
         /*
         this.scene.anims.create({
             key: 'walk',
@@ -130,6 +161,7 @@ class Player {
                 this.isDashing =true;
                 this.fireBall.visible = true;
                 this.player.setTexture('fireBall');
+                this.player.anims.stop();
 
                 console.log("start dash");
                     me.scene.physics.moveTo(
@@ -144,7 +176,7 @@ class Player {
                     me.player.setVelocityX(me.player.body.velocity.x * 0.3)
                     me.isDashing = false;
                     me.fireBall.visible = false;
-                    me.player.setTexture('player');
+                    me.player.anims.play('right',true);
 
 
                     console.log("dash terminé");
@@ -262,7 +294,7 @@ class Player {
         this.player.setVelocityX(300);
         this.player.setFlipX(false);
         if (this.player.body.onFloor()) {
-            //this.player.play('walk', true)
+            //this.player.play('right', true)
             }
     }
 
@@ -284,7 +316,7 @@ class Player {
     moveLeft(){
         this.player.setVelocityX(-300);
         if (this.player.body.onFloor()) {
-            //this.player.play('walk', true)
+            //this.player.play('right', true)
             }
         this.player.setFlipX(true);
     }
@@ -318,10 +350,28 @@ class Player {
     stop(){
         this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {
-            //this.player.play('idle',true)
         } else {
             this.player.setVelocityX(this.player.body.velocity.x * 0.6);
             this.player.setVelocityY(this.player.body.velocity.y * 0.6);
+        }
+    }
+
+    animation(){
+        if (this.player.body.onFloor()){
+            if (this.player.body.velocity.x===0){
+                if(this.turn){
+
+                }else{
+                    this.player.anims.play('turn');
+                    this.turn=true;
+                }
+                if (this.player.anims.currentFrame.index === 7){
+                    this.player.anims.play('idle',true);
+                }
+            } else {
+                this.player.anims.play('right',true)
+                this.turn=false;
+            }
         }
     }
 
@@ -348,6 +398,7 @@ class Player {
             }
         }
 
+        this.animation();
         this.dash();
         this.jumpRelease();
         this.moveRightRelease();

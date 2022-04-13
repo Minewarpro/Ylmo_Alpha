@@ -5,11 +5,14 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'assets/images/spike.png');
         // At last image must be loaded with its JSON
         this.load.image('player', 'assets/images/player_base.png');
+        this.load.spritesheet('player_right', 'assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.image('fireBall', 'assets/images/boule_de_feu_base.png');
         this.load.image('dragon', 'assets/images/dragon_base.png');
         this.load.image('degrade', 'assets/images/degradé.png');
-        this.load.image('lumiere', 'assets/images/lumière.png');
+        this.load.image('arrow', 'assets/images/arrow.cur');
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
+        this.load.spritesheet('idle','assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('turn','assets/images/spritesheet_idle_test.png', {frameWidth: 40, frameHeight: 48});
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');
@@ -17,6 +20,8 @@ class scene extends Phaser.Scene {
 
 
     create() {
+
+
         let me =this;
 
         // Tiled / Plan
@@ -38,45 +43,38 @@ class scene extends Phaser.Scene {
             this.collideSprite = this.physics.add.sprite(collide.x+(collide.width*0.5), collide.y+(collide.height*0.5)).setSize(collide.width, collide.height);
             this.collide.add(this.collideSprite)
         });
-        this.lumiere = this.add.image(1400,950,'lumiere');
-        this.lumiere.setScale(1.2)
 
-
-
-
-                // LAYER
-
-
-
+            // LAYER
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D');
 
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
         this.Plan3Fixe.setPipeline('Light2D');
 
-        this.Water = map.createLayer('Water', tileset);
-        this.Water.setPipeline('Light2D');
-
         this.player = new Player(this);
         this.dragon = new Dragon(this);
 
-
-
         // BONUS FLAME
-        this.bonusFlame = this.physics.add.group({
-            allowGravity: false,
-            immovable: true
-        });
-        map.getObjectLayer('BonusFlame').objects.forEach((bonusFlame) => {
-            const FlameSprite = this.bonusFlame.create(bonusFlame.x, bonusFlame.y, 'fireBall');
-            new BonusFlame(this, this.player);
-        });
+        new BonusFlame(this, this.player);
+
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset);
         this.Plan2Fixe.setPipeline('Light2D');
 
         this.degrade = this.add.image(0,0,'degrade');
 
+        //CURSOR
+        this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
+
+        this.test = this.add.particles('fireBall');
+        this.test.createEmitter({
+            speed: 50,
+            lifespan : 100,
+            gravity: { x: 0, y: 0 },
+            scale: { start: 0.3, end: 0.1 },
+            follow: this.cursorBox
+        });
+        this.input.setDefaultCursor('url(assets/images/arrow.cur), pointer');
 
         // CAMERA
         this.pointCamera = this.physics.add.sprite(600,1000);
@@ -106,6 +104,9 @@ class scene extends Phaser.Scene {
 
     update()
     {
+        this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
+        this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
+
         this.player.move();
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
