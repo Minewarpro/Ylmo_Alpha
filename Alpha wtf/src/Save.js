@@ -19,12 +19,10 @@ class Save {
     }
 
     sauvegarde(player, saves) {
-
         this.currentSaveX = player.body.x
         this.currentSaveY = player.body.y
         saves.body.enable = false;
         saves.visible = false;
-        this.currentKey = player.key
         console.log("current", this.currentSaveX, this.currentSaveY)
     }
 }

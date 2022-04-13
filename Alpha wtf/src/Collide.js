@@ -19,6 +19,7 @@ class Collide {
         });
         this.scene.physics.add.collider(this.player.player, this.collide);
 
+
         // Collide Death
         this.collideDeath = this.scene.physics.add.group({
             allowGravity: false,

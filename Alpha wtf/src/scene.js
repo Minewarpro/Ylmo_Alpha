@@ -21,8 +21,6 @@ class scene extends Phaser.Scene {
 
 
     create() {
-
-
         let me =this;
 
         // Tiled / Plan
@@ -32,8 +30,6 @@ class scene extends Phaser.Scene {
 
         const tileset = map.addTilesetImage('platformPack_tilesheet_test', 'tiles');
 
-
-            // Objects
 
             // LAYER
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
@@ -85,7 +81,6 @@ class scene extends Phaser.Scene {
 
         // COLLIDER
         this.collider = new Collide(this, this.player, this.save);
-        //this.physics.add.collider(this.player.player, this.collide);
 
 
         // FONCTIONS
