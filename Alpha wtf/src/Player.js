@@ -82,7 +82,7 @@ class Player {
             {
                 key: 'tuchGroundIdle',
                 frames: this.scene.anims.generateFrameNumbers('jump', { start: 8, end: 19}),
-                frameRate: 18,
+                frameRate: 14,
                 repeat: 0
             });
     }
@@ -416,7 +416,7 @@ class Player {
                 }
             }
         }
-        
+
         if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
             this.player.anims.play('fall', true);
             this.fall=true;
