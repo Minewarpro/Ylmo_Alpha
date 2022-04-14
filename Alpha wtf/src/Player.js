@@ -296,9 +296,6 @@ class Player {
                 this.player.anims.play('jump');
             }
         }
-
-        //this.player.setVelocityY(-520);
-        //this.player.play('jump', true);
     }
 
     jumpRelease(){
