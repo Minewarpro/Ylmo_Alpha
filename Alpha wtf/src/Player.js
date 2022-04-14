@@ -85,6 +85,14 @@ class Player {
                 frameRate: 14,
                 repeat: 0
             });
+
+        this.scene.anims.create(
+            {
+                key: 'tuchGroundWalk',
+                frames: this.scene.anims.generateFrameNumbers('jump', { start: 20, end: 27}),
+                frameRate: 14,
+                repeat: 0
+            });
     }
 
 
@@ -419,15 +427,24 @@ class Player {
             this.fall=true;
         }
         if (this.player.body.onFloor() && this.fall){
-            this.player.anims.play('tuchGroundIdle');
+            if (this.dDown || this.qDown){
+                this.player.anims.play('tuchGroundWalk');
+                this.spoingWalk = true;
+            } else {
+                this.player.anims.play('tuchGroundIdle');
+                this.spoingIdle = true;
+            }
             this.fall = false;
-            this.spoing = true;
+
         }
 
-        if (this.spoing && this.player.anims.currentFrame.index === 12){
-            this.spoing = false;
+        if (this.spoingIdle && this.player.anims.currentFrame.index === 12){
+            this.spoingIdle = false;
             this.player.anims.play('idle',true);
-            console.log("spoing")
+        }
+        if (this.spoingWalk && this.player.anims.currentFrame.index === 7){
+            this.spoingWalk = false;
+            this.player.anims.play('right',true);
         }
 
     }
