@@ -424,7 +424,7 @@ class Player {
                 }
                 this.fall = false;
             }
-            if (this.spoingIdle && this.player.anims.currentFrame.index === 12){
+            if (this.spoingIdle && this.player.anims.currentFrame.index === 8){
                 this.spoingIdle = false;
                 this.player.anims.play('idle',true);
                 this.idle=true;
@@ -434,18 +434,19 @@ class Player {
                 this.player.anims.play('right',true);
                 this.idle=false;
             }
-
+            console.log(this.spoingIdle)
             if (this.player.body.onFloor() && !this.spoingIdle){
                 if (this.player.body.velocity.x===0){
                     this.turnOut=false;
                     if(this.turnIn){
 
-                    } else if (!this.idle){
+                    } else if (!this.idle ){
                         this.player.anims.play('turnIn');
                         this.turnIn=true;
                     }
                     if (this.player.anims.currentFrame.index === 4){
                         this.player.anims.play('idle',true);
+
                     }
                 } else {
                     this.turnIn=false;
