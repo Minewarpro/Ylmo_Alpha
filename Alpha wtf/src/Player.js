@@ -297,7 +297,7 @@ class Player {
                 if (this.qDown){
                     this.player.setAngle(-40);
                 }
-                if (this.dDown){
+                else if (this.dDown){
                     this.player.setAngle(40);
                 }
             }
@@ -311,7 +311,7 @@ class Player {
                 if (this.qDown){
                     this.player.setAngle(-40);
                 }
-                if (this.dDown){
+                else if (this.dDown){
                     this.player.setAngle(40);
                 }
             }
@@ -409,31 +409,6 @@ class Player {
 
     animation(){
         if (!this.isDashing){
-            if (this.player.body.onFloor() && !this.spoingIdle){
-                this.animsJump = false;
-                if (this.player.body.velocity.x===0){
-                    this.turnOut=false;
-                    if(this.turnIn){
-                    }else{
-                        this.player.anims.play('turnIn');
-                        this.turnIn=true;
-                    }
-                    if (this.player.anims.currentFrame.index === 4){
-                        this.player.anims.play('idle',true);
-                    }
-                } else {
-                    this.turnIn=false;
-                    if (this.turnOut){
-                    } else{
-                        this.player.anims.play('turnOut',true)
-                        this.turnOut=true;
-                    }
-                    if (this.player.anims.currentFrame.index === 0){
-                        this.player.anims.play('right',true);
-                    }
-                }
-            }
-
             if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
                 this.player.anims.play('fall', true);
                 this.player.setAngle(0);
@@ -452,10 +427,39 @@ class Player {
             if (this.spoingIdle && this.player.anims.currentFrame.index === 12){
                 this.spoingIdle = false;
                 this.player.anims.play('idle',true);
+                this.idle=true;
             }
             if (this.spoingWalk && this.player.anims.currentFrame.index === 7){
                 this.spoingWalk = false;
                 this.player.anims.play('right',true);
+                this.idle=false;
+            }
+
+            if (this.player.body.onFloor() && !this.spoingIdle){
+                if (this.player.body.velocity.x===0){
+                    this.turnOut=false;
+                    if(this.turnIn){
+
+                    } else if (!this.idle){
+                        this.player.anims.play('turnIn');
+                        this.turnIn=true;
+                    }
+                    if (this.player.anims.currentFrame.index === 4){
+                        this.player.anims.play('idle',true);
+                    }
+                } else {
+                    this.turnIn=false;
+                    if (this.turnOut){
+                    }
+                    else {
+                        this.player.anims.play('turnOut',true)
+                        this.turnOut=true;
+                        this.idle=false;
+                    }
+                    if (this.player.anims.currentFrame.index === 0){
+                        this.player.anims.play('right',true);
+                    }
+                }
             }
         }
     }
