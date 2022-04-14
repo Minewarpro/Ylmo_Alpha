@@ -293,6 +293,13 @@ class Player {
                 this.player.setVelocityY(-520);
                 console.log('jump');
                 this.player.anims.play('jump');
+
+                if (this.qDown){
+                    this.player.setAngle(-40);
+                }
+                if (this.dDown){
+                    this.player.setAngle(40);
+                }
             }
             else if (this.doubleJump === 1
                     && !this.player.body.onFloor()) {
@@ -300,6 +307,13 @@ class Player {
                 this.doubleJump = 0;
                 console.log('double jump');
                 this.player.anims.play('jump');
+
+                if (this.qDown){
+                    this.player.setAngle(-40);
+                }
+                if (this.dDown){
+                    this.player.setAngle(40);
+                }
             }
         }
     }
@@ -330,9 +344,6 @@ class Player {
     moveRight(){
         this.player.setVelocityX(300);
         this.player.setFlipX(false);
-        if (this.spaceDown){
-            this.player.setAngle(30);
-        }
         if (this.player.body.onFloor()) {
             //this.player.play('right', true)
             }
@@ -356,9 +367,6 @@ class Player {
     moveLeft(){
         this.player.setVelocityX(-300);
         this.player.setFlipX(true);
-        if (this.spaceDown){
-            this.player.setAngle(-30);
-        }
         if (this.player.body.onFloor()) {
             //this.player.play('right', true)
             }
