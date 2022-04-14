@@ -215,9 +215,8 @@ class Player {
                     me.player.setVelocityX(me.player.body.velocity.x * 0.3)
                     me.isDashing = false;
                     me.fireBall.visible = false;
+                    me.player.setAngle(0);
                     me.player.anims.play('right',true);
-
-
                     console.log("dash terminé");
                 }, 200)
             }
@@ -331,6 +330,9 @@ class Player {
     moveRight(){
         this.player.setVelocityX(300);
         this.player.setFlipX(false);
+        if (this.spaceDown){
+            this.player.setAngle(30);
+        }
         if (this.player.body.onFloor()) {
             //this.player.play('right', true)
             }
@@ -353,10 +355,13 @@ class Player {
 
     moveLeft(){
         this.player.setVelocityX(-300);
+        this.player.setFlipX(true);
+        if (this.spaceDown){
+            this.player.setAngle(-30);
+        }
         if (this.player.body.onFloor()) {
             //this.player.play('right', true)
             }
-        this.player.setFlipX(true);
     }
 
     moveLeftRelease(){
@@ -423,6 +428,7 @@ class Player {
 
             if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
                 this.player.anims.play('fall', true);
+                this.player.setAngle(0);
                 this.fall=true;
             }
             if (this.player.body.onFloor() && this.fall){
