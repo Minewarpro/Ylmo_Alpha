@@ -14,6 +14,7 @@ class scene extends Phaser.Scene {
         this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
         this.load.spritesheet('idle','assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('turn','assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('jump','assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');

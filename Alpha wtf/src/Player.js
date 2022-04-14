@@ -60,6 +60,31 @@ class Player {
                 frameRate: 10,
                 repeat: -1
             });
+
+
+        this.scene.anims.create(
+            {
+                key: 'jump',
+                frames: this.scene.anims.generateFrameNumbers('jump', { start: 0, end: 4 }),
+                frameRate: 10,
+                repeat: 0
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'fall',
+                frames: this.scene.anims.generateFrameNumbers('jump', { start: 5, end: 7 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'tuchGroundIdle',
+                frames: this.scene.anims.generateFrameNumbers('jump', { start: 8, end: 19}),
+                frameRate: 18,
+                repeat: 0
+            });
     }
 
 
@@ -131,6 +156,7 @@ class Player {
             switch (kevent.keyCode) {
                 case Phaser.Input.Keyboard.KeyCodes.SPACE:
                     me.spaceDown=false;
+                    this.animsJump = false;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                     me.shiftDown=false;
@@ -260,12 +286,14 @@ class Player {
             if (this.player.body.onFloor()){
                 this.player.setVelocityY(-520);
                 console.log('jump');
+                this.player.anims.play('jump');
             }
             else if (this.doubleJump === 1
                     && !this.player.body.onFloor()) {
                 this.player.setVelocityY(-520);
                 this.doubleJump = 0;
                 console.log('double jump');
+                this.player.anims.play('jump');
             }
         }
 
@@ -364,7 +392,8 @@ class Player {
 
     animation(){
         if (this.player.body.onFloor()){
-            if (this.player.body.velocity.x===0 && !this.isDashing){
+            this.animsJump = false;
+            if (this.player.body.velocity.x===0 && !this.isDashing && !this.spoing){
                 this.turnOut=false;
                 if(this.turnIn){
                 }else{
@@ -375,7 +404,7 @@ class Player {
                     this.player.anims.play('idle',true);
                 }
 
-            } else if (!this.isDashing){
+            } else if (!this.isDashing && !this.spoing){
                 this.turnIn=false;
                 if (this.turnOut){
                 } else{
@@ -387,6 +416,23 @@ class Player {
                 }
             }
         }
+        
+        if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
+            this.player.anims.play('fall', true);
+            this.fall=true;
+        }
+        if (this.player.body.onFloor() && this.fall){
+            this.player.anims.play('tuchGroundIdle');
+            this.fall = false;
+            this.spoing = true;
+        }
+
+        if (this.spoing && this.player.anims.currentFrame.index === 12){
+            this.spoing = false;
+            this.player.anims.play('idle',true);
+            console.log("spoing")
+        }
+
     }
 
     move(){
