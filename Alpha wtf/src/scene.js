@@ -34,11 +34,13 @@ class scene extends Phaser.Scene {
 
 
             // LAYER
+        this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
+        this.Plan3Fixe.setPipeline('Light2D');
+
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D');
 
-        this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
-        this.Plan3Fixe.setPipeline('Light2D');
+
 
         this.water = map.createLayer('Water', tileset);
         this.water.setPipeline('Light2D');
