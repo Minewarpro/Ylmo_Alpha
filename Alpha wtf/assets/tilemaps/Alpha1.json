@@ -570,36 +570,14 @@
                  "y":768
                 }, 
                 {
-                 "height":64,
+                 "height":192,
                  "id":132,
                  "name":"",
-                 "rotation":0,
+                 "rotation":90,
                  "type":"",
                  "visible":true,
                  "width":64,
-                 "x":5632,
-                 "y":704
-                }, 
-                {
-                 "height":64,
-                 "id":133,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5696,
-                 "y":768
-                }, 
-                {
-                 "height":64,
-                 "id":134,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":5760,
+                 "x":5824,
                  "y":704
                 }, 
                 {
