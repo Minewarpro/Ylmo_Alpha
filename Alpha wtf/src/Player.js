@@ -82,8 +82,7 @@ class Player {
             {
                 key: 'tuchGroundIdle',
                 frames: this.scene.anims.generateFrameNumbers('jump', { start: 8, end: 19}),
-                frameRate: 14,
-                repeat: 0
+                frameRate: 14
             });
 
         this.scene.anims.create(
@@ -396,57 +395,55 @@ class Player {
     }
 
     animation(){
-        if (this.player.body.onFloor()){
-            this.animsJump = false;
-            if (this.player.body.velocity.x===0 && !this.isDashing && !this.spoing){
-                this.turnOut=false;
-                if(this.turnIn){
-                }else{
-                    this.player.anims.play('turnIn');
-                    this.turnIn=true;
-                }
-                if (this.player.anims.currentFrame.index === 4){
-                    this.player.anims.play('idle',true);
-                }
-
-            } else if (!this.isDashing && !this.spoing){
-                this.turnIn=false;
-                if (this.turnOut){
-                } else{
-                    this.player.anims.play('turnOut',true)
-                    this.turnOut=true;
-                }
-                if (this.player.anims.currentFrame.index === 0){
-                    this.player.anims.play('right',true);
+        if (!this.isDashing){
+            if (this.player.body.onFloor() && !this.spoingIdle){
+                this.animsJump = false;
+                if (this.player.body.velocity.x===0){
+                    this.turnOut=false;
+                    if(this.turnIn){
+                    }else{
+                        this.player.anims.play('turnIn');
+                        this.turnIn=true;
+                    }
+                    if (this.player.anims.currentFrame.index === 4){
+                        this.player.anims.play('idle',true);
+                    }
+                } else {
+                    this.turnIn=false;
+                    if (this.turnOut){
+                    } else{
+                        this.player.anims.play('turnOut',true)
+                        this.turnOut=true;
+                    }
+                    if (this.player.anims.currentFrame.index === 0){
+                        this.player.anims.play('right',true);
+                    }
                 }
             }
-        }
 
-        if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
-            this.player.anims.play('fall', true);
-            this.fall=true;
-        }
-        if (this.player.body.onFloor() && this.fall){
-            if (this.dDown || this.qDown){
-                this.player.anims.play('tuchGroundWalk');
-                this.spoingWalk = true;
-            } else {
-                this.player.anims.play('tuchGroundIdle');
-                this.spoingIdle = true;
+            if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
+                this.player.anims.play('fall', true);
+                this.fall=true;
             }
-            this.fall = false;
-
+            if (this.player.body.onFloor() && this.fall){
+                if (this.dDown || this.qDown){
+                    this.player.anims.play('tuchGroundWalk');
+                    this.spoingWalk = true;
+                } else {
+                    this.player.anims.play('tuchGroundIdle');
+                    this.spoingIdle = true;
+                }
+                this.fall = false;
+            }
+            if (this.spoingIdle && this.player.anims.currentFrame.index === 12){
+                this.spoingIdle = false;
+                this.player.anims.play('idle',true);
+            }
+            if (this.spoingWalk && this.player.anims.currentFrame.index === 7){
+                this.spoingWalk = false;
+                this.player.anims.play('right',true);
+            }
         }
-
-        if (this.spoingIdle && this.player.anims.currentFrame.index === 12){
-            this.spoingIdle = false;
-            this.player.anims.play('idle',true);
-        }
-        if (this.spoingWalk && this.player.anims.currentFrame.index === 7){
-            this.spoingWalk = false;
-            this.player.anims.play('right',true);
-        }
-
     }
 
     move(){
