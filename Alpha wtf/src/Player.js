@@ -429,6 +429,11 @@ class Player {
                 this.player.anims.play('idle',true);
                 this.idle=true;
             }
+            if (this.spoingIdle && this.dDown || this.qDown){
+                this.spoingIdle = false;
+                this.spoingWalk = true;
+                this.player.anims.play('tuchGroundWalk',true);
+            }
             if (this.spoingWalk && this.player.anims.currentFrame.index === 7){
                 this.spoingWalk = false;
                 this.player.anims.play('right',true);
