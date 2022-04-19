@@ -1,24 +1,24 @@
 class scene extends Phaser.Scene {
 
     preload() {
-        this.load.image('background', 'assets/images/background.png');
-        this.load.image('spike', 'assets/images/spike.png');
+        this.load.image('background', 'Alpha wtf/assets/images/background.png');
+        this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
         // At last image must be loaded with its JSON
-        this.load.image('player', 'assets/images/player_base.png');
+        this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
 
-        this.load.image('fireBall', 'assets/images/boule_de_feu_base.png');
-        this.load.image('dragon', 'assets/images/dragon_base.png');
-        this.load.image('degrade', 'assets/images/degradé.png');
-        this.load.image('save', 'assets/images/Save.png');
-        this.load.image('arrow', 'assets/images/arrow.cur');
-        this.load.image('tiles', 'assets/tilesets/platformPack_tilesheet_test.png');
-        this.load.spritesheet('player_right', 'assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
-        this.load.spritesheet('idle','assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
-        this.load.spritesheet('turn','assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
-        this.load.spritesheet('jump','assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
+        this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
+        this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
+        this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
+        this.load.image('save', 'Alpha wtf/assets/images/Save.png');
+        this.load.image('arrow', 'Alpha wtf/assets/images/arrow.cur');
+        this.load.image('tiles', 'Alpha wtf/assets/tilesets/platformPack_tilesheet_test.png');
+        this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('turn','Alpha wtf/assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('jump','Alpha wtf/assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
 
         // Load the export Tiled JSON
-        this.load.tilemapTiledJSON('map', 'assets/tilemaps/Alpha1.json');
+        this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/Alpha1.json');
     }
 
 
