@@ -170,8 +170,17 @@ class Player {
                 this.flagDash = true;
                 this.isDashing =true;
                 this.fireBall.visible = true;
-                this.player.setTexture('fireBall');
+                this.player.setTexture('test_dash');
                 this.player.anims.stop();
+
+                let angle = 60 * Phaser.Math.Angle.Between(
+                    me.player.body.x,
+                    me.player.body.y,
+                    this.scene.game.input.mousePointer.x + this.scene.cameras.main.worldView.x,
+                    this.scene.game.input.mousePointer.y + this.scene.cameras.main.worldView.y,
+                );
+                console.log(angle);
+                this.player.setAngle(angle);
 
                 console.log("start dash");
                     me.scene.physics.moveTo(
