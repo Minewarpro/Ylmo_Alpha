@@ -92,6 +92,14 @@ class Player {
                 frameRate: 14,
                 repeat: 0
             });
+
+        this.scene.anims.create(
+            {
+                key: 'dash',
+                frames: this.scene.anims.generateFrameNumbers('dash', { start: 0, end: 8}),
+                frameRate: 16,
+                repeat: 0
+            });
     }
 
     initKeyboard() {
@@ -170,8 +178,7 @@ class Player {
                 this.flagDash = true;
                 this.isDashing =true;
                 this.fireBall.visible = true;
-                this.player.setTexture('test_dash');
-                this.player.anims.stop();
+                this.player.anims.play('dash');
 
                 let angle = Phaser.Math.Angle.Between(
                     me.player.body.x,
@@ -184,7 +191,7 @@ class Player {
                 if (me.direction===-1){
                     this.player.setFlipX(false);
                 }
-                this.player.setAngle(angle * 60);
+                this.player.setAngle(angle * 60 + 90);
 
                 console.log("start dash");
                     me.scene.physics.moveTo(
@@ -200,7 +207,7 @@ class Player {
                     me.isDashing = false;
                     me.fireBall.visible = false;
                     me.player.setAngle(0);
-                    me.player.anims.play('fall',true);
+                    me.player.anims.play('fall');
                     if (me.direction===-1){
                         me.player.setFlipX(true);
                     }
@@ -359,6 +366,7 @@ class Player {
             if (this.player.body.onFloor() && this.fall){
                 if (this.player.body.velocity.x !==0){
                     this.player.anims.play('tuchGroundWalk');
+                    console.log('spoingwalk2')
                     this.spoingWalk = true;
 
                 } else {
@@ -376,35 +384,36 @@ class Player {
                 this.spoingIdle = false;
                 this.spoingWalk = true;
                 this.player.anims.play('tuchGroundWalk',true);
-                console.log('spoingwalk')
+                console.log('spoingwalk1')
             }
             if (this.spoingWalk && !this.spoingIdle && this.player.anims.currentFrame.index === 7){
                 this.spoingWalk = false;
                 this.player.anims.play('right',true);
-
-                //console.log('walk')
+                console.log('walk1')
+                this.turnIn=false;
                 this.idle=false;
             }
-            //console.log(this.spoingIdle)
-            if (this.player.body.onFloor() && !this.spoingIdle){
+
+            if (this.player.body.onFloor() && !this.spoingIdle && !this.spoingWalk){
                 if (this.player.body.velocity.x===0){
                     this.turnOut=false;
                     if(this.turnIn){
 
-                    } else if (!this.idle ){
+                    } else if (!this.idle){
                         this.player.anims.play('turnIn');
                         this.turnIn=true;
+                        this.idle = true;
                         console.log('turnIn')
                     }
                     if (this.player.anims.currentFrame.index === 4){
                         this.player.anims.play('idle',true);
-
+                        console.log('idle')
                     }
                 } else {
                     this.turnIn=false;
                     if (this.turnOut){
                     }
-                    else {
+                    else if (this.idle){
                         this.player.anims.play('turnOut',true)
                         this.turnOut=true;
                         this.idle=false;
