@@ -6,6 +6,9 @@ class Player {
         this.cameras = scene
         let me = this;
         this.fireBall = this.scene.add.particles('fireBall');
+        this.ghost = this.scene.add.particles('ghost');
+        this.ghostRight = this.scene.add.particles('ghost');
+        this.ghostLeft = this.scene.add.particles('ghost');
         this.player = this.scene.physics.add.sprite(1250, 1100, 'player');
         this.player.setScale(1);
         this.player.setCollideWorldBounds(false);
@@ -15,92 +18,125 @@ class Player {
         this.dejaAppuye = false;
         this.doubleJump = 1;
 
-        this.player.speedFactor=900
+        this.player.speedFactor = 900
         this.dashIsUp = false;
 
         this.fireBall.createEmitter({
             speed: 100,
-            lifespan : 200,
-            gravity: { x: 0, y: 0 },
-            scale: { start: 0.3, end: 0.1 },
-            follow: this.player
+            lifespan: 700,
+            quantity: 70,
+            alpha: 0.2,
+            gravity: {x: 0, y: 0},
+            scale: {start: 0.3, end: 0},
+            follow: this.player,
+            on: false
         });
-        this.fireBall.visible = false;
 
+        this.ghost.createEmitter({
+            lifespan: 300,
+            speed: 100,
+            angle: { min: 65, max: 115 },
+            quantity: 20,
+            scale: {start: 0.3, end: 0},
+            follow: this.player,
+            on: false
+        });
+        this.ghostRight.createEmitter({
+            lifespan: 300,
+            speed: 100,
+            angle: { min: 105, max: 155 },
+            quantity: 20,
+            scale: {start: 0.3, end: 0},
+            follow: this.player,
+            on: false
+        });
+        this.ghostLeft.createEmitter({
+            lifespan: 300,
+            speed: 100,
+            angle: { min: 25, max: 75 },
+            quantity: 20,
+            scale: {start: 0.3, end: 0},
+            follow: this.player,
+            on: false
+        });
 
-
-        this.scene.anims.create(
-            {
-                key: 'idle',
-                frames: this.scene.anims.generateFrameNumbers('idle', { start: 0, end: 7 }),
-                frameRate: 10,
-                repeat: -1
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'turnIn',
-                frames: this.scene.anims.generateFrameNumbers('turn', { start: 0, end: 4 }),
-                frameRate: 12,
-                repeat: 0,
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'turnOut',
-                frames: this.scene.anims.generateFrameNumbers('turn', { start: 4, end: 0 }),
-                frameRate: 18,
-                repeat: 0,
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'right',
-                frames: this.scene.anims.generateFrameNumbers('player_right', { start: 0, end: 0 }),
-                frameRate: 10,
-                repeat: -1
-            });
-
-
-        this.scene.anims.create(
-            {
-                key: 'jump',
-                frames: this.scene.anims.generateFrameNumbers('jump', { start: 0, end: 4 }),
-                frameRate: 10,
-                repeat: 0
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'fall',
-                frames: this.scene.anims.generateFrameNumbers('jump', { start: 5, end: 7 }),
-                frameRate: 10,
-                repeat: -1
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'tuchGroundIdle',
-                frames: this.scene.anims.generateFrameNumbers('jump', { start: 8, end: 19}),
-                frameRate: 14
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'tuchGroundWalk',
-                frames: this.scene.anims.generateFrameNumbers('jump', { start: 20, end: 27}),
-                frameRate: 14,
-                repeat: 0
-            });
-
-        this.scene.anims.create(
-            {
-                key: 'dash',
-                frames: this.scene.anims.generateFrameNumbers('dash', { start: 0, end: 8}),
-                frameRate: 16,
-                repeat: 0
-            });
+        this.createAnims();
     }
+
+    createAnims(){
+
+            this.scene.anims.create(
+                {
+                    key: 'idle',
+                    frames: this.scene.anims.generateFrameNumbers('idle', { start: 0, end: 7 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'turnIn',
+                    frames: this.scene.anims.generateFrameNumbers('turn', { start: 0, end: 4 }),
+                    frameRate: 12,
+                    repeat: 0,
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'turnOut',
+                    frames: this.scene.anims.generateFrameNumbers('turn', { start: 4, end: 0 }),
+                    frameRate: 18,
+                    repeat: 0,
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'right',
+                    frames: this.scene.anims.generateFrameNumbers('player_right', { start: 0, end: 0 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+
+            this.scene.anims.create(
+                {
+                    key: 'jump',
+                    frames: this.scene.anims.generateFrameNumbers('jump', { start: 0, end: 4 }),
+                    frameRate: 10,
+                    repeat: 0
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'fall',
+                    frames: this.scene.anims.generateFrameNumbers('jump', { start: 5, end: 7 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'tuchGroundIdle',
+                    frames: this.scene.anims.generateFrameNumbers('jump', { start: 8, end: 19}),
+                    frameRate: 14
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'tuchGroundWalk',
+                    frames: this.scene.anims.generateFrameNumbers('jump', { start: 20, end: 27}),
+                    frameRate: 14,
+                    repeat: 0
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'dash',
+                    frames: this.scene.anims.generateFrameNumbers('dash', { start: 0, end: 8}),
+                    frameRate: 16,
+                    repeat: 0
+                });
+        }
 
     initKeyboard() {
         let me = this;
@@ -177,7 +213,7 @@ class Player {
                 this.dashIsUp = false;
                 this.flagDash = true;
                 this.isDashing =true;
-                this.fireBall.visible = true;
+                this.fireBall.emitParticleAt(me.player.body.x, me.player.body.y);
                 this.player.anims.play('dash');
 
                 let angle = Phaser.Math.Angle.Between(
@@ -198,21 +234,20 @@ class Player {
                         me.player,
                         me.scene.game.input.mousePointer.x + me.scene.cameras.main.worldView.x,
                         me.scene.game.input.mousePointer.y + me.scene.cameras.main.worldView.y,
-                        960);
+                        860);
 
                 setTimeout(function () {
                     me.player.body.setAllowGravity(true);
                     me.player.setVelocityY(me.player.body.velocity.y * 0.3)
                     me.player.setVelocityX(me.player.body.velocity.x * 0.3)
                     me.isDashing = false;
-                    me.fireBall.visible = false;
                     me.player.setAngle(0);
                     me.player.anims.play('fall');
                     if (me.direction===-1){
                         me.player.setFlipX(true);
                     }
                     console.log("dash terminé");
-                }, 200)
+                }, 300)
             }
         }
     }
@@ -243,9 +278,13 @@ class Player {
 
                 if (this.qDown){
                     this.player.setAngle(-40);
+                    this.ghostLeft.emitParticleAt(this.player.body.x, this.player.body.y);
                 }
                 else if (this.dDown){
                     this.player.setAngle(40);
+                    this.ghostRight.emitParticleAt(this.player.body.x , this.player.body.y);
+                } else {
+                    this.ghost.emitParticleAt(this.player.body.x, this.player.body.y);
                 }
             }
             else if (this.doubleJump === 1
@@ -257,9 +296,13 @@ class Player {
 
                 if (this.qDown){
                     this.player.setAngle(-40);
+                    this.ghostLeft.emitParticleAt(this.player.body.x, this.player.body.y);
                 }
                 else if (this.dDown){
                     this.player.setAngle(40);
+                    this.ghostRight.emitParticleAt(this.player.body.x , this.player.body.y);
+                } else {
+                    this.ghost.emitParticleAt(this.player.body.x, this.player.body.y);
                 }
             }
         }
@@ -272,6 +315,7 @@ class Player {
                 // fais rien
                 break;
             case !this.spaceDown:
+                this.player.setAngle(0);
                 if (!this.player.body.onFloor()){
                     this.player.setVelocityY(
                         this.player.body.velocity.y * 0.6);
@@ -289,12 +333,11 @@ class Player {
     }
 
     moveRight(){
-        this.player.setVelocityX(300);
-        this.direction=1;
-        this.player.setFlipX(false);
-        if (this.player.body.onFloor()) {
-            //this.player.play('right', true)
-            }
+        if(!this.isDashing){
+            this.player.setVelocityX(300);
+            this.direction=1;
+            this.player.setFlipX(false);
+        }
     }
 
     moveRightRelease(){
@@ -313,12 +356,11 @@ class Player {
     }
 
     moveLeft(){
-        this.player.setVelocityX(-300);
-        this.direction=-1;
-        this.player.setFlipX(true);
-        if (this.player.body.onFloor()) {
-            //this.player.play('right', true)
-            }
+        if(!this.isDashing) {
+            this.player.setVelocityX(-300);
+            this.direction = -1;
+            this.player.setFlipX(true);
+        }
     }
 
     moveLeftRelease(){
@@ -348,8 +390,8 @@ class Player {
     }
 
     stop(){
-        this.player.setVelocityX(0);
         if (this.player.body.onFloor()) {
+            this.player.setVelocityX(0);
         } else {
             this.player.setVelocityX(this.player.body.velocity.x * 0.6);
             this.player.setVelocityY(this.player.body.velocity.y * 0.6);

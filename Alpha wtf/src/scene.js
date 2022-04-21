@@ -7,7 +7,7 @@ class scene extends Phaser.Scene {
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
 
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
-        this.load.image('test_dash', 'Alpha wtf/assets/images/test_Dash.png');
+        this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
         this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
         this.load.image('save', 'Alpha wtf/assets/images/Save.png');
@@ -96,7 +96,7 @@ class scene extends Phaser.Scene {
 
        // LIGHT
         this.lights.enable();
-        this.lights.setAmbientColor(0xbbbbbb);
+        this.lights.setAmbientColor(0x999999);
         this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(3);
         this.light.setColor(0x0f3fff);
     }
