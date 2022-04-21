@@ -42,41 +42,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
-         "id":29,
-         "name":"Ennemy",
-         "objects":[
-                {
-                 "gid":47,
-                 "height":64,
-                 "id":179,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":1792,
-                 "y":896
-                }, 
-                {
-                 "gid":47,
-                 "height":64,
-                 "id":183,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3328,
-                 "y":768
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "chunks":[
                 {
                  "data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAANAAAADgAAAA8AAAAAAAAADAAAAA8AAAAAAAAAAAAAAA4AAAANAAAADgAAAA0AAAAOAAAADQAAAA4AAAAfAAAAIQAAACIAAAAkAAAARwAAAB8AAAAkAAAADwAAAAAAAAAiAAAAIQAAACIAAAAhAAAAIgAAACEAAAAiAAAAXAAAADYAAAA1AAAAXwAAAFsAAABcAAAAXwAAACQAAAAAAAAANgAAADUAAAA2AAAANQAAADYAAAA1AAAANgAAADUAAAA2AAAANQAAADYAAAA2AAAANQAAADYAAABfAAAAAAAAADUAAAA2AAAANQAAADYAAAA1AAAANgAAADUAAAA1AAAANgAAADUAAAA2AAAANQAAADUAAAA2AAAANQAAAAAAAAA1AAAANgAAADUAAAA2AAAANQAAADYAAAA1AAAANQAAADYAAAA1AAAANgAAADUAAAA1AAAANgAAADUAAAAAAAAANQAAADYAAAA1AAAANgAAADUAAAA2AAAANQAAADUAAAA2AAAANQAAADYAAAA1AAAANQAAADYAAAA1AAAAAAAAADUAAAA2AAAANQAAADYAAAA1AAAANgAAADUAAAA1AAAANgAAADUAAAA2AAAANQAAADUAAAA2AAAANQAAAAAAAAA1AAAANgAAADUAAAA2AAAANQAAADYAAAA1AAAANQAAADYAAAA1AAAANgAAADUAAAA1AAAANgAAADUAAAAAAAAANQAAADYAAAA1AAAANgAAADUAAAA2AAAANQAAADUAAAA2AAAANQAAADYAAAA1AAAANQAAADYAAAA1AAAAAAAAADUAAAA2AAAANQAAADYAAAA1AAAANgAAADUAAAA1AAAANgAAADUAAAA2AAAANQAAADUAAAA2AAAANQAAAA==",
@@ -207,41 +172,6 @@
          "y":0
         }, 
         {
-         "draworder":"topdown",
-         "id":27,
-         "name":"Save",
-         "objects":[
-                {
-                 "gid":49,
-                 "height":64,
-                 "id":163,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":2816,
-                 "y":896
-                }, 
-                {
-                 "gid":49,
-                 "height":64,
-                 "id":173,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":64,
-                 "x":3648,
-                 "y":832
-                }],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
          "chunks":[
                 {
                  "data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
@@ -311,6 +241,76 @@
          "y":0
         }, 
         {
+         "draworder":"topdown",
+         "id":27,
+         "name":"Save",
+         "objects":[
+                {
+                 "gid":49,
+                 "height":64,
+                 "id":163,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":2816,
+                 "y":896
+                }, 
+                {
+                 "gid":49,
+                 "height":64,
+                 "id":173,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3648,
+                 "y":832
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":29,
+         "name":"Ennemy",
+         "objects":[
+                {
+                 "gid":47,
+                 "height":64,
+                 "id":179,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":1792,
+                 "y":896
+                }, 
+                {
+                 "gid":47,
+                 "height":64,
+                 "id":183,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":64,
+                 "x":3328,
+                 "y":768
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
          "draworder":"index",
          "id":24,
          "name":"BonusFlame",
@@ -362,7 +362,7 @@
                  "y":1088
                 }, 
                 {
-                 "height":64,
+                 "height":33.3333333333335,
                  "id":175,
                  "name":"",
                  "rotation":0,
@@ -370,7 +370,7 @@
                  "visible":true,
                  "width":576,
                  "x":2176,
-                 "y":1088
+                 "y":1118.66666666667
                 }],
          "opacity":1,
          "tintcolor":"#aa0000",

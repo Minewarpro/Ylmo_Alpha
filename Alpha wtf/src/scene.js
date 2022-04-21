@@ -67,7 +67,7 @@ class scene extends Phaser.Scene {
         this.degrade = this.add.image(0,0,'degrade');
 
         //CURSOR
-        /*this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
+        this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
 
         this.test = this.add.particles('fireBall');
         this.test.createEmitter({
@@ -77,7 +77,7 @@ class scene extends Phaser.Scene {
             scale: { start: 0.3, end: 0.1 },
             follow: this.cursorBox
         });
-        this.input.setDefaultCursor('url(assets/images/arrow.cur), pointer');*/
+        this.input.setDefaultCursor('url(Alpha wtf/assets/images/arrow.cur), pointer');
 
         // CAMERA
         this.pointCamera = this.physics.add.sprite(600,1000);
@@ -107,8 +107,8 @@ class scene extends Phaser.Scene {
 
     update()
     {
-        //this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
-        //this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
+        this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
+        this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
 
         this.player.move();
         this.ennemy.IaGesttion();

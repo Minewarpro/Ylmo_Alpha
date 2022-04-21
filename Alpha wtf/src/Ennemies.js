@@ -30,15 +30,14 @@ class Ennemies {
         for(var i = 0; i < this.ennemy.getChildren().length; i++) {
             this.dist = Phaser.Math.Distance.BetweenPoints(this.player.player, this.ennemy.getChildren()[i]);
 
-            if (this.dist <= 300) {
 
+            if (this.dist <= 300) {
                 this.scene.physics.moveTo(
                     me.ennemy.getChildren()[i],
                     me.player.player.body.x,
                     me.player.player.body.y,
                     160);
-                console.log(i)
-                console.log(this.ennemyPositionX)
+
 
                 if (this.tuchEnnemyDeath){
                     this.player.player.setVelocity(0, 0);
