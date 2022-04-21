@@ -7,6 +7,7 @@ class scene extends Phaser.Scene {
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
 
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
+        this.load.image('ennemy', 'Alpha wtf/assets/images/Ennemy.png');
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
         this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
@@ -55,7 +56,10 @@ class scene extends Phaser.Scene {
         new BonusFlame(this, this.player);
 
         // SAVE
-        this.save = new Save(this,this.player)
+        this.save = new Save(this,this.player);
+
+        //ENNEMY
+        this.ennemy = new Ennemies(this,this.player, this.save);
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset);
         this.Plan2Fixe.setPipeline('Light2D');
@@ -107,6 +111,7 @@ class scene extends Phaser.Scene {
         //this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
 
         this.player.move();
+        this.ennemy.IaGesttion();
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
         this.degrade.x = this.pointCamera.body.x +10;
