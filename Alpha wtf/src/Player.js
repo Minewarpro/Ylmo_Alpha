@@ -1,9 +1,10 @@
 class Player {
 
 
-    constructor(scene) {
+    constructor(scene, save) {
         this.scene = scene
         this.cameras = scene
+        this.save = save;
         let me = this;
         this.fireBall = this.scene.add.particles('fireBall');
         this.ghost = this.scene.add.particles('ghost');
@@ -62,6 +63,7 @@ class Player {
 
         this.createAnims();
     }
+
 
     createAnims(){
 

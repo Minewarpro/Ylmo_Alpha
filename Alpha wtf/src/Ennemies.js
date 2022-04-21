@@ -40,9 +40,7 @@ class Ennemies {
 
 
                 if (this.tuchEnnemyDeath){
-                    this.player.player.setVelocity(0, 0);
-                    this.player.player.body.x = this.save.currentSaveX;
-                    this.player.player.body.y = this.save.currentSaveY;
+                    this.save.death();
                     this.ennemy.getChildren()[i].enableBody(true);
                     this.ennemy.getChildren()[i].visible=true;
                     this.ennemy.getChildren()[i].body.x = this.ennemyPositionX[i];

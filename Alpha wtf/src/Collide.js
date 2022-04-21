@@ -34,9 +34,7 @@ class Collide {
 
     playerHit(player, collideDeath) {
         console.log("hit");
-        player.setVelocity(0, 0);
-        player.body.x = this.save.currentSaveX;
-        player.body.y = this.save.currentSaveY;
+        this.save.death();
 
     }
 }

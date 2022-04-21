@@ -12,7 +12,6 @@ class scene extends Phaser.Scene {
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
         this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
         this.load.image('save', 'Alpha wtf/assets/images/Save.png');
-        this.load.image('arrow', 'Alpha wtf/assets/images/arrow.cur');
         this.load.image('tiles', 'Alpha wtf/assets/tilesets/platformPack_tilesheet_test.png');
         this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
@@ -47,7 +46,6 @@ class scene extends Phaser.Scene {
 
         this.water = map.createLayer('Water', tileset);
         this.water.setPipeline('Light2D');
-
 
         this.player = new Player(this);
         this.dragon = new Dragon(this);

@@ -18,6 +18,11 @@ class Save {
         });
     }
 
+    death(){
+        this.player.player.setVelocity(0, 0);
+        this.player.player.body.x = this.currentSaveX;
+        this.player.player.body.y = this.currentSaveY;
+    }
     sauvegarde(player, saves) {
         this.currentSaveX = player.body.x
         this.currentSaveY = player.body.y
