@@ -29,7 +29,7 @@ class scene extends Phaser.Scene {
         let me =this;
 
         // Tiled / Plan
-        const backgroundImage = this.add.image(1000, 400, 'background').setOrigin(0, 0).setPipeline('Light2D');
+        const backgroundImage = this.add.image(1000, 400, 'background').setOrigin(0, 0);
         backgroundImage.setScale(1, 1.2);
         const map = this.make.tilemap({key: 'map'});
 
