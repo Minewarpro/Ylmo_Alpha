@@ -29,7 +29,7 @@ class Save {
         this.scene.light.setColor(0x000000);
         setTimeout(function (){
             me.player.player.visible = true;
-            me.scene.cameras.main.startFollow(me.player.player,false,1,1,0,150);
+            me.scene.cameras.main.startFollow(me.player.player,true,1,1,0,150);
             me.scene.light.setColor(0x0f6fbf);
         },500);
     }

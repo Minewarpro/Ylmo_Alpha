@@ -6,22 +6,40 @@ class Start extends Phaser.Scene {
 
     preload(){
         this.load.image('ecranTitre', 'Alpha wtf/assets/images/ecran_titre.png');
+        this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.image('feuille', 'Alpha wtf/assets/images/feuille.png');
         this.load.audio('Theme', 'Alpha wtf/assets/sounds/MainTheme.mp3');
         this.load.audio('clic', 'Alpha wtf/assets/sounds/clic.wav');
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
+        this.load.spritesheet('titre','Alpha wtf/assets/images/spritesheet_titre.png', {frameWidth: 428, frameHeight: 272});
     }
 
     create(){
         let me = this;
+        const {width, height}= this.scale
 
+        //ECRAN TITRE
         this.ecranTitre = this.add.image(0, 0, 'ecranTitre').setOrigin(0, 0);
 
-        var theme = this.sound.add('Theme').play();
-        this.clic = this.sound.add('clic');
-        
+        /*this.titre = this.add.sprite(640,160,'');
+        this.anims.create(
+            {
+                key: 'titre',
+                frames: this.anims.generateFrameNumbers('titre', { start: 0, end: 6 }),
+                frameRate: 10,
+                repeat: -1
+            });
+        this.titre.anims.play('titre');*/
 
+
+        //SOUNDS
+        this.sound.add('Theme').play();
+        this.clic = this.sound.add('clic');
+
+
+        //PARTICLES
         var particles = this.add.particles('feuille');
+        var feu = this.add.particles('fireBall');
 
         particles.createEmitter({
             x: 0,
@@ -45,7 +63,18 @@ class Start extends Phaser.Scene {
             frequency: 700,
         });
 
-        const {width, height}= this.scale
+        feu.createEmitter({
+            x: { min: 450, max: 800 },
+            y: 100,
+            lifespan: 2000,
+            speedY: { min: -50, max: -100},
+            speedX: { min: 120, max: 160},
+            scale: { start: 0.2, end: 0.1 },
+            quantity: 1,
+            frequency: 400,
+        });
+
+
         this.Play = this.add.text(width*0.5,height*0.55,'Lancer la partie',{
             color: '#ffffff',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
