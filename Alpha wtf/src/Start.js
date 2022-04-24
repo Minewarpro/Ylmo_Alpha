@@ -33,9 +33,8 @@ class Start extends Phaser.Scene {
 
 
         //SOUNDS
-        this.sound.add('Theme').play();
+        this.theme = this.sound.add('Theme',{volume: 0.3}).play();
         this.clic = this.sound.add('clic');
-
 
         //PARTICLES
         var particles = this.add.particles('feuille');

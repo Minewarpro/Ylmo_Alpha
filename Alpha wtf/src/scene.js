@@ -9,7 +9,6 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
         // At last image must be loaded with its JSON
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
-
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.image('ennemy', 'Alpha wtf/assets/images/Ennemy.png');
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
