@@ -11,7 +11,6 @@ class Ennemies {
         this.ennemyPositionX = []
         this.ennemyPositionY = []
 
-
         this.ennemy = this.scene.physics.add.group({
             allowGravity: false,
             immovable: true
@@ -30,14 +29,12 @@ class Ennemies {
         for(var i = 0; i < this.ennemy.getChildren().length; i++) {
             this.dist = Phaser.Math.Distance.BetweenPoints(this.player.player, this.ennemy.getChildren()[i]);
 
-
             if (this.dist <= 300) {
                 this.scene.physics.moveTo(
                     me.ennemy.getChildren()[i],
                     me.player.player.body.x,
                     me.player.player.body.y,
                     160);
-
 
                 if (this.tuchEnnemyDeath){
                     this.save.death();

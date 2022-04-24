@@ -4,8 +4,8 @@ const config = {
     width: 1280,
     heigth: 720,
     scale: {
-        //mode: Phaser.Scale.RESIZE,
-        //autoCenter: Phaser.Scale.CENTER_HORIZONTALLY
+        mode: Phaser.Scale.RESIZE,
+        autoCenter: Phaser.Scale.CENTER
     },
     physics: {
         default: 'arcade',
@@ -14,7 +14,8 @@ const config = {
             debug: false,
         },
     },
-    scene: new scene(),
+    scene: [new Start(),new scene()]
+
 };
 
 

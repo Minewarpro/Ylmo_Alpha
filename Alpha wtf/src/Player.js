@@ -1,6 +1,5 @@
 class Player {
 
-
     constructor(scene, save) {
         this.scene = scene
         this.cameras = scene
@@ -437,7 +436,6 @@ class Player {
                 this.turnIn=false;
                 this.idle=false;
             }
-
             if (this.player.body.onFloor() && !this.spoingIdle && !this.spoingWalk){
                 if (this.player.body.velocity.x===0){
                     this.turnOut=false;

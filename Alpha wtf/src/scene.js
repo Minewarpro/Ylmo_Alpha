@@ -1,5 +1,9 @@
 class scene extends Phaser.Scene {
 
+    constructor() {
+        super('game');
+    }
+
     preload() {
         this.load.image('background', 'Alpha wtf/assets/images/background.png');
         this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
@@ -65,7 +69,7 @@ class scene extends Phaser.Scene {
         this.degrade = this.add.image(0,0,'degrade');
 
         //CURSOR
-        /*this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
+        this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
 
         this.test = this.add.particles('fireBall');
         this.test.createEmitter({
@@ -75,7 +79,7 @@ class scene extends Phaser.Scene {
             scale: { start: 0.3, end: 0.1 },
             follow: this.cursorBox
         });
-        this.input.setDefaultCursor('url(arrow.cur), pointer');*/
+        this.input.setDefaultCursor('url(arrow.cur), pointer');
 
         // CAMERA
         this.pointCamera = this.physics.add.sprite(600,1000);
@@ -86,15 +90,12 @@ class scene extends Phaser.Scene {
         this.cameras.main.setRoundPixels(true);
         //this.cameras.main.startFollow(this.pointCamera,false);
 
-
         // COLLIDER
         this.collider = new Collide(this, this.player, this.save);
-
 
         // FONCTIONS
         this.input.mouse.disableContextMenu();
         this.player.initKeyboard()
-
 
        // LIGHT
         this.lights.enable();
@@ -105,8 +106,8 @@ class scene extends Phaser.Scene {
 
     update()
     {
-        //this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
-        //this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
+        this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
+        this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
 
         this.player.move();
         this.ennemy.IaGesttion();
