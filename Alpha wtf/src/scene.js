@@ -6,16 +6,20 @@ class scene extends Phaser.Scene {
 
     preload() {
         this.load.image('background', 'Alpha wtf/assets/images/background.png');
+        this.load.image('tiles', 'Alpha wtf/assets/tilesets/platformPack_tilesheet_test.png');
+        this.load.image('tilesP4', 'Alpha wtf/assets/tilesets/plan4_tilesheet.png');
+        this.load.image('tilesP5', 'Alpha wtf/assets/tilesets/plan5_tilesheet.png');
+        this.load.image('tilesP6', 'Alpha wtf/assets/tilesets/plan6_tilesheet.png');
+        this.load.image('tilesP7', 'Alpha wtf/assets/tilesets/plan7_tilesheet.png');
+        this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
+
         this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
-        // At last image must be loaded with its JSON
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.image('ennemy', 'Alpha wtf/assets/images/Ennemy.png');
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
-        this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
         this.load.image('save', 'Alpha wtf/assets/images/Save.png');
-        this.load.image('tiles', 'Alpha wtf/assets/tilesets/platformPack_tilesheet_test.png');
         this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('turn','Alpha wtf/assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
@@ -30,42 +34,88 @@ class scene extends Phaser.Scene {
     create() {
         let me =this;
 
+
         // Tiled / Plan
-        const backgroundImage = this.add.image(1000, 400, 'background').setOrigin(0, 0);
-        backgroundImage.setScale(1, 1.2);
+        this.backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0);
+        this.backgroundImage.setScale(1, 1.2);
+
         const map = this.make.tilemap({key: 'map'});
 
         const tileset = map.addTilesetImage('platformPack_tilesheet_test', 'tiles');
+        const tilesetP4 = map.addTilesetImage('plan4_tilesheet', 'tilesP4');
+        const tilesetP5 = map.addTilesetImage('plan5_tilesheet', 'tilesP5');
+        const tilesetP6 = map.addTilesetImage('plan6_tilesheet', 'tilesP6');
+        const tilesetP7 = map.addTilesetImage('plan7_tilesheet', 'tilesP7');
 
+        // LAYER
+        this.Plan7Fixe = map.createLayer('Plan7Fixe', tilesetP7);
 
-            // LAYER
+        this.Plan6Fixe = map.createLayer('Plan6Fixe', tilesetP6);
+
+        this.Plan5Fixe = map.createLayer('Plan5Fixe', tilesetP5);
+        this.Plan5FixeBis = map.createLayer('Plan5FixeBis', tilesetP5);
+
+        this.Plan4Fixe = map.createLayer('Plan4Fixe', tilesetP4);
+
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
         this.Plan3Fixe.setPipeline('Light2D');
 
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D');
 
-
-
         this.water = map.createLayer('Water', tileset);
         this.water.setPipeline('Light2D');
 
+        //PLAYER
         this.player = new Player(this);
+
+        //DRAGON
         this.dragon = new Dragon(this);
 
         // BONUS FLAME
         new BonusFlame(this, this.player);
 
         // SAVE
-        this.save = new Save(this,this.player);
+        this.save = new Save(this, this.player);
 
         //ENNEMY
-        this.ennemy = new Ennemies(this,this.player, this.save);
+        this.ennemy = new Ennemies(this, this.player, this.save);
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset);
         this.Plan2Fixe.setPipeline('Light2D');
 
         this.degrade = this.add.image(0,0,'degrade');
+
+        //PARALLAXE
+        this.backgroundImage.scrollFactorX=0;
+        this.backgroundImage.scrollFactorY=0;
+
+        this.Plan3Fixe.scrollFactorX=1;
+        this.Plan3Fixe.scrollFactorY=1;
+
+        this.Plan3Platforms.scrollFactorX=1;
+        this.Plan3Platforms.scrollFactorY=1;
+
+        this.water.scrollFactorX=1;
+        this.water.scrollFactorY=1;
+
+        this.Plan2Fixe.scrollFactorX=1;
+        this.Plan2Fixe.scrollFactorY=1;
+
+        this.Plan4Fixe.scrollFactorX=0.8;
+        this.Plan4Fixe.scrollFactorY=0.9
+
+        this.Plan5Fixe.scrollFactorX=0.7;
+        this.Plan5Fixe.scrollFactorY=0.7;
+        this.Plan5FixeBis.scrollFactorX=0.7;
+        this.Plan5FixeBis.scrollFactorY=0.7;
+
+        this.Plan6Fixe.scrollFactorX=0.6;
+        this.Plan6Fixe.scrollFactorY=0.6;
+
+        this.Plan7Fixe.scrollFactorX=0.3;
+        this.Plan7Fixe.scrollFactorY=0.3;
+
 
         //CURSOR
         this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
@@ -88,18 +138,20 @@ class scene extends Phaser.Scene {
         this.cameras.main.startFollow(this.player.player,true,1,1,0,150);
         //this.cameras.main.startFollow(this.pointCamera,false);
 
+
         // COLLIDER
         this.collider = new Collide(this, this.player, this.save);
+
+        // LIGHT
+        this.lights.enable();
+        this.lights.setAmbientColor(0xbbbbbb);
+        this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(2);
+        this.light.setColor(0x0f6fbf);
 
         // FONCTIONS
         this.input.mouse.disableContextMenu();
         this.player.initKeyboard()
 
-       // LIGHT
-        this.lights.enable();
-        this.lights.setAmbientColor(0xbbbbbb);
-        this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(2);
-        this.light.setColor(0x0f6fbf);
     }
 
     update()
@@ -111,11 +163,12 @@ class scene extends Phaser.Scene {
         this.ennemy.IaGesttion();
 
         this.dragon.dragon.body.x = this.player.player.body.x - 800;
-        this.degrade.x = this.pointCamera.body.x +10;
-        this.degrade.y = this.pointCamera.body.y + 300;
 
         this.light.x = this.player.player.body.x +15;
         this.light.y = this.player.player.body.y + 15;
+
+        //this.degrade.x = this.pointCamera.body.x +10;
+        //this.degrade.y = this.pointCamera.body.y + 300;
 
         /*if (this.player.player.body.x <= this.pointCamera.body.x - 400){
             alert ('perdu');
