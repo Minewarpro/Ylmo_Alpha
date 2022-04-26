@@ -12,6 +12,7 @@ class scene extends Phaser.Scene {
         this.load.image('tilesP6', 'Alpha wtf/assets/tilesets/plan6_tilesheet.png');
         this.load.image('tilesP7', 'Alpha wtf/assets/tilesets/plan7_tilesheet.png');
         this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
+        this.load.image('vignette', 'Alpha wtf/assets/images/effetVignette.png');
 
         this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
@@ -57,6 +58,8 @@ class scene extends Phaser.Scene {
 
         this.Plan4Fixe = map.createLayer('Plan4Fixe', tilesetP4);
 
+        this.vignette = this.add.image(0,0,'vignette').setOrigin(0,0);
+
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
         this.Plan3Fixe.setPipeline('Light2D');
 
@@ -90,6 +93,9 @@ class scene extends Phaser.Scene {
         this.backgroundImage.scrollFactorX=0;
         this.backgroundImage.scrollFactorY=0;
 
+        this.vignette.scrollFactorX=0;
+        this.vignette.scrollFactorY=0.9;
+
         this.Plan3Fixe.scrollFactorX=1;
         this.Plan3Fixe.scrollFactorY=1;
 
@@ -113,8 +119,8 @@ class scene extends Phaser.Scene {
         this.Plan6Fixe.scrollFactorX=0.6;
         this.Plan6Fixe.scrollFactorY=0.6;
 
-        this.Plan7Fixe.scrollFactorX=0.3;
-        this.Plan7Fixe.scrollFactorY=0.3;
+        this.Plan7Fixe.scrollFactorX=0.5;
+        this.Plan7Fixe.scrollFactorY=0.5;
 
 
         //CURSOR
