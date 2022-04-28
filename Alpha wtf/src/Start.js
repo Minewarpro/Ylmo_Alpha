@@ -74,6 +74,7 @@ class Start extends Phaser.Scene {
         });
 
 
+        //TEXT
         this.Play = this.add.text(width*0.5,height*0.55,'Lancer la partie',{
             color: '#ffffff',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
@@ -82,8 +83,42 @@ class Start extends Phaser.Scene {
             .setScale(2)
             .setAlpha(0.7);
 
+        this.Option = this.add.text(width*0.5,height*0.65,'Option',{
+            color: '#ffffff',
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+        })
+            .setOrigin(0.5)
+            .setScale(2)
+            .setAlpha(0.7);
 
-        this.button = this.add.rectangle( this.Play.x, this.Play.y,300,75,0xffffff, 0)
+        this.OptionExit = this.add.text(width*0.08,height*0.1,'Exit',{
+            color: '#ffffff',
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+        })
+            .setOrigin(0.5)
+            .setScale(2)
+            .setAlpha(0);
+
+        this.AZERTY = this.add.text(width*0.2,height*0.3,'AZERTY',{
+            color: '#ffffff',
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+        })
+            .setOrigin(0.5)
+            .setScale(2)
+            .setAlpha(0)
+            .setTint(0xff0000);
+
+        this.QWERTY = this.add.text(width*0.8,height*0.3,'QWERTY',{
+            color: '#ffffff',
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+        })
+            .setOrigin(0.5)
+            .setScale(2)
+            .setAlpha(0);
+
+
+        //Rectangle Box
+        this.buttonStart = this.add.rectangle( this.Play.x, this.Play.y,300,75,0xffffff, 0)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
                 this.scene.start('game')
@@ -96,7 +131,92 @@ class Start extends Phaser.Scene {
                 me.Play.setAlpha(0.7)
             })
 
-//CURSOR
+        this.buttonOption = this.add.rectangle( this.Option.x, this.Option.y,300,75,0xffffff, 0)
+            .setInteractive()
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
+                this.ecranTitre.setAlpha(0.4);
+                this.buttonStart.disableInteractive();
+                this.Play.setAlpha(0);
+                this.buttonOption.disableInteractive();
+                this.Option.setAlpha(0);
+                this.buttonOptionExit.setInteractive();
+                this.OptionExit.setAlpha(0.7);
+                this.buttonAZERTY.setInteractive();
+                this.AZERTY.setAlpha(0.7);
+                this.buttonQWERTY.setInteractive();
+                this.QWERTY.setAlpha(0.7);
+            })
+            .on('pointerover', function () {
+                me.Option.setAlpha(1)
+                me.clic.play();
+            })
+            .on('pointerout', function () {
+                if (me.Option.alpha !==0) {
+                    me.Option.setAlpha(0.7)
+                }
+            })
+
+        this.buttonOptionExit = this.add.rectangle( this.OptionExit.x, this.OptionExit.y,300,75,0xffffff, 0)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
+                this.ecranTitre.setAlpha(1);
+                this.buttonStart.setInteractive();
+                this.Play.setAlpha(0.7);
+                this.buttonOption.setInteractive();
+                this.Option.setAlpha(0.7);
+                this.buttonOptionExit.disableInteractive();
+                this.OptionExit.setAlpha(0);
+                this.buttonAZERTY.disableInteractive();
+                this.AZERTY.setAlpha(0);
+                this.buttonQWERTY.disableInteractive();
+                this.QWERTY.setAlpha(0);
+            })
+            .on('pointerover', function () {
+                me.OptionExit.setAlpha(1)
+                me.clic.play();
+            })
+            .on('pointerout', function () {
+                if (me.OptionExit.alpha !==0){
+                    me.OptionExit.setAlpha(0.7)
+                }
+            })
+
+        this.buttonQWERTY = this.add.rectangle( this.QWERTY.x, this.QWERTY.y,300,75,0xffffff, 0)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
+                this.QWERTY.setTint(0xff0000);
+                this.AZERTY.setTint(0xffffff);
+                this.keyboard_QWERTY = true;
+                this.keyboard_AZERTY = false;
+            })
+            .on('pointerover', function () {
+                me.QWERTY.setAlpha(1)
+                me.clic.play();
+            })
+            .on('pointerout', function () {
+                if (me.QWERTY.alpha !==0){
+                    me.QWERTY.setAlpha(0.7)
+                }
+            })
+
+        this.buttonAZERTY = this.add.rectangle( this.AZERTY.x, this.AZERTY.y,300,75,0xffffff, 0)
+            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
+                this.AZERTY.setTint(0xff0000);
+                this.QWERTY.setTint(0xffffff);
+                this.keyboard_QWERTY = false;
+                this.keyboard_AZERTY = true;
+            })
+            .on('pointerover', function () {
+                me.AZERTY.setAlpha(1)
+                me.clic.play();
+            })
+            .on('pointerout', function () {
+                if (me.AZERTY.alpha !==0){
+                    me.AZERTY.setAlpha(0.7)
+                }
+            })
+
+
+
+        //CURSOR
         this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
 
         this.test = this.add.particles('fireBall');

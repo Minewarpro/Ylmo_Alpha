@@ -1,9 +1,9 @@
 class Player {
 
-    constructor(scene, save) {
+    constructor(scene, start) {
         this.scene = scene
         this.cameras = scene
-        this.save = save;
+        this.start = start
         let me = this;
         this.fireBall = this.scene.add.particles('fireBall');
         this.ghost = this.scene.add.particles('ghost');
@@ -61,8 +61,22 @@ class Player {
         });
 
         this.createAnims();
-    }
 
+        this.initKeyboard();
+
+        /*switch(true){
+            case this.start.keyboard_AZERTY:
+                this.initKeyboard();
+                break;
+            case this.start.keyboard_QWERTY:
+                this.initKeyboardQWERTY();
+                break;
+            default:
+                this.initKeyboard();
+                    break;
+        }*/
+
+    }
 
     createAnims(){
 
@@ -200,6 +214,67 @@ class Player {
         });
     }
 
+    initKeyboardQWERTY() {
+        let me = this;
+        this.scene.input.on('pointerdown', function (pointer) {
+            if (pointer.rightButtonDown()){
+                me.rightMouseDown = true;
+            }
+        });
+        this.scene.input.on('pointerup', function (pointer) {
+            if (pointer.rightButtonReleased()){
+                me.rightMouseDown = false;
+
+            }
+        });
+
+        this.scene.input.keyboard.on('keydown', function (kevent) {
+            switch (kevent.keyCode) {
+                case Phaser.Input.Keyboard.KeyCodes.SPACE:
+                    me.spaceDown=true;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
+                    me.shiftDown=true;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.UP:
+                    me.upDown=true;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.dDown=true;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.A:
+                    me.qDown=true;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                    me.downDown=true;
+                    break;
+            }
+        });
+        this.scene.input.keyboard.on('keyup', function (kevent) {
+            switch (kevent.keyCode) {
+                case Phaser.Input.Keyboard.KeyCodes.SPACE:
+                    me.spaceDown=false;
+                    this.animsJump = false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
+                    me.shiftDown=false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.UP:
+                    me.upDown=false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.D:
+                    me.dDown=false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.A:
+                    me.qDown=false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.DOWN:
+                    me.downDown=false;
+                    break;
+            }
+        });
+    }
+
     dashDirection(){
         let me = this;
 
@@ -260,7 +335,7 @@ class Player {
             this.flagDash = false;
         }
 
-        if (this.player.body.velocity.y === 0){
+        if (this.player.body.velocity.y === 0 && this.player.body.onFloor()){
             this.dashIsUp = true;
         }
     }

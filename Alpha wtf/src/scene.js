@@ -151,12 +151,11 @@ class scene extends Phaser.Scene {
         // LIGHT
         this.lights.enable();
         this.lights.setAmbientColor(0xbbbbbb);
-        this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(2);
+        this.light = this.lights.addLight(this.player.player.body.x, this.player.player.body.y, 380).setIntensity(3);
         this.light.setColor(0x0f6fbf);
 
         // FONCTIONS
         this.input.mouse.disableContextMenu();
-        this.player.initKeyboard()
 
     }
 
