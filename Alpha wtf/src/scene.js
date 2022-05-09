@@ -81,6 +81,9 @@ class scene extends Phaser.Scene {
         // SAVE
         this.save = new Save(this, this.player);
 
+        //Portes
+        this.portes = new Portes(this, this.player);
+
         //ENNEMY
         this.ennemy = new Ennemies(this, this.player, this.save);
 

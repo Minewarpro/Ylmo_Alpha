@@ -62,19 +62,17 @@ class Player {
 
         this.createAnims();
 
-        this.initKeyboard();
-
-        /*switch(true){
-            case this.start.keyboard_AZERTY:
+        switch(true) {
+            case window.keyboard_AZERTY:
                 this.initKeyboard();
                 break;
-            case this.start.keyboard_QWERTY:
+            case window.keyboard_QWERTY:
                 this.initKeyboardQWERTY();
                 break;
             default:
                 this.initKeyboard();
-                    break;
-        }*/
+                break;
+        }
 
     }
 

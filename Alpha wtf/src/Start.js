@@ -184,8 +184,8 @@ class Start extends Phaser.Scene {
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
                 this.QWERTY.setTint(0xff0000);
                 this.AZERTY.setTint(0xffffff);
-                this.keyboard_QWERTY = true;
-                this.keyboard_AZERTY = false;
+                window.keyboard_QWERTY = true;
+                window.keyboard_AZERTY = false;
             })
             .on('pointerover', function () {
                 me.QWERTY.setAlpha(1)
@@ -201,8 +201,8 @@ class Start extends Phaser.Scene {
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
                 this.AZERTY.setTint(0xff0000);
                 this.QWERTY.setTint(0xffffff);
-                this.keyboard_QWERTY = false;
-                this.keyboard_AZERTY = true;
+                window.keyboard_QWERTY = false;
+                window.keyboard_AZERTY = true;
             })
             .on('pointerover', function () {
                 me.AZERTY.setAlpha(1)
