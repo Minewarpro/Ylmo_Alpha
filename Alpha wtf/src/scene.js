@@ -49,14 +49,18 @@ class scene extends Phaser.Scene {
         const tilesetP7 = map.addTilesetImage('plan7_tilesheet', 'tilesP7');
 
         // LAYER
+        this.Plan7Ground = map.createLayer('Plan7Ground', tilesetP7);
         this.Plan7Fixe = map.createLayer('Plan7Fixe', tilesetP7);
 
+        this.Plan6Ground = map.createLayer('Plan6Ground', tilesetP6);
         this.Plan6Fixe = map.createLayer('Plan6Fixe', tilesetP6);
 
         this.Plan5Fixe = map.createLayer('Plan5Fixe', tilesetP5);
         this.Plan5FixeBis = map.createLayer('Plan5FixeBis', tilesetP5);
 
+        this.Plan4Ground = map.createLayer('Plan4Ground', tilesetP4);
         this.Plan4Fixe = map.createLayer('Plan4Fixe', tilesetP4);
+        this.Brume = map.createLayer('Brume', tilesetP4);
 
         this.vignette = this.add.image(0,0,'vignette').setOrigin(0,0);
 
@@ -112,7 +116,11 @@ class scene extends Phaser.Scene {
         this.Plan2Fixe.scrollFactorY=1;
 
         this.Plan4Fixe.scrollFactorX=0.8;
-        this.Plan4Fixe.scrollFactorY=0.9
+        this.Plan4Fixe.scrollFactorY=0.9;
+        this.Plan4Ground.scrollFactorX=0.8;
+        this.Plan4Ground.scrollFactorY=0.9;
+        this.Brume.scrollFactorX=0.8;
+        this.Brume.scrollFactorY=0.9;
 
         this.Plan5Fixe.scrollFactorX=0.7;
         this.Plan5Fixe.scrollFactorY=0.7;
@@ -121,9 +129,13 @@ class scene extends Phaser.Scene {
 
         this.Plan6Fixe.scrollFactorX=0.6;
         this.Plan6Fixe.scrollFactorY=0.6;
+        this.Plan6Ground.scrollFactorX=0.6;
+        this.Plan6Ground.scrollFactorY=0.6;
 
         this.Plan7Fixe.scrollFactorX=0.5;
         this.Plan7Fixe.scrollFactorY=0.5;
+        this.Plan7Ground.scrollFactorX=0.5;
+        this.Plan7Ground.scrollFactorY=0.5;
 
 
         //CURSOR
