@@ -74,7 +74,7 @@ class Start extends Phaser.Scene {
 
 
         //TEXT
-        this.Play = this.add.text(width*0.5,height*0.55,'Start the game',{
+        this.Play = this.add.text(width*0.5,height*0.55,'Start Game',{
             color: '#ffffff',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
             fontSize : 40
