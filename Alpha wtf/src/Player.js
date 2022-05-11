@@ -208,6 +208,10 @@ class Player {
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.downDown=false;
                     break;
+                case Phaser.Input.Keyboard.KeyCodes.ESC:
+                    me.Pdown=true;
+                    me.scene.Pauseflag=false;
+                    break;
             }
         });
     }
@@ -268,6 +272,10 @@ class Player {
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.downDown=false;
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.ESC:
+                    me.Pdown=false;
+                    me.scene.Pauseflag=false;
                     break;
             }
         });

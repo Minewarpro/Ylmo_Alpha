@@ -14,7 +14,7 @@ const config = {
             debug: false,
         },
     },
-    scene: [new Start(),new scene()]
+    scene: [new Start(),new scene(), new Pause()]
 
 };
 

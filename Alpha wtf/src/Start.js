@@ -10,7 +10,6 @@ class Start extends Phaser.Scene {
         this.load.image('feuille', 'Alpha wtf/assets/images/feuille.png');
         this.load.audio('Theme', 'Alpha wtf/assets/sounds/MainTheme.mp3');
         this.load.audio('clic', 'Alpha wtf/assets/sounds/clic.wav');
-        this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.spritesheet('titre','Alpha wtf/assets/images/spritesheet_titre.png', {frameWidth: 428, frameHeight: 272});
     }
 
@@ -75,45 +74,45 @@ class Start extends Phaser.Scene {
 
 
         //TEXT
-        this.Play = this.add.text(width*0.5,height*0.55,'Lancer la partie',{
+        this.Play = this.add.text(width*0.5,height*0.55,'Start the game',{
             color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+            fontSize : 40
         })
             .setOrigin(0.5)
-            .setScale(2)
             .setAlpha(0.7);
 
         this.Option = this.add.text(width*0.5,height*0.65,'Option',{
             color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+            fontSize : 40
         })
             .setOrigin(0.5)
-            .setScale(2)
             .setAlpha(0.7);
 
         this.OptionExit = this.add.text(width*0.08,height*0.1,'Exit',{
             color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+            fontSize : 40
         })
             .setOrigin(0.5)
-            .setScale(2)
             .setAlpha(0);
 
         this.AZERTY = this.add.text(width*0.2,height*0.3,'AZERTY',{
             color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+            fontSize : 40
         })
             .setOrigin(0.5)
-            .setScale(2)
             .setAlpha(0)
             .setTint(0xff0000);
 
         this.QWERTY = this.add.text(width*0.8,height*0.3,'QWERTY',{
             color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif'
+            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+            fontSize : 40
         })
             .setOrigin(0.5)
-            .setScale(2)
             .setAlpha(0);
 
 

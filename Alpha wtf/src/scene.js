@@ -34,7 +34,7 @@ class scene extends Phaser.Scene {
 
     create() {
         let me =this;
-
+        this.Pauseflag = false;
 
         // Tiled / Plan
         this.backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0);
@@ -176,6 +176,17 @@ class scene extends Phaser.Scene {
 
     update()
     {
+        if (this.player.Pdown){
+
+            if (this.Pauseflag){
+
+            }else {
+                this.scene.pause();
+                this.scene.launch('pause');
+                this.Pauseflag = true;
+            }
+        }
+
         this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
         this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
 
