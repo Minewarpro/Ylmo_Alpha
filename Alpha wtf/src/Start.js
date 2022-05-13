@@ -17,6 +17,9 @@ class Start extends Phaser.Scene {
         let me = this;
         const {width, height}= this.scale
 
+        this.optionUi = true;
+        window.startUi = true;
+
         //ECRAN TITRE
         this.ecranTitre = this.add.image(0, 0, 'ecranTitre').setOrigin(0, 0);
 
@@ -74,7 +77,7 @@ class Start extends Phaser.Scene {
 
 
         //TEXT
-        this.Play = this.add.text(width*0.5,height*0.55,'Start Game',{
+        window.Play = this.add.text(width*0.5,height*0.55,'Commencer à Jouer',{
             color: '#ffffff',
             fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
             fontSize : 40
@@ -90,60 +93,33 @@ class Start extends Phaser.Scene {
             .setOrigin(0.5)
             .setAlpha(0.7);
 
-        this.OptionExit = this.add.text(width*0.08,height*0.1,'Exit',{
-            color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-            fontSize : 40
-        })
-            .setOrigin(0.5)
-            .setAlpha(0);
-
-        this.AZERTY = this.add.text(width*0.2,height*0.3,'AZERTY',{
-            color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-            fontSize : 40
-        })
-            .setOrigin(0.5)
-            .setAlpha(0)
-            .setTint(0xff0000);
-
-        this.QWERTY = this.add.text(width*0.8,height*0.3,'QWERTY',{
-            color: '#ffffff',
-            fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
-            fontSize : 40
-        })
-            .setOrigin(0.5)
-            .setAlpha(0);
-
 
         //Rectangle Box
-        this.buttonStart = this.add.rectangle( this.Play.x, this.Play.y,300,75,0xffffff, 0)
+        this.buttonStart = this.add.rectangle( window.Play.x, window.Play.y,300,75,0xffffff, 0)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
                 this.scene.start('game')
+                window.startUi = false;
             })
             .on('pointerover', function () {
-               me.Play.setAlpha(1)
+               window.Play.setAlpha(1)
                 me.clic.play();
             })
             .on('pointerout', function () {
-                me.Play.setAlpha(0.7)
+                window.Play.setAlpha(0.7)
             })
 
         this.buttonOption = this.add.rectangle( this.Option.x, this.Option.y,300,75,0xffffff, 0)
             .setInteractive()
             .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
+                this.scene.pause();
+                this.scene.launch('option');
                 this.ecranTitre.setAlpha(0.4);
                 this.buttonStart.disableInteractive();
-                this.Play.setAlpha(0);
+                window.Play.setAlpha(0);
                 this.buttonOption.disableInteractive();
                 this.Option.setAlpha(0);
-                this.buttonOptionExit.setInteractive();
-                this.OptionExit.setAlpha(0.7);
-                this.buttonAZERTY.setInteractive();
-                this.AZERTY.setAlpha(0.7);
-                this.buttonQWERTY.setInteractive();
-                this.QWERTY.setAlpha(0.7);
+                this.optionUi = false;
             })
             .on('pointerover', function () {
                 me.Option.setAlpha(1)
@@ -154,65 +130,6 @@ class Start extends Phaser.Scene {
                     me.Option.setAlpha(0.7)
                 }
             })
-
-        this.buttonOptionExit = this.add.rectangle( this.OptionExit.x, this.OptionExit.y,300,75,0xffffff, 0)
-            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
-                this.ecranTitre.setAlpha(1);
-                this.buttonStart.setInteractive();
-                this.Play.setAlpha(0.7);
-                this.buttonOption.setInteractive();
-                this.Option.setAlpha(0.7);
-                this.buttonOptionExit.disableInteractive();
-                this.OptionExit.setAlpha(0);
-                this.buttonAZERTY.disableInteractive();
-                this.AZERTY.setAlpha(0);
-                this.buttonQWERTY.disableInteractive();
-                this.QWERTY.setAlpha(0);
-            })
-            .on('pointerover', function () {
-                me.OptionExit.setAlpha(1)
-                me.clic.play();
-            })
-            .on('pointerout', function () {
-                if (me.OptionExit.alpha !==0){
-                    me.OptionExit.setAlpha(0.7)
-                }
-            })
-
-        this.buttonQWERTY = this.add.rectangle( this.QWERTY.x, this.QWERTY.y,300,75,0xffffff, 0)
-            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
-                this.QWERTY.setTint(0xff0000);
-                this.AZERTY.setTint(0xffffff);
-                window.keyboard_QWERTY = true;
-                window.keyboard_AZERTY = false;
-            })
-            .on('pointerover', function () {
-                me.QWERTY.setAlpha(1)
-                me.clic.play();
-            })
-            .on('pointerout', function () {
-                if (me.QWERTY.alpha !==0){
-                    me.QWERTY.setAlpha(0.7)
-                }
-            })
-
-        this.buttonAZERTY = this.add.rectangle( this.AZERTY.x, this.AZERTY.y,300,75,0xffffff, 0)
-            .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP,()=> {
-                this.AZERTY.setTint(0xff0000);
-                this.QWERTY.setTint(0xffffff);
-                window.keyboard_QWERTY = false;
-                window.keyboard_AZERTY = true;
-            })
-            .on('pointerover', function () {
-                me.AZERTY.setAlpha(1)
-                me.clic.play();
-            })
-            .on('pointerout', function () {
-                if (me.AZERTY.alpha !==0){
-                    me.AZERTY.setAlpha(0.7)
-                }
-            })
-
 
 
         //CURSOR
@@ -228,8 +145,21 @@ class Start extends Phaser.Scene {
         });
         this.input.setDefaultCursor('url(arrow.cur), pointer');
     }
+
     update(){
         this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
         this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
+
+        if (this.optionUi){
+
+        } else {
+            this.ecranTitre.setAlpha(1);
+            this.buttonStart.setInteractive();
+            window.Play.setAlpha(0.7);
+            this.buttonOption.setInteractive();
+            this.Option.setAlpha(0.7);
+            this.optionUi = true;
+        }
     }
+
 }

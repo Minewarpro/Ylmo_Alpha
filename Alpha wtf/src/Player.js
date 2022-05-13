@@ -62,17 +62,7 @@ class Player {
 
         this.createAnims();
 
-        switch(true) {
-            case window.keyboard_AZERTY:
-                this.initKeyboard();
-                break;
-            case window.keyboard_QWERTY:
-                this.initKeyboardQWERTY();
-                break;
-            default:
-                this.initKeyboard();
-                break;
-        }
+        this.initKeyboard();
 
     }
 
@@ -180,7 +170,14 @@ class Player {
                     me.dDown=true;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
-                    me.qDown=true;
+                    if (window.keyboard_AZERTY){
+                        me.qDown=true;
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.A:
+                    if (window.keyboard_QWERTY){
+                        me.qDown=true;
+                    }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.downDown=true;
@@ -203,78 +200,20 @@ class Player {
                     me.dDown=false;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.Q:
-                    me.qDown=false;
+                    if (window.keyboard_AZERTY){
+                        me.qDown=false;
+                    }
+                    break;
+                case Phaser.Input.Keyboard.KeyCodes.A:
+                    if (window.keyboard_QWERTY){
+                        me.qDown=false;
+                    }
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.downDown=false;
                     break;
                 case Phaser.Input.Keyboard.KeyCodes.ESC:
                     me.Pdown=true;
-                    me.scene.Pauseflag=false;
-                    break;
-            }
-        });
-    }
-
-    initKeyboardQWERTY() {
-        let me = this;
-        this.scene.input.on('pointerdown', function (pointer) {
-            if (pointer.rightButtonDown()){
-                me.rightMouseDown = true;
-            }
-        });
-        this.scene.input.on('pointerup', function (pointer) {
-            if (pointer.rightButtonReleased()){
-                me.rightMouseDown = false;
-
-            }
-        });
-
-        this.scene.input.keyboard.on('keydown', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.SPACE:
-                    me.spaceDown=true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
-                    me.shiftDown=true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.UP:
-                    me.upDown=true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.D:
-                    me.dDown=true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.A:
-                    me.qDown=true;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                    me.downDown=true;
-                    break;
-            }
-        });
-        this.scene.input.keyboard.on('keyup', function (kevent) {
-            switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.SPACE:
-                    me.spaceDown=false;
-                    this.animsJump = false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.SHIFT:
-                    me.shiftDown=false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.UP:
-                    me.upDown=false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.D:
-                    me.dDown=false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.A:
-                    me.qDown=false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.DOWN:
-                    me.downDown=false;
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.ESC:
-                    me.Pdown=false;
                     me.scene.Pauseflag=false;
                     break;
             }

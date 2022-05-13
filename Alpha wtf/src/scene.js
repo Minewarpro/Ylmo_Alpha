@@ -186,6 +186,14 @@ class scene extends Phaser.Scene {
                 this.Pauseflag = true;
             }
         }
+        switch(window.change) {
+            case window.keyboard_AZERTY:
+                this.player.initKeyboard();
+                window.change=false;
+                break;
+
+        }
+
 
         this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
         this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
