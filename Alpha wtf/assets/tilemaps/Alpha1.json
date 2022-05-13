@@ -581,7 +581,7 @@
          "starty":0,
          "type":"tilelayer",
          "visible":true,
-         "width":80,
+         "width":48,
          "x":0,
          "y":0
         }, 
@@ -725,7 +725,7 @@
          "starty":-16,
          "type":"tilelayer",
          "visible":true,
-         "width":160,
+         "width":144,
          "x":0,
          "y":0
         }, 
@@ -778,7 +778,7 @@
                  "visible":true,
                  "width":64,
                  "x":8768,
-                 "y":1024
+                 "y":960
                 }],
          "opacity":1,
          "type":"objectgroup",
