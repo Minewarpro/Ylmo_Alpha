@@ -193,7 +193,7 @@ class scene extends Phaser.Scene {
         this.player.move();
         this.ennemy.IaGesttion();
 
-        this.dragon.dragon.body.x = this.player.player.body.x - 800;
+       this.dragon.dragon.body.x = this.player.player.body.x - 800;
 
         this.light.x = this.player.player.body.x +15;
         this.light.y = this.player.player.body.y + 15;
