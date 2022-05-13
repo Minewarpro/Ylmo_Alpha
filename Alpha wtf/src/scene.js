@@ -152,12 +152,12 @@ class scene extends Phaser.Scene {
         this.input.setDefaultCursor('url(arrow.cur), pointer');
 
         // CAMERA
-        this.pointCamera = this.physics.add.sprite(600,1000);
+        this.pointCamera = this.physics.add.sprite(this.player.player.body.x,900);
         this.pointCamera.body.setAllowGravity(false);
         this.pointCamera.setImmovable(true);
         this.pointCamera.setVelocityX(300);
         this.cameras.main.startFollow(this.player.player,true,1,1,0,150);
-        //this.cameras.main.startFollow(this.pointCamera,false);
+        this.cameras.main.startFollow(this.pointCamera,false);
 
 
         // COLLIDER
