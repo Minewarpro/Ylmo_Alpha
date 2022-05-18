@@ -22,16 +22,31 @@ class Save {
         let me = this;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);
         this.player.player.setVelocity(0, 0);
-        this.player.player.visible = false;
-        this.player.player.body.x = this.currentSaveX;
-        this.player.player.body.y = this.currentSaveY;
-        this.scene.cameras.main.stopFollow();
-        this.scene.light.setColor(0x000000);
-        setTimeout(function (){
-            me.player.player.visible = true;
-            me.scene.cameras.main.startFollow(me.player.player,true,1,1,0,150);
-            me.scene.light.setColor(0x0f6fbf);
-        },500);
+        this.player.player.visible = true;
+        me.player.player.body.x = me.currentSaveX;
+        me.player.player.body.y = me.currentSaveY;
+
+        window.KeyboardEnable=false;
+        window.change=true;
+        window.dragonEnable=false;
+        me.scene.pointCamera.body.x = me.player.player.body.x;
+        me.scene.pointCamera.setVelocityX(0);
+        me.scene.dragon.dragon.body.x =  me.scene.pointCamera.body.x - 1200;
+
+            setTimeout(function(){
+                me.scene.dragon.dragon.setVelocityX(300);
+                setTimeout(function(){
+                    me.scene.dragon.dragon.setVelocityX(0);
+                    me.scene.cameras.main.shake(1500, 0.02);
+                    setTimeout(function(){
+                        me.scene.pointCamera.setVelocityX(300);
+                        window.dragonEnable = true;
+                        window.KeyboardEnable=true;
+                        window.change=true;
+                        me.player.initKeyboard();
+                    },1500)
+                }, 1300)
+            },2000)
     }
     sauvegarde(player, saves) {
         this.currentSaveX = player.body.x
