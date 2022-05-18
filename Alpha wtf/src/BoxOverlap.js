@@ -38,7 +38,7 @@ class BoxOverlap {
         this.cameras.main.shake(1500, 0.02);
         setTimeout(function(){
             me.scene.pointCamera.setVelocityX(-150);
-            me.cameras.main.startFollow(me.scene.pointCamera,false);
+            me.cameras.main.startFollow(me.scene.pointCamera,true);
 
             setTimeout(function(){
                 me.scene.pointCamera.setVelocityX(0);
