@@ -193,6 +193,15 @@ class scene extends Phaser.Scene {
                 window.change=false;
         }
 
+        if (window.dragonEnable){
+            if (this.pointCamera.body.x < this.player.player.body.x){
+                this.pointCamera.body.x = this.player.player.body.x-1
+            }
+            if (this.box.cinematique2Finish && this.pointCamera.body.y > this.player.player.body.y){
+                this.pointCamera.body.y = this.player.player.body.y+1
+            }
+        }
+
 
         this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
         this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
