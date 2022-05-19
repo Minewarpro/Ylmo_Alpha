@@ -8,6 +8,7 @@ class BoxOverlap {
         this.dragon = dragon
         const map = this.scene.make.tilemap({key: 'map'});
 
+
         this.box = this.scene.physics.add.group({
             allowGravity: false,
             immovable: true
@@ -20,6 +21,7 @@ class BoxOverlap {
         });
 
         this.scene.physics.add.overlap(this.player.player, this.box, this.collectCollectible.bind(this))
+        this.scene.physics.add.overlap(this.scene.pointCamera, this.box, this.overlapBox.bind(this))
 
         this.cinematique2Finish=false;
     }
@@ -33,7 +35,7 @@ class BoxOverlap {
             console.log('tuch')
             bonus.destroy();
             me.scene.pointCamera.body.x = me.player.player.body.x;
-            me.scene.pointCamera.body.y = me.player.player.body.y - 100;
+            me.scene.pointCamera.body.y = 885;
             me.dragon.dragon.body.x = me.player.player.body.x - 1500;
             me.dragon.dragon.body.y = me.player.player.body.y - 200;
             me.scene.pointCamera.setVelocityX(0);
@@ -71,18 +73,36 @@ class BoxOverlap {
             me.scene.pointCamera.setVelocity(150,-170);
             me.scene.pointCamera.body.x = 24734;
             me.cinematique2Finish=true;
+            me.cameras.main.startFollow(me.scene.pointCamera, true);
+            window.dragonEnable = true;
         }
         else if (bonus.nb === "3"){
             me.scene.physics.moveTo(
                 me.scene.pointCamera,
-                me.scene.pointCamera.body.x = 27876,
-                me.scene.pointCamera.body.y = -1805,
-                300,1000);
-            setTimeout(function(){
-                me.scene.pointCamera.setVelocity(0,-150);
-            },1000)
-
+                27868,
+                -1690,
+                300);
         }
+        else if (bonus.nb === "4"){
+            me.scene.physics.moveTo(
+                me.scene.pointCamera,
+                26668,
+                -1108,
+                250);
+        }
+    }
+
+    overlapBox(camera, bonus){
+        let me = this;
+
+        if (bonus.nb === "6"){
+            me.scene.pointCamera.setVelocity(0,-150);
+        }
+
+        else if (bonus.nb === "7"){
+            me.scene.pointCamera.setVelocity(300,0);
+        }
+
     }
 
 }

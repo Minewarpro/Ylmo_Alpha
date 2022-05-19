@@ -21,16 +21,18 @@ class Save {
     death(){
         let me = this;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);
+        window.KeyboardEnable=false;
         this.player.player.setVelocity(0, 0);
         this.player.player.visible = true;
         me.player.player.body.x = me.currentSaveX;
         me.player.player.body.y = me.currentSaveY;
 
-        window.KeyboardEnable=false;
         window.change=true;
         window.dragonEnable=false;
         me.scene.pointCamera.body.x = me.player.player.body.x;
+        me.scene.pointCamera.body.y = 885;
         me.scene.pointCamera.setVelocityX(0);
+        me.scene.pointCamera.setVelocityY(0);
         me.scene.dragon.dragon.body.x =  me.scene.pointCamera.body.x - 1200;
 
             setTimeout(function(){

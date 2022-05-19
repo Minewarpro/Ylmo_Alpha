@@ -48,6 +48,8 @@ class scene extends Phaser.Scene {
         const tilesetP6 = map.addTilesetImage('plan6_tilesheet', 'tilesP6');
         const tilesetP7 = map.addTilesetImage('plan7_tilesheet', 'tilesP7');
 
+
+
         // LAYER
         this.Plan7Ground = map.createLayer('Plan7Ground', tilesetP7);
         this.Plan7Fixe = map.createLayer('Plan7Fixe', tilesetP7);
@@ -90,6 +92,12 @@ class scene extends Phaser.Scene {
 
         //ENNEMY
         this.ennemy = new Ennemies(this, this.player, this.save);
+
+        // CAMERA
+        this.pointCamera = this.physics.add.sprite(600,1000);
+        this.pointCamera.body.setAllowGravity(false);
+        this.pointCamera.setImmovable(true);
+        this.cameras.main.startFollow(this.player.player,true,1,1,0,150);
 
         //BOXOVERLAP
         this.box = new BoxOverlap(this, this.player, this.cameras, this.dragon);
@@ -154,11 +162,7 @@ class scene extends Phaser.Scene {
         });
         this.input.setDefaultCursor('url(arrow.cur), pointer');
 
-        // CAMERA
-        this.pointCamera = this.physics.add.sprite(600,1000);
-        this.pointCamera.body.setAllowGravity(false);
-        this.pointCamera.setImmovable(true);
-        this.cameras.main.startFollow(this.player.player,true,1,1,0,150);
+
 
 
         // COLLIDER
@@ -194,11 +198,20 @@ class scene extends Phaser.Scene {
         }
 
         if (window.dragonEnable){
-            if (this.pointCamera.body.x < this.player.player.body.x){
-                this.pointCamera.body.x = this.player.player.body.x-1
+            if (this.player.player.x< this.pointCamera.body.x-600){
+                this.save.death();
             }
-            if (this.box.cinematique2Finish && this.pointCamera.body.y > this.player.player.body.y){
-                this.pointCamera.body.y = this.player.player.body.y+1
+
+            if (this.box.cinematique2Finish){
+                if (this.pointCamera.body.y > this.player.player.body.y){
+                    this.pointCamera.body.y = this.player.player.body.y+1
+                }
+                if (this.player.player.y> this.pointCamera.body.y+400){
+                    this.save.death();
+                }
+            }
+            else if (this.pointCamera.body.x < this.player.player.body.x){
+                this.pointCamera.body.x = this.player.player.body.x-1
             }
         }
 
@@ -211,6 +224,10 @@ class scene extends Phaser.Scene {
 
         if (window.dragonEnable){
             this.dragon.dragon.body.x = this.pointCamera.body.x - 800;
+        }
+
+        if (!window.KeyboardEnable){
+           this.player.player.setVelocity(0,0);
         }
 
         this.light.x = this.player.player.body.x +15;
