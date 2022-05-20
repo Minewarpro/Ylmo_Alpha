@@ -6,6 +6,7 @@ class Save {
 
         this.currentSaveX = this.player.player.body.x
         this.currentSaveY = this.player.player.body.y
+        this.currentPoints = 0;
         const map = this.scene.make.tilemap({key: 'map'});
 
         this.saves = this.scene.physics.add.group({
@@ -27,6 +28,14 @@ class Save {
         me.player.player.body.x = me.currentSaveX;
         me.player.player.body.y = me.currentSaveY;
 
+        for(var i = 0; i < this.scene.points.points.getChildren().length; i++) {
+            if (this.scene.points.points.getChildren()[i].body.x > this.player.player.body.x){
+                this.scene.points.points.getChildren()[i].visible = true;
+                this.scene.points.points.getChildren()[i].body.enable = true;
+            }
+        }
+        this.scene.points.pointsTotals = this.currentPoints;
+        
         window.change=true;
         window.dragonEnable=false;
         me.scene.pointCamera.body.x = me.player.player.body.x;
@@ -53,6 +62,7 @@ class Save {
     sauvegarde(player, saves) {
         this.currentSaveX = player.body.x
         this.currentSaveY = player.body.y
+        this.currentPoints = this.scene.points.pointsTotals;
         saves.body.enable = false;
         saves.visible = false;
         console.log("current", this.currentSaveX, this.currentSaveY)

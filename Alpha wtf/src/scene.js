@@ -93,6 +93,9 @@ class scene extends Phaser.Scene {
         //ENNEMY
         this.ennemy = new Ennemies(this, this.player, this.save);
 
+        //POINTS
+        this.points = new Points(this, this.player)
+
         // CAMERA
         this.pointCamera = this.physics.add.sprite(600,1000);
         this.pointCamera.body.setAllowGravity(false);
