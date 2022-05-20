@@ -71,7 +71,7 @@ class BoxOverlap {
 
         else if (bonus.nb === "2"){
             me.scene.pointCamera.setVelocity(150,-170);
-            me.scene.pointCamera.body.x = 24734;
+            me.scene.pointCamera.body.x = 25444;
             me.cinematique2Finish=true;
             me.cameras.main.startFollow(me.scene.pointCamera, true);
             window.dragonEnable = true;
@@ -79,17 +79,21 @@ class BoxOverlap {
         else if (bonus.nb === "3"){
             me.scene.physics.moveTo(
                 me.scene.pointCamera,
-                27868,
+                28606,
                 -1690,
                 300);
         }
         else if (bonus.nb === "4"){
             me.scene.physics.moveTo(
                 me.scene.pointCamera,
-                26668,
-                -1108,
+                28674,
+                -1300,
                 250);
         }
+        else if (bonus.nb === "8"){
+            me.cameras.main.startFollow(me.player.player, true);
+            window.dragonEnable = false;
+            }
     }
 
     overlapBox(camera, bonus){

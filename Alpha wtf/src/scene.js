@@ -27,6 +27,9 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('jump','Alpha wtf/assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('dash','Alpha wtf/assets/images/spritesheet_dash.png', {frameWidth: 40, frameHeight: 48});
 
+        this.load.spritesheet('ennemyIdle','Alpha wtf/assets/images/spritesheet_ennemy_idle.png', {frameWidth: 80, frameHeight: 80});
+        this.load.spritesheet('ennemyDeath','Alpha wtf/assets/images/spritesheet_ennemy_death.png', {frameWidth: 80, frameHeight: 80});
+
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/Alpha1.json');
     }

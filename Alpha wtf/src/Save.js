@@ -17,6 +17,7 @@ class Save {
             const saveSprite = this.saves.create(save.x, save.y, 'save').setOrigin(0);
             this.scene.physics.add.overlap(this.player.player, this.saves, this.sauvegarde.bind(this), null, this)
         });
+
     }
 
     death(){
@@ -34,6 +35,17 @@ class Save {
                 this.scene.points.points.getChildren()[i].body.enable = true;
             }
         }
+        for(var i = 0; i < this.scene.ennemy.ennemy.getChildren().length; i++) {
+            if (this.scene.ennemy.ennemy.getChildren()[i].body.x > this.player.player.body.x) {
+                //this.scene.ennemy.ennemy.getChildren()[i].enableBody(true);
+                this.scene.ennemy.ennemy.getChildren()[i].visible = true;
+                this.scene.ennemy.ennemy.getChildren()[i].body.x = this.scene.ennemy.ennemyPositionX[i];
+                this.scene.ennemy.ennemy.getChildren()[i].body.y = this.scene.ennemy.ennemyPositionY[i];
+                this.scene.ennemy.ennemy.getChildren()[i].anims.play('ennemyIdle',true);
+                this.scene.ennemy.ennemy.getChildren()[i].tuchEnnemy = false;;
+            }
+        }
+
         this.scene.points.pointsTotals = this.currentPoints;
         
         window.change=true;
