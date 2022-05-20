@@ -26,7 +26,7 @@ class Ennemies {
     IaGesttion(){
         let me = this;
 
-        
+
         for(var i = 0; i < this.ennemy.getChildren().length; i++) {
             this.dist = Phaser.Math.Distance.BetweenPoints(this.player.player, this.ennemy.getChildren()[i]);
 
