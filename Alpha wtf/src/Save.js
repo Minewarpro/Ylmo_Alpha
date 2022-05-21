@@ -31,9 +31,17 @@ class Save {
 
         for(var i = 0; i < this.scene.points.points.getChildren().length; i++) {
             if (this.scene.points.points.getChildren()[i].body.x > this.player.player.body.x){
-                this.scene.points.points.getChildren()[i].visible = true;
+                this.scene.points.points.getChildren()[i].setAlpha(1);
                 this.scene.points.points.getChildren()[i].body.enable = true;
                 this.scene.points.points.getChildren()[i].part.visible = true;
+                this.scene.tweens.add({
+                    targets: this.scene.points.points.getChildren()[i],
+                    y: this.scene.points.points.getChildren()[i].y + 20,
+                    duration: 1000,
+                    ease: 'Sine.easeInOut',
+                    repeat: -1,
+                    yoyo: true
+                });
             }
         }
         for(var i = 0; i < this.scene.ennemy.ennemy.getChildren().length; i++) {
