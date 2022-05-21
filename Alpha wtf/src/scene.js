@@ -39,8 +39,11 @@ class scene extends Phaser.Scene {
 
 
     create() {
-        let me =this;
+        let me = this;
+        const {width, height}= this.scale
         this.Pauseflag = false;
+
+
 
         // Tiled / Plan
         this.backgroundImage = this.add.image(0, 0, 'background').setOrigin(0, 0);
@@ -186,11 +189,14 @@ class scene extends Phaser.Scene {
         // FONCTIONS
         this.input.mouse.disableContextMenu();
 
+        this.scene.launch('HUD');
     }
+
 
 
     update()
     {
+
         if (this.player.Pdown){
 
             if (this.Pauseflag){

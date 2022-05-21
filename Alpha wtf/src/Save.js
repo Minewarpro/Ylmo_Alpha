@@ -55,7 +55,7 @@ class Save {
             }
         }
 
-        this.scene.points.pointsTotals = this.currentPoints;
+        window.pointsTotals = this.currentPoints;
         
         window.change=true;
         window.dragonEnable=false;

@@ -23,6 +23,8 @@ class Start extends Phaser.Scene {
         //ECRAN TITRE
         this.ecranTitre = this.add.image(0, 0, 'ecranTitre').setOrigin(0, 0);
 
+
+
         /*this.titre = this.add.sprite(640,160,'');
         this.anims.create(
             {
@@ -144,6 +146,7 @@ class Start extends Phaser.Scene {
             follow: this.cursorBox
         });
         this.input.setDefaultCursor('url(arrow.cur), pointer');
+
     }
 
     update(){

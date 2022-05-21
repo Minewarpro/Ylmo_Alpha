@@ -6,6 +6,7 @@ class Initialize extends Phaser.Scene {
 
     create(){
         this.scene.start('start')
+
         window.startUi=false;
         window.pauseUi=false;
         window.frenchUi = true;
