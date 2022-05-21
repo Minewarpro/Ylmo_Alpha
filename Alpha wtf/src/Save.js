@@ -33,6 +33,7 @@ class Save {
             if (this.scene.points.points.getChildren()[i].body.x > this.player.player.body.x){
                 this.scene.points.points.getChildren()[i].visible = true;
                 this.scene.points.points.getChildren()[i].body.enable = true;
+                this.scene.points.points.getChildren()[i].part.visible = true;
             }
         }
         for(var i = 0; i < this.scene.ennemy.ennemy.getChildren().length; i++) {

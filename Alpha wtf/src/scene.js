@@ -17,6 +17,7 @@ class scene extends Phaser.Scene {
         this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
+        this.load.image('luciole', 'Alpha wtf/assets/images/luciole.png');
         this.load.image('ennemy', 'Alpha wtf/assets/images/Ennemy.png');
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
@@ -26,6 +27,8 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('turn','Alpha wtf/assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('jump','Alpha wtf/assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('dash','Alpha wtf/assets/images/spritesheet_dash.png', {frameWidth: 40, frameHeight: 48});
+
+        this.load.spritesheet('bonus','Alpha wtf/assets/images/spritesheet_bonus.png', {frameWidth: 40, frameHeight: 48});
 
         this.load.spritesheet('ennemyIdle','Alpha wtf/assets/images/spritesheet_ennemy_idle.png', {frameWidth: 80, frameHeight: 80});
         this.load.spritesheet('ennemyDeath','Alpha wtf/assets/images/spritesheet_ennemy_death.png', {frameWidth: 80, frameHeight: 80});
