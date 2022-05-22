@@ -149,14 +149,14 @@ class Player {
 
             this.scene.input.on('pointerdown', function (pointer) {
                 if (window.KeyboardEnable) {
-                    if (pointer.rightButtonDown()) {
+                    if (pointer.leftButtonDown()) {
                         me.rightMouseDown = true;
                     }
                 }
             });
             this.scene.input.on('pointerup', function (pointer) {
                 if (window.KeyboardEnable) {
-                    if (pointer.rightButtonReleased()) {
+                    if (pointer.leftButtonReleased()) {
                         me.rightMouseDown = false;
 
                     }

@@ -34,6 +34,11 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('ennemyIdle','Alpha wtf/assets/images/spritesheet_ennemy_idle.png', {frameWidth: 80, frameHeight: 80});
         this.load.spritesheet('ennemyDeath','Alpha wtf/assets/images/spritesheet_ennemy_death.png', {frameWidth: 80, frameHeight: 80});
 
+
+        this.load.spritesheet('tuto1-QD','Alpha wtf/assets/images/tuto1-QD.png', {frameWidth: 972, frameHeight: 741});
+        this.load.spritesheet('tuto2','Alpha wtf/assets/images/tuto2.png', {frameWidth: 972, frameHeight: 741});
+        this.load.spritesheet('tuto3','Alpha wtf/assets/images/tuto3.png', {frameWidth: 972, frameHeight: 741});
+
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/Alpha1.json');
     }
@@ -106,6 +111,9 @@ class scene extends Phaser.Scene {
         //POINTS
         this.points = new Points(this, this.player)
 
+        //TUTO
+        this.tuto = new Tuto(this);
+
         // CAMERA
         this.pointCamera = this.physics.add.sprite(600,1000);
         this.pointCamera.body.setAllowGravity(false);
@@ -160,7 +168,6 @@ class scene extends Phaser.Scene {
         this.Plan7Ground.scrollFactorX=0.5;
         this.Plan7Ground.scrollFactorY=0.5;
 
-
         //CURSOR
         this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
 
@@ -188,6 +195,8 @@ class scene extends Phaser.Scene {
 
         // FONCTIONS
         this.input.mouse.disableContextMenu();
+
+
 
         this.scene.launch('HUD');
     }
