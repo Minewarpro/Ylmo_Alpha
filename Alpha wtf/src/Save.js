@@ -9,14 +9,41 @@ class Save {
         this.currentPoints = 0;
         const map = this.scene.make.tilemap({key: 'map'});
 
+
+
+        this.scene.anims.create(
+            {
+                key: 'checkpointFirst',
+                frames: this.scene.anims.generateFrameNumbers('checkpoint', { start: 0, end: 2 }),
+                frameRate: 10,
+                repeat: 0
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'checkpoint',
+                frames: this.scene.anims.generateFrameNumbers('checkpoint', { start: 3, end: 10 }),
+                frameRate: 10,
+                repeat: -1
+            });
+
         this.saves = this.scene.physics.add.group({
             allowGravity: false,
             immovable: true
         });
         map.getObjectLayer('Save').objects.forEach((save) => {
-            const saveSprite = this.saves.create(save.x, save.y, 'save').setOrigin(0);
+            const saveSprite = this.saves.create(save.x, save.y, 'save').setScale(0.5);
             this.scene.physics.add.overlap(this.player.player, this.saves, this.sauvegarde.bind(this), null, this)
         });
+
+
+        for(var i = 0; i < this.saves.getChildren().length; i++) {
+            this.saves.getChildren()[i].active = false;
+            this.saves.getChildren()[i].setDepth(2);
+            this.saves.getChildren()[i].body.setSize(300,500);
+        }
+
+        this.feu= this.scene.add.particles('fireBall');
 
     }
 
@@ -81,11 +108,25 @@ class Save {
             },2000)
     }
     sauvegarde(player, saves) {
-        this.currentSaveX = player.body.x
-        this.currentSaveY = player.body.y
-        this.currentPoints = this.scene.points.pointsTotals;
-        saves.body.enable = false;
-        saves.visible = false;
-        console.log("current", this.currentSaveX, this.currentSaveY)
+        if (!saves.active) {
+            saves.active = true;
+            this.currentSaveX = player.body.x
+            this.currentSaveY = player.body.y
+            this.currentPoints = this.scene.points.pointsTotals;
+            saves.anims.play('checkpointFirst');
+            this.feu.createEmitter({
+                x: {min : saves.x - 60, max : saves.x + 60},
+                y: saves.y,
+                lifespan: 5000,
+                speedY: { min: -150, max: -200},
+                scale: { start: 0.2, end: 0.1 },
+                quantity: 3,
+                frequency: 400,
+            });
+            setTimeout(function () {
+                saves.anims.play('checkpoint');
+            }, 300)
+            console.log("current", this.currentSaveX, this.currentSaveY)
+        }
     }
 }

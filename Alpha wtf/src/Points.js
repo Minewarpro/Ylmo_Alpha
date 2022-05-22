@@ -31,7 +31,7 @@ class Points {
 
         for(var i = 0; i < this.points.getChildren().length; i++) {
             this.points.getChildren()[i].setDisplaySize(30,30);
-            this.points.getChildren()[i].setDepth(0);
+            this.points.getChildren()[i].setDepth(2);
 
             this.points.getChildren()[i].part = this.particles.createEmitter({
                 speed: 50,

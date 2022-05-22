@@ -29,6 +29,7 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('dash','Alpha wtf/assets/images/spritesheet_dash.png', {frameWidth: 40, frameHeight: 48});
 
         this.load.spritesheet('bonus','Alpha wtf/assets/images/spritesheet_bonus.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('checkpoint','Alpha wtf/assets/images/spritesheet_Checkpoint.png', {frameWidth: 680, frameHeight: 667});
 
         this.load.spritesheet('ennemyIdle','Alpha wtf/assets/images/spritesheet_ennemy_idle.png', {frameWidth: 80, frameHeight: 80});
         this.load.spritesheet('ennemyDeath','Alpha wtf/assets/images/spritesheet_ennemy_death.png', {frameWidth: 80, frameHeight: 80});
@@ -76,10 +77,10 @@ class scene extends Phaser.Scene {
         this.vignette = this.add.image(0,0,'vignette').setOrigin(0,0);
 
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
-        this.Plan3Fixe.setPipeline('Light2D');
+        this.Plan3Fixe.setPipeline('Light2D').setDepth(3);
 
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
-        this.Plan3Platforms.setPipeline('Light2D');
+        this.Plan3Platforms.setPipeline('Light2D').setDepth(3);
 
         this.water = map.createLayer('Water', tileset);
         this.water.setPipeline('Light2D');
@@ -115,7 +116,6 @@ class scene extends Phaser.Scene {
         this.box = new BoxOverlap(this, this.player, this.cameras, this.dragon);
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset).setDepth(2);
-        this.Plan2Fixe.setPipeline('Light2D');
 
         this.degrade = this.add.image(0,0,'degrade');
 
