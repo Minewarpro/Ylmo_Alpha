@@ -123,7 +123,7 @@ class scene extends Phaser.Scene {
         //BOXOVERLAP
         this.box = new BoxOverlap(this, this.player, this.cameras, this.dragon);
 
-        this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset).setDepth(2);
+        this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset).setDepth(4);
 
         this.degrade = this.add.image(0,0,'degrade');
 
@@ -180,9 +180,6 @@ class scene extends Phaser.Scene {
             follow: this.cursorBox
         });
         this.input.setDefaultCursor('url(arrow.cur), pointer');
-
-
-
 
         // COLLIDER
         this.collider = new Collide(this, this.player, this.save);
