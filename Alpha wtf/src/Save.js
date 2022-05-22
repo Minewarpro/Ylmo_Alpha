@@ -112,7 +112,7 @@ class Save {
             saves.active = true;
             this.currentSaveX = player.body.x
             this.currentSaveY = player.body.y
-            this.currentPoints = this.scene.points.pointsTotals;
+            this.currentPoints = window.pointsTotals;
             saves.anims.play('checkpointFirst');
             this.feu.createEmitter({
                 x: {min : saves.x - 60, max : saves.x + 60},
