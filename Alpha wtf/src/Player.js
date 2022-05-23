@@ -243,6 +243,7 @@ class Player {
                 me.player.setVelocityX(0);
                 this.dashIsUp = false;
                 this.flagDash = true;
+                this.fall = true;
                 this.isDashing =true;
                 this.fireBall.emitParticleAt(me.player.body.x, me.player.body.y);
                 this.player.anims.play('dash');
