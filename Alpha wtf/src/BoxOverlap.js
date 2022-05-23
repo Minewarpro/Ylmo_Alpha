@@ -70,7 +70,7 @@ class BoxOverlap {
         }
 
         else if (bonus.nb === "2"){
-            me.scene.pointCamera.setVelocity(150,-170);
+            me.scene.pointCamera.setVelocity(100,-120);
             me.scene.pointCamera.body.x = 25444;
             me.cinematique2Finish=true;
             me.cameras.main.startFollow(me.scene.pointCamera, true);
@@ -88,7 +88,7 @@ class BoxOverlap {
                 me.scene.pointCamera,
                 28674,
                 -1300,
-                250);
+                150);
         }
         else if (bonus.nb === "8"){
             me.cameras.main.startFollow(me.player.player, true);
