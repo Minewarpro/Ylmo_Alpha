@@ -18,6 +18,7 @@ class scene extends Phaser.Scene {
         this.load.image('player', 'Alpha wtf/assets/images/player_base.png');
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.image('luciole', 'Alpha wtf/assets/images/luciole.png');
+        this.load.image('star', 'Alpha wtf/assets/images/star.png');
         this.load.image('ennemy', 'Alpha wtf/assets/images/Ennemy.png');
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
@@ -192,7 +193,6 @@ class scene extends Phaser.Scene {
 
         // FONCTIONS
         this.input.mouse.disableContextMenu();
-
 
 
         this.scene.launch('HUD');

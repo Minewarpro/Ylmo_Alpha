@@ -8,6 +8,8 @@ class BoxOverlap {
         this.dragon = dragon
         const map = this.scene.make.tilemap({key: 'map'});
 
+        this.flag9 = true;
+        this.flagStar1 = true;
 
         this.box = this.scene.physics.add.group({
             allowGravity: false,
@@ -94,6 +96,82 @@ class BoxOverlap {
             me.cameras.main.startFollow(me.player.player, true);
             window.dragonEnable = false;
             }
+        else if (bonus.nb === "9"){
+            if (this.flag9){
+                window.KeyboardEnable = false;
+                this.scene.tweens.add({
+                    targets: player,
+                    x: player.x + 500,
+                    duration: 1500,
+                    ease: 'Sine.easeInOut',
+                });
+                this.scene.tweens.add({
+                    targets: player,
+                    y: player.y - 100,
+                    duration: 750,
+                    ease: 'Sine.easeIn',
+                    yoyo: true,
+                });
+                this.flag9 = false;
+
+                setTimeout(function (){
+                    me.barre = me.scene.add.rectangle( 31334, -2388 ,0,25,0xffff00, 1)
+                    var pointBarre = window.pointsTotals
+                    me.pointTween = me.scene.tweens.add({
+                        targets: window,
+                        pointsTotals: 0,
+                        duration: 2000,
+                        ease: 'Linear',
+                        onUpdate: function(){
+                            if (me.barre.width >= 80 && me.flagStar1){
+                                me.flagStar1=false;
+                                var star = me.scene.add.sprite(31234, -2158, 'star').setDepth(999999).setScale(0.6)
+                                me.scene.tweens.add({
+                                    targets: star,
+                                    x: 31334,
+                                    y: -2458,
+                                    duration: 500,
+                                    ease: 'Sine.easeIn',
+                                    onComplete:function (){
+                                        me.scene.tweens.add({
+                                            targets: star,
+                                            scale: 1.2,
+                                            duration: 100,
+                                            ease: 'Linear',
+                                            yoyo: -1
+                                        });
+                                    }
+                                });
+                            }
+                            var lulu = me.scene.add.sprite(31034, -2588, 'luciole').setDepth(999999)
+                            me.scene.tweens.add({
+                                targets: lulu,
+                                x: 31334,
+                                y: -2388,
+                                duration: 500,
+                                ease: 'Linear',
+                                onComplete: function (){
+                                    lulu.destroy();
+                                }
+                            });
+                        }
+                    });
+
+                    me.barreAugment = me.scene.tweens.add({
+                        targets: me.barre,
+                        width: pointBarre,
+                        duration: 2000,
+                        ease: 'Linear',
+                        OnUpdate : function(){
+                            if (window.pointsTotals===0){
+                                me.barreAugment.stop();
+                            }
+                        },
+                    });
+                },1500)
+
+            }
+        }
     }
 
     overlapBox(camera, bonus){

@@ -25,6 +25,6 @@ class HUD extends Phaser.Scene {
     }
 
     update(){
-        this.npPoint.setText(window.pointsTotals);
+        this.npPoint.setText(Math.round(window.pointsTotals));
     }
 }
