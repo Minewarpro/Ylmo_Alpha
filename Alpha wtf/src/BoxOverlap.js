@@ -117,6 +117,10 @@ class BoxOverlap {
                 this.flag9 = false;
 
                 setTimeout(function (){
+                    me.scene.add.rectangle( 31329, -2405 ,160,35,0x000000, 0.7).setOrigin(0,0)
+                    me.scene.add.sprite( 31334, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7)
+                    me.scene.add.sprite( 31434, -2508 ,'Darkstar').setScale(0.6).setAlpha(0.7)
+                    me.scene.add.sprite( 31534, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7)
                     me.barre = me.scene.add.rectangle( 31334, -2388 ,0,25,0xffff00, 1)
                     var pointBarre = window.pointsTotals
                     me.pointTween = me.scene.tweens.add({

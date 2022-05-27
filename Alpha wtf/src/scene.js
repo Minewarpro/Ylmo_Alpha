@@ -19,6 +19,7 @@ class scene extends Phaser.Scene {
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.image('luciole', 'Alpha wtf/assets/images/luciole.png');
         this.load.image('star', 'Alpha wtf/assets/images/star.png');
+        this.load.image('Darkstar', 'Alpha wtf/assets/images/Darkstar.png');
         this.load.image('ennemy', 'Alpha wtf/assets/images/Ennemy.png');
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
