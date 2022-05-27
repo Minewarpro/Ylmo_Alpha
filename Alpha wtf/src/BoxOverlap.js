@@ -10,6 +10,8 @@ class BoxOverlap {
 
         this.flag9 = true;
         this.flagStar1 = true;
+        this.flagStar2 = true;
+        this.flagStar3 = true;
 
         this.box = this.scene.physics.add.group({
             allowGravity: false,
@@ -123,7 +125,7 @@ class BoxOverlap {
                         duration: 2000,
                         ease: 'Linear',
                         onUpdate: function(){
-                            if (me.barre.width >= 80 && me.flagStar1){
+                            if (me.barre.width >= 49 && me.flagStar1){
                                 me.flagStar1=false;
                                 var star = me.scene.add.sprite(31234, -2158, 'star').setDepth(999999).setScale(0.6)
                                 me.scene.tweens.add({
@@ -143,7 +145,48 @@ class BoxOverlap {
                                     }
                                 });
                             }
-                            var lulu = me.scene.add.sprite(31034, -2588, 'luciole').setDepth(999999)
+
+                            if (me.barre.width >= 99 && me.flagStar2){
+                                me.flagStar2=false;
+                                var star = me.scene.add.sprite(31334, -2158, 'star').setDepth(999999).setScale(0.7)
+                                me.scene.tweens.add({
+                                    targets: star,
+                                    x: 31434,
+                                    y: -2508,
+                                    duration: 500,
+                                    ease: 'Sine.easeIn',
+                                    onComplete:function (){
+                                        me.scene.tweens.add({
+                                            targets: star,
+                                            scale: 1.2,
+                                            duration: 100,
+                                            ease: 'Linear',
+                                            yoyo: -1
+                                        });
+                                    }
+                                });
+                            }
+                            if (me.barre.width >= 149 && me.flagStar3){
+                                me.flagStar3=false;
+                                var star = me.scene.add.sprite(31434, -2158, 'star').setDepth(999999).setScale(0.7)
+                                me.scene.tweens.add({
+                                    targets: star,
+                                    x: 31534,
+                                    y: -2458,
+                                    duration: 500,
+                                    ease: 'Sine.easeIn',
+                                    onComplete:function (){
+                                        me.scene.tweens.add({
+                                            targets: star,
+                                            scale: 1.2,
+                                            duration: 100,
+                                            ease: 'Linear',
+                                            yoyo: -1
+                                        });
+                                    }
+                                });
+                            }
+                            var lulu = me.scene.add.sprite(30794, -2720, 'luciole').setDepth(999999)
                             me.scene.tweens.add({
                                 targets: lulu,
                                 x: 31334,

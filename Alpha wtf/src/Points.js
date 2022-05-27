@@ -5,7 +5,7 @@ class Points {
         this.player = player;
         this.scene = scene;
 
-        window.pointsTotals = 100;
+        window.pointsTotals = 50;
         const map = this.scene.make.tilemap({key: 'map'});
 
         this.particles = this.scene.add.particles('luciole');
