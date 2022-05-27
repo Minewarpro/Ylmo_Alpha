@@ -33,5 +33,15 @@ class Tuto{
             });
         this.tuto3.anims.play('tuto3');
 
+        this.tuto4 = this.scene.add.sprite(6982, 524, '').setScale(0.2);
+        this.scene.anims.create(
+            {
+                key: 'tuto4',
+                frames: this.scene.anims.generateFrameNumbers('tuto4', { start: 0, end: 11 }),
+                frameRate: 8,
+                repeat: -1
+            });
+        this.tuto4.anims.play('tuto4');
+
     }
 }

@@ -41,6 +41,7 @@ class Ennemies {
         for(var i = 0; i < this.ennemy.getChildren().length; i++) {
             this.ennemy.getChildren()[i].anims.play('ennemyIdle');
             this.ennemy.getChildren()[i].body.setSize(40,40);
+            this.ennemy.getChildren()[i].flagExclamation = true;
         }
     }
 
@@ -52,11 +53,21 @@ class Ennemies {
             this.dist = Phaser.Math.Distance.BetweenPoints(this.player.player, this.ennemy.getChildren()[i]);
 
             if (this.dist <= 300 && !this.ennemy.getChildren()[i].tuchEnnemy) {
+                if (this.ennemy.getChildren()[i].flagExclamation){
+                    this.exclamation = this.scene.add.sprite(this.ennemy.getChildren()[i].x + 40, this.ennemy.getChildren()[i].y, 'exclamation')
+                        .setScale(0.5)
+                    this.ennemy.getChildren()[i].flagExclamation = false;
+                    setTimeout(function(){
+                        me.exclamation.destroy();
+                    },1000)
+                }
+                this.exclamation.x = this.ennemy.getChildren()[i].x +40
+                this.exclamation.y = this.ennemy.getChildren()[i].y -10
                 this.scene.physics.moveTo(
                     me.ennemy.getChildren()[i],
                     me.player.player.body.x,
                     me.player.player.body.y,
-                    160);
+                    210);
 
             } else {
                 this.ennemy.getChildren()[i].setVelocity(0);

@@ -11,7 +11,7 @@ class Player {
         this.ghost = this.scene.add.particles('ghost');
         this.ghostRight = this.scene.add.particles('ghost');
         this.ghostLeft = this.scene.add.particles('ghost');
-        this.player = this.scene.physics.add.sprite(1145, 1090, 'player');
+        this.player = this.scene.physics.add.sprite(7564, -678, 'player');
         this.player.setScale(1);
         this.player.setDepth(3);
         this.player.setCollideWorldBounds(false);

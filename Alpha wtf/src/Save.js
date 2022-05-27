@@ -78,7 +78,8 @@ class Save {
                 this.scene.ennemy.ennemy.getChildren()[i].body.x = this.scene.ennemy.ennemyPositionX[i];
                 this.scene.ennemy.ennemy.getChildren()[i].body.y = this.scene.ennemy.ennemyPositionY[i];
                 this.scene.ennemy.ennemy.getChildren()[i].anims.play('ennemyIdle',true);
-                this.scene.ennemy.ennemy.getChildren()[i].tuchEnnemy = false;;
+                this.scene.ennemy.ennemy.getChildren()[i].tuchEnnemy = false;
+                this.scene.ennemy.ennemy.getChildren()[i].flagExclamation = true;
             }
         }
 

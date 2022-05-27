@@ -24,6 +24,7 @@ class scene extends Phaser.Scene {
         this.load.image('ghost', 'Alpha wtf/assets/images/ghost.png');
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
         this.load.image('save', 'Alpha wtf/assets/images/Save.png');
+        this.load.image('exclamation', 'Alpha wtf/assets/images/pointExclamation.png');
         this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('turn','Alpha wtf/assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
@@ -40,6 +41,7 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('tuto1-QD','Alpha wtf/assets/images/tuto1-QD.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto2','Alpha wtf/assets/images/tuto2.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto3','Alpha wtf/assets/images/tuto3.png', {frameWidth: 972, frameHeight: 741});
+        this.load.spritesheet('tuto4','Alpha wtf/assets/images/tuto4.png', {frameWidth: 972, frameHeight: 741});
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/Alpha1.json');
