@@ -105,7 +105,7 @@ class BoxOverlap {
                     targets: player,
                     x: player.x + 480,
                     duration: 1500,
-                    ease: 'Sine.easeInOut',
+                    ease: 'Linear',
                 });
                 this.flag9 = false;
 
