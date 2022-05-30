@@ -107,13 +107,6 @@ class BoxOverlap {
                     duration: 1500,
                     ease: 'Sine.easeInOut',
                 });
-                this.scene.tweens.add({
-                    targets: player,
-                    y: player.y - 100,
-                    duration: 750,
-                    ease: 'Sine.easeIn',
-                    yoyo: true,
-                });
                 this.flag9 = false;
 
                 setTimeout(function (){
