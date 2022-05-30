@@ -8,6 +8,7 @@ class Save {
         this.currentSaveY = this.player.player.body.y
         this.currentPoints = 0;
         const map = this.scene.make.tilemap({key: 'map'});
+        this.dead=false;
 
 
 
@@ -49,6 +50,7 @@ class Save {
 
     death(){
         let me = this;
+        this.dead=true;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);
         window.KeyboardEnable=false;
         this.player.player.setVelocity(0, 0);
@@ -102,6 +104,7 @@ class Save {
                         me.scene.pointCamera.setVelocityX(300);
                         window.dragonEnable = true;
                         window.KeyboardEnable=true;
+                        this.dead=false;
                         window.change=true;
                         me.player.initKeyboard();
                     },1500)

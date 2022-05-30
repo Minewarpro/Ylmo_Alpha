@@ -228,7 +228,7 @@ class scene extends Phaser.Scene {
                 if (this.pointCamera.body.y > this.player.player.body.y){
                     this.pointCamera.body.y = this.player.player.body.y+1
                 }
-                if (this.player.player.y> this.pointCamera.body.y+400){
+                if (this.player.player.y> this.pointCamera.body.y+400 && !this.dead){
                     this.save.death();
                 }
             }
