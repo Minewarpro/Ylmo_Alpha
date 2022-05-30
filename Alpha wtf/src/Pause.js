@@ -90,7 +90,7 @@ class Pause extends Phaser.Scene {
 
         //CURSOR
         var feu = this.add.particles('fireBall');
-        this.cursorBox = this.physics.add.sprite(0, 0).setOrigin(0.1, 0.3);
+        this.cursorBox = this.physics.add.sprite(0, 0).setOrigin(0.1, 0.3).setAlpha(0);
 
         this.test = this.add.particles('fireBall');
         this.test.createEmitter({

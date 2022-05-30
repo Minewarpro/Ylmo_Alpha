@@ -74,7 +74,7 @@ class BoxOverlap {
         }
 
         else if (bonus.nb === "2"){
-            me.scene.pointCamera.setVelocity(100,-120);
+            me.scene.pointCamera.setVelocity(140,-120);
             me.scene.pointCamera.body.x = 25444;
             me.cinematique2Finish=true;
             me.cameras.main.startFollow(me.scene.pointCamera, true);
@@ -103,7 +103,7 @@ class BoxOverlap {
                 window.KeyboardEnable = false;
                 this.scene.tweens.add({
                     targets: player,
-                    x: player.x + 500,
+                    x: player.x + 480,
                     duration: 1500,
                     ease: 'Sine.easeInOut',
                 });
@@ -117,11 +117,11 @@ class BoxOverlap {
                 this.flag9 = false;
 
                 setTimeout(function (){
-                    me.scene.add.rectangle( 31329, -2405 ,160,35,0x000000, 0.7).setOrigin(0,0)
+                    me.scene.add.rectangle( 31355, -2405 ,160,35,0x000000, 0.7).setOrigin(0,0)
                     me.scene.add.sprite( 31334, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7)
                     me.scene.add.sprite( 31434, -2508 ,'Darkstar').setScale(0.6).setAlpha(0.7)
                     me.scene.add.sprite( 31534, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7)
-                    me.barre = me.scene.add.rectangle( 31334, -2388 ,0,25,0xffff00, 1)
+                    me.barre = me.scene.add.rectangle( 31360, -2388 ,0,25,0xffff00, 1)
                     var pointBarre = window.pointsTotals
                     me.pointTween = me.scene.tweens.add({
                         targets: window,
@@ -190,10 +190,10 @@ class BoxOverlap {
                                     }
                                 });
                             }
-                            var lulu = me.scene.add.sprite(30794, -2720, 'luciole').setDepth(999999)
+                            var lulu = me.scene.add.sprite(30830, -2720, 'luciole').setDepth(999999)
                             me.scene.tweens.add({
                                 targets: lulu,
-                                x: 31334,
+                                x: 31360,
                                 y: -2388,
                                 duration: 500,
                                 ease: 'Linear',
