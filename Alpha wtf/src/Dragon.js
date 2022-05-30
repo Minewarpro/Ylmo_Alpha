@@ -8,6 +8,7 @@ class Dragon {
         this.cameras = cameras
         this.dragon = this.scene.physics.add.sprite(0, 750, 'dragon');
         this.dragon.setScale(1);
+        this.dragon.setDepth(3);
         this.dragon.setCollideWorldBounds(false);
         this.dragon.body.setAllowGravity(false);
         this.dragon.setImmovable(true);

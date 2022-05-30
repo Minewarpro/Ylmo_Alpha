@@ -32,7 +32,7 @@ class Ennemies {
             immovable: true
         });
         map.getObjectLayer('Ennemy').objects.forEach((ennemy) => {
-            const ennemySprite = this.ennemy.create(ennemy.x, ennemy.y, 'ennemy').setOrigin(0).setBodySize(30,30);
+            const ennemySprite = this.ennemy.create(ennemy.x, ennemy.y, 'ennemy').setOrigin(0).setBodySize(30,30).setDepth(3);
             this.ennemyPositionX.push(ennemy.x);
             this.ennemyPositionY.push(ennemy.y);
 

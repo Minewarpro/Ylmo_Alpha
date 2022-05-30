@@ -42,6 +42,7 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('tuto2','Alpha wtf/assets/images/tuto2.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto3','Alpha wtf/assets/images/tuto3.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto4','Alpha wtf/assets/images/tuto4.png', {frameWidth: 972, frameHeight: 741});
+        this.load.spritesheet('tuto5','Alpha wtf/assets/images/tuto5.png', {frameWidth: 972, frameHeight: 741});
 
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/Alpha1.json');
@@ -105,9 +106,6 @@ class scene extends Phaser.Scene {
 
         // BONUS FLAME
         new BonusFlame(this, this.player);
-
-        //Portes
-        this.portes = new Portes(this, this.player);
 
         //ENNEMY
         this.ennemy = new Ennemies(this, this.player, this.save);
@@ -175,7 +173,7 @@ class scene extends Phaser.Scene {
         //CURSOR
         this.cursorBox = this.physics.add.sprite(0,0).setOrigin(0.1,0.3);
 
-        this.test = this.add.particles('fireBall');
+        this.test = this.add.particles('fireBall').setDepth(9999);
         this.test.createEmitter({
             speed: 50,
             lifespan : 100,
