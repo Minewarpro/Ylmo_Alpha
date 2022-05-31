@@ -347,7 +347,6 @@ class Player {
                 // fais rien
                 break;
             case !this.spaceDown && !this.isDashing:
-                this.player.setAngle(0);
                 if (!this.player.body.onFloor()){
                     this.player.setVelocityY(
                         this.player.body.velocity.y * 0.6);
