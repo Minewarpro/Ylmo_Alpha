@@ -27,6 +27,7 @@ class scene extends Phaser.Scene {
         this.load.image('exclamation', 'Alpha wtf/assets/images/pointExclamation.png');
         this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('run','Alpha wtf/assets/images/spritesheet_run.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('turn','Alpha wtf/assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('jump','Alpha wtf/assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('dash','Alpha wtf/assets/images/spritesheet_dash.png', {frameWidth: 40, frameHeight: 48});
@@ -117,7 +118,7 @@ class scene extends Phaser.Scene {
         this.tuto = new Tuto(this);
 
         // CAMERA
-        this.pointCamera = this.physics.add.sprite(600,1000);
+        this.pointCamera = this.physics.add.sprite(-600,1000);
         this.pointCamera.body.setAllowGravity(false);
         this.pointCamera.setImmovable(true);
         this.cameras.main.startFollow(this.player.player,true,1,1,0,150);

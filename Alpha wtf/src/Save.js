@@ -49,6 +49,7 @@ class Save {
     }
 
     death(){
+
         let me = this;
         this.dead=true;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);

@@ -6,7 +6,7 @@ class Dragon {
         this.player = player
         this.save = save;
         this.cameras = cameras
-        this.dragon = this.scene.physics.add.sprite(0, 750, 'dragon');
+        this.dragon = this.scene.physics.add.sprite(-2000, 750, 'dragon');
         this.dragon.setScale(1);
         this.dragon.setDepth(3);
         this.dragon.setCollideWorldBounds(false);
@@ -20,5 +20,6 @@ class Dragon {
         let me = this;
 
         this.save.death();
+
     }
 }

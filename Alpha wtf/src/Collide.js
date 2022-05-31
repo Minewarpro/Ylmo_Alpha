@@ -36,5 +36,6 @@ class Collide {
         console.log("hit");
         this.save.death();
 
+
     }
 }
