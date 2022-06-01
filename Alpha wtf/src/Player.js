@@ -11,7 +11,7 @@ class Player {
         this.ghost = this.scene.add.particles('ghost');
         this.ghostRight = this.scene.add.particles('ghost');
         this.ghostLeft = this.scene.add.particles('ghost');
-        this.player = this.scene.physics.add.sprite(6, 708, 'player');
+        this.player = this.scene.physics.add.sprite(30564, -2316, 'player');
         this.player.setScale(1);
         this.player.setDepth(3);
         this.player.setCollideWorldBounds(false);
@@ -78,6 +78,14 @@ class Player {
                     frameRate: 10,
                     repeat: -1
                 });
+
+        this.scene.anims.create(
+            {
+                key: 'danse',
+                frames: this.scene.anims.generateFrameNumbers('danse', { start: 0, end: 7 }),
+                frameRate: 10,
+                repeat: -1
+            });
 
             this.scene.anims.create(
                 {

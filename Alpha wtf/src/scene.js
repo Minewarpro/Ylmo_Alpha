@@ -31,6 +31,7 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('turn','Alpha wtf/assets/images/spritesheet_turn.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('jump','Alpha wtf/assets/images/spritesheet_jump.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('dash','Alpha wtf/assets/images/spritesheet_dash.png', {frameWidth: 40, frameHeight: 48});
+        this.load.spritesheet('danse','Alpha wtf/assets/images/spritesheet_danse.png', {frameWidth: 48, frameHeight: 48});
 
         this.load.spritesheet('bonus','Alpha wtf/assets/images/spritesheet_bonus.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('checkpoint','Alpha wtf/assets/images/spritesheet_Checkpoint.png', {frameWidth: 680, frameHeight: 667});
@@ -196,7 +197,6 @@ class scene extends Phaser.Scene {
         // FONCTIONS
         this.input.mouse.disableContextMenu();
 
-
         this.scene.launch('HUD');
     }
 
@@ -209,7 +209,7 @@ class scene extends Phaser.Scene {
 
             if (this.Pauseflag){
 
-            }else {
+            } else {
                 this.scene.pause();
                 this.scene.launch('pause');
                 this.Pauseflag = true;
@@ -238,7 +238,6 @@ class scene extends Phaser.Scene {
             }
         }
 
-
         this.cursorBox.body.x = this.game.input.mousePointer.x + this.cameras.main.worldView.x
         this.cursorBox.body.y = this.game.input.mousePointer.y + this.cameras.main.worldView.y
 
@@ -256,5 +255,11 @@ class scene extends Phaser.Scene {
         this.light.x = this.player.player.body.x +15;
         this.light.y = this.player.player.body.y + 15;
 
+        if (this.player.player.y <= this.vignette.y+600){
+            this.vignette.y =  this.player.player.y-600
+        }
+        else if (this.player.player.y >= this.vignette.y + 1200){
+            this.vignette.y =  this.player.player.y - 1200
+        }
     }
 }

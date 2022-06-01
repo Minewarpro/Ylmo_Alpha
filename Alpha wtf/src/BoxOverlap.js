@@ -106,6 +106,10 @@ class BoxOverlap {
                     x: player.x + 480,
                     duration: 1500,
                     ease: 'Linear',
+                    onComplete: function(){
+                        me.player.isDashing = true;
+                        me.player.player.anims.play('danse');
+                    },
                 });
                 this.flag9 = false;
 
