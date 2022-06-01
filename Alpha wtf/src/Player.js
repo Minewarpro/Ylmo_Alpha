@@ -11,7 +11,7 @@ class Player {
         this.ghost = this.scene.add.particles('ghost');
         this.ghostRight = this.scene.add.particles('ghost');
         this.ghostLeft = this.scene.add.particles('ghost');
-        this.player = this.scene.physics.add.sprite(30564, -2316, 'player');
+        this.player = this.scene.physics.add.sprite(25260, 992, 'player');
         this.player.setScale(1);
         this.player.setDepth(3);
         this.player.setCollideWorldBounds(false);
@@ -23,6 +23,8 @@ class Player {
 
         this.player.speedFactor = 900
         this.dashIsUp = false;
+        this.dashFlag = false;
+
 
         this.fireBall.createEmitter({
             speed: 100,
@@ -122,8 +124,24 @@ class Player {
 
             this.scene.anims.create(
                 {
+                    key: 'jumpJ',
+                    frames: this.scene.anims.generateFrameNumbers('jumpJ', { start: 0, end: 4 }),
+                    frameRate: 10,
+                    repeat: 0
+                });
+
+            this.scene.anims.create(
+                {
                     key: 'fall',
                     frames: this.scene.anims.generateFrameNumbers('jump', { start: 5, end: 7 }),
+                    frameRate: 10,
+                    repeat: -1
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'fallJ',
+                    frames: this.scene.anims.generateFrameNumbers('jumpJ', { start: 5, end: 7 }),
                     frameRate: 10,
                     repeat: -1
                 });
@@ -147,6 +165,14 @@ class Player {
                 {
                     key: 'dash',
                     frames: this.scene.anims.generateFrameNumbers('dash', { start: 0, end: 8}),
+                    frameRate: 16,
+                    repeat: 0
+                });
+
+            this.scene.anims.create(
+                {
+                    key: 'dashJ',
+                    frames: this.scene.anims.generateFrameNumbers('dashJ', { start: 0, end: 8}),
                     frameRate: 16,
                     repeat: 0
                 });
@@ -254,7 +280,9 @@ class Player {
                 this.fall = true;
                 this.isDashing =true;
                 this.fireBall.emitParticleAt(me.player.body.x, me.player.body.y);
-                this.player.anims.play('dash');
+                this.player.anims.play('dashJ');
+                this.dashFlag = false;
+
 
                 let angle = Phaser.Math.Angle.Between(
                     me.player.body.x,
@@ -282,7 +310,11 @@ class Player {
                     me.player.setVelocityX(me.player.body.velocity.x * 0.3)
                     me.isDashing = false;
                     me.player.setAngle(0);
-                    me.player.anims.play('fall');
+                    if(me.dashIsUp){
+                        me.player.anims.play('fall');
+                    }else {
+                        me.player.anims.play('fallJ');
+                    }
                     if (me.direction===-1){
                         me.player.setFlipX(true);
                     }
@@ -314,7 +346,12 @@ class Player {
             if (this.player.body.onFloor()){
                 this.player.setVelocityY(-520);
                 console.log('jump');
-                this.player.anims.play('jump');
+
+                if (this.dashIsUp){
+                    this.player.anims.play('jump');
+                } else {
+                    this.player.anims.play('jumpJ');
+                }
 
                 if (this.qDown){
                     this.player.setAngle(-40);
@@ -332,7 +369,11 @@ class Player {
                 this.player.setVelocityY(-520);
                 this.doubleJump = 0;
                 console.log('double jump');
-                this.player.anims.play('jump');
+                if (this.dashIsUp){
+                    this.player.anims.play('jump');
+                } else {
+                    this.player.anims.play('jumpJ');
+                }
 
                 if (this.qDown){
                     this.player.setAngle(-40);
@@ -440,7 +481,11 @@ class Player {
     animation(){
         if (!this.isDashing){
             if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
-                this.player.anims.play('fall', true);
+                if (this.dashIsUp){
+                    this.player.anims.play('fall', true);
+                }else {
+                    this.player.anims.play('fallJ', true);
+                }
                 this.player.setAngle(0);
                 this.fall=true;
             }
@@ -505,7 +550,17 @@ class Player {
                     }
                 }
             }
+        } else {
+            if (this.dashFlag) {
+
+            } else {
+                if (this.dashIsUp) {
+                    this.dashFlag = true;
+                    this.player.anims.play('dash', true);
+                }
+            }
         }
+
     }
 
     move(){
