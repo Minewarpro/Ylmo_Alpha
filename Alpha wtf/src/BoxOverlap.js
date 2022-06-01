@@ -100,6 +100,7 @@ class BoxOverlap {
             }
         else if (bonus.nb === "9"){
             if (this.flag9){
+                me.player.isDashing = true;
                 window.KeyboardEnable = false;
                 this.scene.tweens.add({
                     targets: player,
@@ -107,9 +108,11 @@ class BoxOverlap {
                     duration: 1500,
                     ease: 'Linear',
                     onComplete: function(){
-                        me.player.isDashing = true;
                         me.player.player.anims.play('danse');
                     },
+                    onUpdate: function (){
+                        me.player.player.anims.play('right',true);
+                    }
                 });
                 this.flag9 = false;
 
