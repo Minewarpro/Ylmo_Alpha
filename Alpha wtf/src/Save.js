@@ -97,18 +97,20 @@ class Save {
         me.scene.dragon.dragon.body.x =  me.scene.pointCamera.body.x - 1200;
 
             setTimeout(function(){
-                me.scene.dragon.dragon.setVelocityX(300);
+                me.scene.dragon.dragon.setVelocityX(450);
                 setTimeout(function(){
                     me.scene.dragon.dragon.setVelocityX(0);
-                    me.scene.cameras.main.shake(1500, 0.02);
+                    me.scene.dragon.dragon.anims.play('crie');
+                    me.scene.cameras.main.shake(1000, 0.02);
                     setTimeout(function(){
                         me.scene.pointCamera.setVelocityX(300);
+                        me.scene.dragon.dragon.anims.play('run');
                         window.dragonEnable = true;
                         window.KeyboardEnable=true;
                         this.dead=false;
                         window.change=true;
                         me.player.initKeyboard();
-                    },1500)
+                    },1000)
                 }, 1300)
             },2000)
     }

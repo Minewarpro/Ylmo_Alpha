@@ -25,6 +25,7 @@ class scene extends Phaser.Scene {
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
         this.load.image('save', 'Alpha wtf/assets/images/Save.png');
         this.load.image('exclamation', 'Alpha wtf/assets/images/pointExclamation.png');
+
         this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('run','Alpha wtf/assets/images/spritesheet_run.png', {frameWidth: 40, frameHeight: 48});
@@ -34,6 +35,9 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('dash','Alpha wtf/assets/images/spritesheet_dash.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('dashJ','Alpha wtf/assets/images/spritesheet_dashJ.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('danse','Alpha wtf/assets/images/spritesheet_danse.png', {frameWidth: 48, frameHeight: 48});
+
+        this.load.spritesheet('drake','Alpha wtf/assets/images/spritesheet_drake.png', {frameWidth: 350, frameHeight: 495});
+        this.load.spritesheet('drakeCrie','Alpha wtf/assets/images/spritesheet_drakeCrie.png', {frameWidth: 365, frameHeight: 563});
 
         this.load.spritesheet('bonus','Alpha wtf/assets/images/spritesheet_bonus.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('checkpoint','Alpha wtf/assets/images/spritesheet_Checkpoint.png', {frameWidth: 680, frameHeight: 667});
@@ -247,7 +251,7 @@ class scene extends Phaser.Scene {
         this.ennemy.IaGesttion();
 
         if (window.dragonEnable){
-            this.dragon.dragon.body.x = this.pointCamera.body.x - 800;
+            this.dragon.dragon.body.x = this.pointCamera.body.x - 600;
         }
 
         if (!window.KeyboardEnable){

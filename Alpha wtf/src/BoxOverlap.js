@@ -55,18 +55,21 @@ class BoxOverlap {
 
                 setTimeout(function () {
                     me.scene.pointCamera.setVelocityX(0);
-                    me.dragon.dragon.setVelocityX(300);
+                    me.dragon.dragon.setVelocityX(450);
                     setTimeout(function () {
                         me.dragon.dragon.setVelocityX(0);
-                        me.cameras.main.shake(1500, 0.02);
+                        me.scene.dragon.dragon.anims.play('crie');
+                        me.cameras.main.shake(1000, 0.02);
                         setTimeout(function () {
+                            me.scene.dragon.dragon.anims.play('run');
                             me.scene.pointCamera.setVelocityX(300);
+                            me.dragon.dragon.setVelocityX(300);
                             setTimeout(function(){
                                 window.dragonEnable = true;
                                 window.KeyboardEnable = true;
                                 window.change = true;
                             },1000)
-                        }, 1500)
+                        }, 1000)
                     }, 1300)
                 }, 2000)
 
