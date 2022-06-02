@@ -25,6 +25,8 @@ class scene extends Phaser.Scene {
         this.load.image('dragon', 'Alpha wtf/assets/images/dragon_base.png');
         this.load.image('save', 'Alpha wtf/assets/images/Save.png');
         this.load.image('exclamation', 'Alpha wtf/assets/images/pointExclamation.png');
+        this.load.image('bulle', 'Alpha wtf/assets/images/bulle.png');
+        this.load.image('teteDeMort', 'Alpha wtf/assets/images/tete-de-mort.png');
 
         this.load.spritesheet('player_right', 'Alpha wtf/assets/images/player_base.png', {frameWidth: 40, frameHeight: 48});
         this.load.spritesheet('idle','Alpha wtf/assets/images/spritesheet_idle.png', {frameWidth: 40, frameHeight: 48});
@@ -109,6 +111,30 @@ class scene extends Phaser.Scene {
         // SAVE
         this.save = new Save(this, this.player);
 
+
+        let particles = this.add.particles('bulle');
+
+        particles.createEmitter({
+            x: {min : 16192, max : 21192},
+            y: 962,
+            lifespan: 600,
+            speedY: { min: -20, max: -60},
+            scale: { start: 1, end: 0 },
+            quantity: 3,
+            frequency: 10,
+        });
+
+        let Tetedemort = this.add.particles('teteDeMort');
+
+        Tetedemort.createEmitter({
+            x: {min : 16192, max : 21192},
+            y: 970,
+            lifespan: 1000,
+            speedY: { min: -20, max: -60},
+            scale: { start: 1.5, end: 0 },
+            quantity: 1,
+            frequency: 50,
+        });
         //DRAGON
         this.dragon = new Dragon(this, this.player, this.save, this.cameras);
 
