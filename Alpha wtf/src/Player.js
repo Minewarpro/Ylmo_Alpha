@@ -11,7 +11,7 @@ class Player {
         this.ghost = this.scene.add.particles('ghost');
         this.ghostRight = this.scene.add.particles('ghost');
         this.ghostLeft = this.scene.add.particles('ghost');
-        this.player = this.scene.physics.add.sprite(24, 1086, 'player');
+        this.player = this.scene.physics.add.sprite(25260, 992, 'player');
         this.player.setScale(1);
         this.player.setDepth(3);
         this.player.setCollideWorldBounds(false);
@@ -280,6 +280,7 @@ class Player {
                 this.fall = true;
                 this.isDashing =true;
                 this.fireBall.emitParticleAt(me.player.body.x, me.player.body.y);
+                this.scene.light.setColor(0x6f3f0f);
                 this.player.anims.play('dashJ');
                 this.dashFlag = false;
 
@@ -312,7 +313,10 @@ class Player {
                     me.player.setAngle(0);
                     if(me.dashIsUp){
                         me.player.anims.play('fall');
+                        me.scene.light.setColor(0x0f6fbf);
+
                     }else {
+                        me.scene.light.setColor(0x6f3f0f);
                         me.player.anims.play('fallJ');
                     }
                     if (me.direction===-1){
@@ -349,8 +353,12 @@ class Player {
 
                 if (this.dashIsUp){
                     this.player.anims.play('jump');
+                    this.scene.light.setColor(0x0f6fbf);
+
                 } else {
                     this.player.anims.play('jumpJ');
+                    this.scene.light.setColor(0x6f3f0f);
+
                 }
 
                 if (this.qDown){
@@ -371,8 +379,12 @@ class Player {
                 console.log('double jump');
                 if (this.dashIsUp){
                     this.player.anims.play('jump');
+                    this.scene.light.setColor(0x0f6fbf);
+
                 } else {
                     this.player.anims.play('jumpJ');
+                    this.scene.light.setColor(0x6f3f0f);
+
                 }
 
                 if (this.qDown){
@@ -482,8 +494,11 @@ class Player {
         if (!this.isDashing){
             if (this.player.body.velocity.y > 20 && !this.player.body.onFloor()) {
                 if (this.dashIsUp){
+                    this.scene.light.setColor(0x0f6fbf);
+
                     this.player.anims.play('fall', true);
                 }else {
+                    this.scene.light.setColor(0x6f3f0f);
                     this.player.anims.play('fallJ', true);
                 }
                 this.player.setAngle(0);
@@ -492,11 +507,13 @@ class Player {
             if (this.player.body.onFloor() && this.fall){
                 if (this.player.body.velocity.x !==0){
                     this.player.anims.play('tuchGroundWalk');
+                    this.scene.light.setColor(0x0f6fbf);
                     console.log('spoingwalk2')
                     this.spoingWalk = true;
 
                 } else {
                     this.player.anims.play('tuchGroundIdle');
+                    this.scene.light.setColor(0x0f6fbf);
                     this.spoingIdle = true;
                 }
                 this.fall = false;
@@ -556,6 +573,7 @@ class Player {
             } else {
                 if (this.dashIsUp) {
                     this.dashFlag = true;
+                    this.scene.light.setColor(0x0f6fbf);
                     this.player.anims.play('dash', true);
                 }
             }
