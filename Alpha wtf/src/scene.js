@@ -295,7 +295,7 @@ class scene extends Phaser.Scene {
                     this.save.death();
                 }
             }
-            if (this.pointCamera.body.x < this.player.player.body.x){
+            if (this.pointCamera.body.x < this.player.player.body.x && window.KeyboardEnable){
                 this.pointCamera.body.x = this.player.player.body.x-1
             }
         }

@@ -50,6 +50,7 @@ class Save {
 
     death(){
 
+        console.log('death')
         let me = this;
         this.dead=true;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);
@@ -94,15 +95,18 @@ class Save {
         me.scene.pointCamera.body.y = 885;
         me.scene.pointCamera.setVelocityX(0);
         me.scene.pointCamera.setVelocityY(0);
-        me.scene.dragon.dragon.body.x =  me.scene.pointCamera.body.x - 1200;
+        me.scene.dragon.dragon.body.x =  me.player.player.body.x - 1200;
 
             setTimeout(function(){
+                console.log('Dstart')
                 me.scene.dragon.dragon.setVelocityX(450);
                 setTimeout(function(){
+                    console.log('DCrie')
                     me.scene.dragon.dragon.setVelocityX(0);
                     me.scene.dragon.dragon.anims.play('crie');
                     me.scene.cameras.main.shake(1000, 0.02);
                     setTimeout(function(){
+                        console.log('DRun')
                         me.scene.pointCamera.setVelocityX(300);
                         me.scene.dragon.dragon.anims.play('run');
                         window.dragonEnable = true;

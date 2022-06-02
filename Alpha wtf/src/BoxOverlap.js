@@ -63,9 +63,8 @@ class BoxOverlap {
                         setTimeout(function () {
                             me.scene.dragon.dragon.anims.play('run');
                             me.scene.pointCamera.setVelocityX(300);
-                            me.dragon.dragon.setVelocityX(300);
+                            window.dragonEnable = true;
                             setTimeout(function(){
-                                window.dragonEnable = true;
                                 window.KeyboardEnable = true;
                                 window.change = true;
                             },1000)

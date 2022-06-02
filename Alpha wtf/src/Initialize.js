@@ -13,5 +13,7 @@ class Initialize extends Phaser.Scene {
         window.englishUi = false;
         window.keyboard_QWERTY = false;
         window.keyboard_AZERTY = true;
+        window.dragonEnable=false;
+
     }
 }
