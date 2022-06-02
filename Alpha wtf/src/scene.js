@@ -6,12 +6,15 @@ class scene extends Phaser.Scene {
 
     preload() {
         this.load.image('background', 'Alpha wtf/assets/images/background.png');
+
         this.load.image('tiles', 'Alpha wtf/assets/tilesets/platformPack_tilesheet_test.png');
         this.load.image('tilesP4', 'Alpha wtf/assets/tilesets/plan4_tilesheet.png');
         this.load.image('tilesP5', 'Alpha wtf/assets/tilesets/plan5_tilesheet.png');
         this.load.image('tilesP6', 'Alpha wtf/assets/tilesets/plan6_tilesheet.png');
         this.load.image('tilesP7', 'Alpha wtf/assets/tilesets/plan7_tilesheet.png');
-        this.load.image('degrade', 'Alpha wtf/assets/images/degradé.png');
+        this.load.image('tilesP1', 'Alpha wtf/assets/tilesets/plan1_tilesheet.png');
+        this.load.image('tilesP0', 'Alpha wtf/assets/tilesets/plan0_tilesheet.png');
+
         this.load.image('vignette', 'Alpha wtf/assets/images/effetVignette.png');
 
         this.load.image('spike', 'Alpha wtf/assets/images/spike.png');
@@ -77,27 +80,32 @@ class scene extends Phaser.Scene {
         const tilesetP5 = map.addTilesetImage('plan5_tilesheet', 'tilesP5');
         const tilesetP6 = map.addTilesetImage('plan6_tilesheet', 'tilesP6');
         const tilesetP7 = map.addTilesetImage('plan7_tilesheet', 'tilesP7');
+        const tilesetP1 = map.addTilesetImage('plan1_tilesheet', 'tilesP1');
+        const tilesetP0 = map.addTilesetImage('plan0_tilesheet', 'tilesP0');
 
 
 
         // LAYER
         this.Plan7Ground = map.createLayer('Plan7Ground', tilesetP7);
         this.Plan7Fixe = map.createLayer('Plan7Fixe', tilesetP7);
+        this.Plan7FixeBis = map.createLayer('Plan7FixeBis', tilesetP7);
 
         this.Plan6Ground = map.createLayer('Plan6Ground', tilesetP6);
         this.Plan6Fixe = map.createLayer('Plan6Fixe', tilesetP6);
+        this.Plan6FixeBis = map.createLayer('Plan6FixeBis', tilesetP6);
 
         this.Plan5Fixe = map.createLayer('Plan5Fixe', tilesetP5);
         this.Plan5FixeBis = map.createLayer('Plan5FixeBis', tilesetP5);
 
         this.Plan4Ground = map.createLayer('Plan4Ground', tilesetP4);
         this.Plan4Fixe = map.createLayer('Plan4Fixe', tilesetP4);
+        this.Plan4FixeBis = map.createLayer('Plan4FixeBis', tilesetP4);
         this.Brume = map.createLayer('Brume', tilesetP4);
 
         this.vignette = this.add.image(0,0,'vignette').setOrigin(0,0);
 
         this.Plan3Fixe = map.createLayer('Plan3Fixe', tileset);
-        this.Plan3Fixe.setPipeline('Light2D').setDepth(3);
+        this.Plan3Fixe.setPipeline('Light2D').setDepth(2);
 
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D').setDepth(3);
@@ -161,6 +169,12 @@ class scene extends Phaser.Scene {
 
         this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset).setDepth(4).setPipeline('Light2D');
 
+        this.Plan1Fixe = map.createLayer('Plan1Fixe', tilesetP1).setDepth(5);
+        this.Plan1FixeBis = map.createLayer('Plan1FixeBis', tilesetP1).setDepth(5);
+
+        this.Plan0Fixe = map.createLayer('Plan0Fixe', tilesetP0).setDepth(5);
+        this.Plan0FixeBis = map.createLayer('Plan0FixeBis', tilesetP0).setDepth(5);
+
         this.degrade = this.add.image(0,0,'degrade');
 
         //PARALLAXE
@@ -184,6 +198,8 @@ class scene extends Phaser.Scene {
 
         this.Plan4Fixe.scrollFactorX=0.8;
         this.Plan4Fixe.scrollFactorY=0.9;
+        this.Plan4FixeBis.scrollFactorX=0.8;
+        this.Plan4FixeBis.scrollFactorY=0.9;
         this.Plan4Ground.scrollFactorX=0.8;
         this.Plan4Ground.scrollFactorY=0.9;
         this.Brume.scrollFactorX=0.8;
@@ -194,13 +210,27 @@ class scene extends Phaser.Scene {
         this.Plan5FixeBis.scrollFactorX=0.7;
         this.Plan5FixeBis.scrollFactorY=0.7;
 
+        this.Plan1Fixe.scrollFactorX=1.2;
+        this.Plan1Fixe.scrollFactorY=1.2;
+        this.Plan1FixeBis.scrollFactorX=1.2;
+        this.Plan1FixeBis.scrollFactorY=1.2;
+
+        this.Plan0Fixe.scrollFactorX=1.4;
+        this.Plan0Fixe.scrollFactorY=1.4;
+        this.Plan0FixeBis.scrollFactorX=1.4;
+        this.Plan0FixeBis.scrollFactorY=1.4;
+
         this.Plan6Fixe.scrollFactorX=0.6;
         this.Plan6Fixe.scrollFactorY=0.6;
+        this.Plan6FixeBis.scrollFactorX=0.6;
+        this.Plan6FixeBis.scrollFactorY=0.6;
         this.Plan6Ground.scrollFactorX=0.6;
         this.Plan6Ground.scrollFactorY=0.6;
 
         this.Plan7Fixe.scrollFactorX=0.5;
         this.Plan7Fixe.scrollFactorY=0.5;
+        this.Plan7FixeBis.scrollFactorX=0.5;
+        this.Plan7FixeBis.scrollFactorY=0.5;
         this.Plan7Ground.scrollFactorX=0.5;
         this.Plan7Ground.scrollFactorY=0.5;
 
