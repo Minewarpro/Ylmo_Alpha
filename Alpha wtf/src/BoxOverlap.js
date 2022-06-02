@@ -98,7 +98,7 @@ class BoxOverlap {
                 150);
         }
         else if (bonus.nb === "8"){
-            me.cameras.main.startFollow(me.player.player, true);
+            me.cameras.main.startFollow(me.player.player,true,1,1,0,150);
             window.dragonEnable = false;
             }
         else if (bonus.nb === "9"){
