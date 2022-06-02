@@ -27,6 +27,7 @@ class BonusFlame {
             this.bonusFlame.getChildren()[i].anims.play('bonus');
             this.bonusFlame.getChildren()[i].body.setSize(20,40);
             this.bonusFlame.getChildren()[i].Enable = true;
+            this.bonusFlame.getChildren()[i].setDepth(4);
         }
     }
 

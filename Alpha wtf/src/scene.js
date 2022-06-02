@@ -129,7 +129,7 @@ class scene extends Phaser.Scene {
         //BOXOVERLAP
         this.box = new BoxOverlap(this, this.player, this.cameras, this.dragon);
 
-        this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset).setDepth(4);
+        this.Plan2Fixe = map.createLayer('Plan2Fixe', tileset).setDepth(4).setPipeline('Light2D');
 
         this.degrade = this.add.image(0,0,'degrade');
 

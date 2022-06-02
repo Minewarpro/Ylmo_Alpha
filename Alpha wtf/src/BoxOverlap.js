@@ -117,12 +117,24 @@ class BoxOverlap {
                 this.flag9 = false;
 
                 setTimeout(function (){
-                    me.scene.add.rectangle( 31355, -2405 ,160,35,0x000000, 0.7).setOrigin(0,0)
-                    me.scene.add.sprite( 31334, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7)
-                    me.scene.add.sprite( 31434, -2508 ,'Darkstar').setScale(0.6).setAlpha(0.7)
-                    me.scene.add.sprite( 31534, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7)
-                    me.barre = me.scene.add.rectangle( 31360, -2388 ,0,25,0xffff00, 1)
+                    me.scene.add.rectangle( 31355, -2405 ,160,35,0x000000, 0.7).setOrigin(0,0).setDepth(99999)
+                    me.scene.add.sprite( 31334, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7).setDepth(99999)
+                    me.scene.add.sprite( 31434, -2508 ,'Darkstar').setScale(0.6).setAlpha(0.7).setDepth(99999)
+                    me.scene.add.sprite( 31534, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7).setDepth(99999)
+                    me.barre = me.scene.add.rectangle( 31360, -2388 ,0,25,0xffff00, 1).setDepth(99999)
+                    
                     var pointBarre = window.pointsTotals
+                    me.barreAugment = me.scene.tweens.add({
+                        targets: me.barre,
+                        width: pointBarre,
+                        duration: 2000,
+                        ease: 'Linear',
+                        OnUpdate : function(){
+                            if (window.pointsTotals===0){
+                                me.barreAugment.stop();
+                            }
+                        },
+                    });
                     me.pointTween = me.scene.tweens.add({
                         targets: window,
                         pointsTotals: 0,
@@ -204,17 +216,7 @@ class BoxOverlap {
                         }
                     });
 
-                    me.barreAugment = me.scene.tweens.add({
-                        targets: me.barre,
-                        width: pointBarre,
-                        duration: 2000,
-                        ease: 'Linear',
-                        OnUpdate : function(){
-                            if (window.pointsTotals===0){
-                                me.barreAugment.stop();
-                            }
-                        },
-                    });
+
                 },1500)
 
             }
