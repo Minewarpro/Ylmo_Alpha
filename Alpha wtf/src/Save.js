@@ -54,7 +54,7 @@ class Save {
         let me = this;
         this.dead=true;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);
-        window.KeyboardEnable=false;
+
         this.player.player.setVelocity(0, 0);
         this.player.player.visible = true;
         me.player.player.body.x = me.currentSaveX;
@@ -88,35 +88,40 @@ class Save {
         }
 
         window.pointsTotals = this.currentPoints;
-        
-        window.change=true;
-        window.dragonEnable=false;
-        me.scene.pointCamera.body.x = me.player.player.body.x;
-        me.scene.pointCamera.body.y = 885;
-        me.scene.pointCamera.setVelocityX(0);
-        me.scene.pointCamera.setVelocityY(0);
-        me.scene.dragon.dragon.body.x =  me.player.player.body.x - 1200;
 
-            setTimeout(function(){
+        if(this.scene.box.cinematique2Finish) {
+
+            window.KeyboardEnable=false;
+
+            window.change = true;
+            window.dragonEnable = false;
+            me.scene.pointCamera.body.x = me.player.player.body.x;
+            me.scene.pointCamera.body.y = 885;
+            me.scene.pointCamera.setVelocityX(0);
+            me.scene.pointCamera.setVelocityY(0);
+            me.scene.dragon.dragon.body.x = me.player.player.body.x - 1200;
+
+            setTimeout(function () {
                 console.log('Dstart')
                 me.scene.dragon.dragon.setVelocityX(450);
-                setTimeout(function(){
+                setTimeout(function () {
                     console.log('DCrie')
                     me.scene.dragon.dragon.setVelocityX(0);
                     me.scene.dragon.dragon.anims.play('crie');
                     me.scene.cameras.main.shake(1000, 0.02);
-                    setTimeout(function(){
+                    setTimeout(function () {
                         console.log('DRun')
                         me.scene.pointCamera.setVelocityX(300);
                         me.scene.dragon.dragon.anims.play('run');
                         window.dragonEnable = true;
-                        window.KeyboardEnable=true;
-                        this.dead=false;
-                        window.change=true;
+                        window.KeyboardEnable = true;
+                        this.dead = false;
+                        window.change = true;
                         me.player.initKeyboard();
-                    },1000)
+                    }, 1000)
                 }, 1300)
-            },2000)
+            }, 2000)
+        }
     }
     sauvegarde(player, saves) {
         if (!saves.active) {
