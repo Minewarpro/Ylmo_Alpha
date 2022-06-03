@@ -17,7 +17,7 @@ class Dragon {
 
         this.scene.physics.add.collider(this.player.player, this.dragon, this.playerHit.bind(this), null, this);
 
-
+        this.crieSound = this.scene.sound.add('dragon',{volume:0.5});
 
         this.scene.anims.create(
             {

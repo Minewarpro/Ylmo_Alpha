@@ -8,6 +8,18 @@ class BoxOverlap {
         this.dragon = dragon
         const map = this.scene.make.tilemap({key: 'map'});
 
+        this.DragonSlayer = this.scene.sound.add('DragonSlayer',{
+            volume:0.2,
+            loop: true,
+        });
+        this.EndTheme = this.scene.sound.add('EndTheme',{
+            volume:0.2,
+            loop: true,
+        });
+        this.starSound = this.scene.sound.add('star',{
+            volume:0.3,
+        });
+
         this.flag9 = true;
         this.flagStar1 = true;
         this.flagStar2 = true;
@@ -50,6 +62,9 @@ class BoxOverlap {
             me.player.player.setVelocityX(0);
             me.player.dDown = false;
             me.player.initKeyboard();
+            me.scene.dragon.crieSound.play();
+            me.DragonSlayer.play();
+            window.theme.pause();
             this.cameras.main.shake(1500, 0.02);
             setTimeout(function () {
                 me.scene.pointCamera.setVelocityX(-150);
@@ -61,6 +76,7 @@ class BoxOverlap {
                     setTimeout(function () {
                         me.dragon.dragon.setVelocityX(0);
                         me.scene.dragon.dragon.anims.play('crie');
+                        me.scene.dragon.crieSound.play();
                         me.cameras.main.shake(1000, 0.02);
                         setTimeout(function () {
                             me.scene.dragon.dragon.anims.play('run');
@@ -101,6 +117,14 @@ class BoxOverlap {
         else if (bonus.nb === "8"){
             me.cameras.main.startFollow(me.player.player,true,1,1,0,150);
             window.dragonEnable = false;
+            this.scene.tweens.add({
+                targets: this.DragonSlayer,
+                duration: 1500,
+                volume:0,
+                ease: 'Linear',
+            });
+            this.EndTheme.play();
+
             }
         else if (bonus.nb === "9"){
             if (this.flag9){
@@ -155,6 +179,7 @@ class BoxOverlap {
                                     duration: 500,
                                     ease: 'Sine.easeIn',
                                     onComplete:function (){
+                                        me.starSound.play();
                                         me.scene.tweens.add({
                                             targets: star,
                                             scale: 1.2,
@@ -176,6 +201,7 @@ class BoxOverlap {
                                     duration: 500,
                                     ease: 'Sine.easeIn',
                                     onComplete:function (){
+                                        me.starSound.play();
                                         me.scene.tweens.add({
                                             targets: star,
                                             scale: 1.2,
@@ -196,6 +222,7 @@ class BoxOverlap {
                                     duration: 500,
                                     ease: 'Sine.easeIn',
                                     onComplete:function (){
+                                        me.starSound.play();
                                         me.scene.tweens.add({
                                             targets: star,
                                             scale: 1.2,
@@ -217,6 +244,7 @@ class BoxOverlap {
                                     lulu.destroy();
                                 }
                             });
+                            me.scene.points.spell.play();
                         }
                     });
 

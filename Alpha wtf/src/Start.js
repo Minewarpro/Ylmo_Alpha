@@ -8,7 +8,7 @@ class Start extends Phaser.Scene {
         this.load.image('ecranTitre', 'Alpha wtf/assets/images/ecran_titre.png');
         this.load.image('fireBall', 'Alpha wtf/assets/images/boule_de_feu_base.png');
         this.load.image('feuille', 'Alpha wtf/assets/images/feuille.png');
-        this.load.audio('Theme', 'Alpha wtf/assets/sounds/MainTheme.mp3');
+        this.load.audio('Theme', 'Alpha wtf/assets/sounds/MainTheme.wav');
         this.load.audio('clic', 'Alpha wtf/assets/sounds/clic.wav');
         this.load.spritesheet('titre','Alpha wtf/assets/images/spritesheet_titre.png', {frameWidth: 428, frameHeight: 272});
     }
@@ -22,23 +22,6 @@ class Start extends Phaser.Scene {
 
         //ECRAN TITRE
         this.ecranTitre = this.add.image(0, 0, 'ecranTitre').setOrigin(0, 0);
-
-
-
-        /*this.titre = this.add.sprite(640,160,'');
-        this.anims.create(
-            {
-                key: 'titre',
-                frames: this.anims.generateFrameNumbers('titre', { start: 0, end: 6 }),
-                frameRate: 10,
-                repeat: -1
-            });
-        this.titre.anims.play('titre');*/
-
-
-        //SOUNDS
-        this.theme = this.sound.add('Theme',{volume: 0.3}).play();
-        this.clic = this.sound.add('clic');
 
         //PARTICLES
         var particles = this.add.particles('feuille');
@@ -146,6 +129,12 @@ class Start extends Phaser.Scene {
             follow: this.cursorBox
         });
         this.input.setDefaultCursor('url(arrow.cur), pointer');
+
+        //SOUNDS
+        window.theme = this.sound.add('Theme',{volume: 0.3});
+        window.theme.play();
+
+        this.clic = this.sound.add('clic');
 
     }
 

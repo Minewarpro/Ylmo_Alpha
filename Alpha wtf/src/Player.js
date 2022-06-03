@@ -25,6 +25,11 @@ class Player {
         this.dashIsUp = false;
         this.dashFlag = false;
 
+        this.dashSound = this.scene.sound.add('dashSwoosh');
+        this.dashSound.setVolume(0.3)
+
+        this.FallSound = this.scene.sound.add('FallFloor');
+        this.FallSound.setVolume(0.1)
 
         this.fireBall.createEmitter({
             speed: 100,
@@ -312,6 +317,7 @@ class Player {
                 this.isDashing =true;
                 this.fireBall.emitParticleAt(me.player.body.x, me.player.body.y);
                 this.scene.light.setColor(0x6f3f0f);
+                this.dashSound.play();
                 this.player.anims.play('dashJ');
                 this.dashFlag = false;
 
@@ -381,7 +387,6 @@ class Player {
             if (this.player.body.onFloor()){
                 this.player.setVelocityY(-520);
                 console.log('jump');
-
                 if (this.dashIsUp){
                     this.player.anims.play('jump');
                     this.scene.light.setColor(0x0f6fbf);
@@ -408,6 +413,7 @@ class Player {
                 this.player.setVelocityY(-520);
                 this.doubleJump = 0;
                 console.log('double jump');
+
                 if (this.dashIsUp){
                     this.player.anims.play('jump');
                     this.scene.light.setColor(0x0f6fbf);
@@ -538,12 +544,15 @@ class Player {
             if (this.player.body.onFloor() && this.fall){
                 if (this.player.body.velocity.x !==0){
                     this.player.anims.play('tuchGroundWalk');
+                    this.FallSound.play();
                     this.scene.light.setColor(0x0f6fbf);
                     console.log('spoingwalk2')
                     this.spoingWalk = true;
 
                 } else {
                     this.player.anims.play('tuchGroundIdle');
+                    this.FallSound.play();
+
                     this.scene.light.setColor(0x0f6fbf);
                     this.spoingIdle = true;
                 }
@@ -558,6 +567,8 @@ class Player {
                 this.spoingIdle = false;
                 this.spoingWalk = true;
                 this.player.anims.play('tuchGroundWalk',true);
+                this.FallSound.play();
+
                 console.log('spoingwalk1')
             }
             if (this.spoingWalk && !this.spoingIdle && this.player.anims.currentFrame.index === 7){

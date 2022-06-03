@@ -5,6 +5,9 @@ class Points {
         this.player = player;
         this.scene = scene;
 
+        this.spell = this.scene.sound.add('spell');
+        this.spell.setVolume(0.3)
+
         window.pointsTotals = 0;
         const map = this.scene.make.tilemap({key: 'map'});
 
@@ -61,7 +64,7 @@ class Points {
 
         point.yoyo.pause();
         point.body.enable = false;
-
+        this.spell.play();
        this.lulu.emitParticleAt(point.x, point.y);
 
         this.scene.tweens.add({

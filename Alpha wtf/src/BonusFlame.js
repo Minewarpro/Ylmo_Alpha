@@ -11,6 +11,9 @@ class BonusFlame {
             immovable: true
         });
 
+        this.BonusSound = this.scene.sound.add('BonusSound');
+        this.BonusSound.setVolume(0.3)
+
         this.scene.anims.create(
             {
                 key: 'bonus',
@@ -37,6 +40,7 @@ class BonusFlame {
 
     collectCollectible(player, bonus){
         if (bonus.Enable) {
+            this.BonusSound.play();
             bonus.visible = false;
             console.log('collectible', this);
             this.player.dashIsUp = true;

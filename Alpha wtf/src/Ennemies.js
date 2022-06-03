@@ -11,6 +11,9 @@ class Ennemies {
         this.ennemyPositionX = []
         this.ennemyPositionY = []
 
+        this.DieEnnemy = this.scene.sound.add('DieEnnemy',{volume:0.3});
+
+
         this.scene.anims.create(
             {
                 key: 'ennemyIdle',
@@ -84,6 +87,7 @@ class Ennemies {
         if (this.player.isDashing){
             ennemy.tuchEnnemy = true;
             ennemy.anims.play('ennemyDeath')
+            this.DieEnnemy.play();
             setTimeout(function(){
                 ennemy.visible = false;
 

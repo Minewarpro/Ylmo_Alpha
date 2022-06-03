@@ -62,6 +62,19 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('tuto4','Alpha wtf/assets/images/tuto4.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto5','Alpha wtf/assets/images/tuto5.png', {frameWidth: 972, frameHeight: 741});
 
+        this.load.audio('dragon', 'Alpha wtf/assets/sounds/dragon.wav');
+        this.load.audio('jumpSwoosh', 'Alpha wtf/assets/sounds/jumpSwoosh.wav');
+        this.load.audio('dashSwoosh', 'Alpha wtf/assets/sounds/dash.wav');
+        this.load.audio('FallFloor', 'Alpha wtf/assets/sounds/FallingOnFloor.wav');
+        this.load.audio('spell', 'Alpha wtf/assets/sounds/spell.wav');
+        this.load.audio('CheckpointSound', 'Alpha wtf/assets/sounds/Checkpoint.wav');
+        this.load.audio('BonusSound', 'Alpha wtf/assets/sounds/Collect.wav');
+        this.load.audio('DieEnnemy', 'Alpha wtf/assets/sounds/DieEnnemy.wav');
+        this.load.audio('death', 'Alpha wtf/assets/sounds/death.wav');
+        this.load.audio('EndTheme', 'Alpha wtf/assets/sounds/EndTheme.wav');
+        this.load.audio('star', 'Alpha wtf/assets/sounds/star.wav');
+        this.load.audio('DragonSlayer', 'Alpha wtf/assets/sounds/DragonSlayer.mp3');
+
         // Load the export Tiled JSON
         this.load.tilemapTiledJSON('map', 'Alpha wtf/assets/tilemaps/Alpha1.json');
     }
@@ -71,7 +84,6 @@ class scene extends Phaser.Scene {
         let me = this;
         const {width, height}= this.scale
         this.Pauseflag = false;
-
 
 
         // Tiled / Plan

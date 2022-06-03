@@ -10,7 +10,9 @@ class Save {
         const map = this.scene.make.tilemap({key: 'map'});
         this.dead=false;
 
+        this.saveSound = this.scene.sound.add('CheckpointSound',{volume:0.3});
 
+        this.deathSound = this.scene.sound.add('death',{volume:0.3});
 
         this.scene.anims.create(
             {
@@ -51,6 +53,7 @@ class Save {
     death(){
 
         console.log('death')
+        this.deathSound.play();
         let me = this;
         this.dead=true;
         this.player.fireBall.emitParticleAt(this.player.player.body.x, this.player.player.body.y);
@@ -112,6 +115,7 @@ class Save {
                     console.log('DCrie')
                     me.scene.dragon.dragon.setVelocityX(0);
                     me.scene.dragon.dragon.anims.play('crie');
+                    me.scene.dragon.crieSound.play();
                     me.scene.cameras.main.shake(1000, 0.02);
                     setTimeout(function () {
                         console.log('DRun')
@@ -134,6 +138,7 @@ class Save {
             this.currentSaveY = player.body.y
             this.currentPoints = window.pointsTotals;
             saves.anims.play('checkpointFirst');
+            this.saveSound.play();
             this.feu.createEmitter({
                 x: {min : saves.x - 60, max : saves.x + 60},
                 y: saves.y,
