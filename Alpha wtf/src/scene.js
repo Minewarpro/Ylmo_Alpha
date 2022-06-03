@@ -113,8 +113,8 @@ class scene extends Phaser.Scene {
         this.Plan3Platforms = map.createLayer('Plan3Platforms', tileset);
         this.Plan3Platforms.setPipeline('Light2D').setDepth(3);
 
-        this.water = map.createLayer('Water', tileset);
-        this.water.setPipeline('Light2D');
+        //Compagnons
+        new Compagnons(this);
 
         //PLAYER
         this.player = new Player(this);
@@ -192,9 +192,6 @@ class scene extends Phaser.Scene {
 
         this.Plan3Platforms.scrollFactorX=1;
         this.Plan3Platforms.scrollFactorY=1;
-
-        this.water.scrollFactorX=1;
-        this.water.scrollFactorY=1;
 
         this.Plan2Fixe.scrollFactorX=1;
         this.Plan2Fixe.scrollFactorY=1;

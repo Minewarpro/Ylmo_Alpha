@@ -74,6 +74,15 @@ class Tuto{
                 repeat: -1
             });
 
+        //TUTO 3
+        this.tuto3.anims.play('tuto3');
+
+        //TUTO 4
+        this.tuto4.anims.play('tuto4');
+
+        //TUTO 5
+        this.tuto5.anims.play('tuto5');
+
         this.TutoAnims();
 
     }
@@ -95,15 +104,6 @@ class Tuto{
         } else if (window.englishUi){
             this.tuto2.anims.play('tuto2-anglais');
         }
-
-        //TUTO 3
-        this.tuto3.anims.play('tuto3');
-
-        //TUTO 4
-        this.tuto4.anims.play('tuto4');
-
-        //TUTO 5
-        this.tuto5.anims.play('tuto5');
-
+        
     }
 }

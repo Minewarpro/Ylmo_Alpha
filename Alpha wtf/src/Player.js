@@ -11,7 +11,7 @@ class Player {
         this.ghost = this.scene.add.particles('ghost');
         this.ghostRight = this.scene.add.particles('ghost');
         this.ghostLeft = this.scene.add.particles('ghost');
-        this.player = this.scene.physics.add.sprite(30, 750, 'player');
+        this.player = this.scene.physics.add.sprite(30508, -2502, 'player');
         this.player.setScale(1);
         this.player.setDepth(3);
         this.player.setCollideWorldBounds(false);
@@ -213,9 +213,6 @@ class Player {
                         case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                             me.shiftDown = true;
                             break;
-                        case Phaser.Input.Keyboard.KeyCodes.UP:
-                            me.upDown = true;
-                            break;
                         case Phaser.Input.Keyboard.KeyCodes.D:
                             if (window.keyboard_QWERTY || window.keyboard_AZERTY){
                                 me.dDown = true;
@@ -261,9 +258,6 @@ class Player {
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                             me.shiftDown = false;
-                            break;
-                        case Phaser.Input.Keyboard.KeyCodes.UP:
-                            me.upDown = false;
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.D:
                             if (window.keyboard_QWERTY || window.keyboard_AZERTY){
