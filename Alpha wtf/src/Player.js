@@ -27,7 +27,7 @@ class Player {
 
         this.dashSound = this.scene.sound.add('dashSwoosh');
         this.dashSound.setVolume(0.3)
-        
+
         this.fireBall.createEmitter({
             speed: 100,
             lifespan: 700,
