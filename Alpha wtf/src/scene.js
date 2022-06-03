@@ -55,6 +55,8 @@ class scene extends Phaser.Scene {
         this.load.spritesheet('tuto1-AD','Alpha wtf/assets/images/tuto1-AD.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto1-fleche','Alpha wtf/assets/images/tuto1-fleche.png', {frameWidth: 972, frameHeight: 733});
         this.load.spritesheet('tuto2','Alpha wtf/assets/images/tuto2.png', {frameWidth: 972, frameHeight: 741});
+        this.load.spritesheet('tuto2-fr-fleche','Alpha wtf/assets/images/tuto2.png', {frameWidth: 972, frameHeight: 741});
+        this.load.spritesheet('tuto2-en-fleche','Alpha wtf/assets/images/tuto2.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto2-anglais','Alpha wtf/assets/images/tuto2-anglais.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto3','Alpha wtf/assets/images/tuto3.png', {frameWidth: 972, frameHeight: 741});
         this.load.spritesheet('tuto4','Alpha wtf/assets/images/tuto4.png', {frameWidth: 972, frameHeight: 741});

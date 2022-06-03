@@ -100,10 +100,18 @@ class Tuto{
 
         //TUTO 2
         if (window.frenchUi){
-            this.tuto2.anims.play('tuto2');
+            if(window.keyboard_fleche){
+                this.tuto2.anims.play('tuto2-fr-fleche');
+            } else {
+                this.tuto2.anims.play('tuto2');
+            }
         } else if (window.englishUi){
-            this.tuto2.anims.play('tuto2-anglais');
+            if(window.keyboard_fleche){
+                this.tuto2.anims.play('tuto2-en-fleche');
+            } else {
+                this.tuto2.anims.play('tuto2-anglais');
+            }
         }
-        
+
     }
 }
