@@ -92,6 +92,8 @@ class Ennemies {
 
         } else if (!ennemy.tuchEnnemy){
             this.save.death();
+            this.exclamation.destroy();
+            ennemy.flagExclamation=true;
         }
     }
 }
