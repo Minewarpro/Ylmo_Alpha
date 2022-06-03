@@ -13,7 +13,7 @@ class BoxOverlap {
             loop: true,
         });
         this.EndTheme = this.scene.sound.add('EndTheme',{
-            volume:0.2,
+            volume:1,
             loop: true,
         });
         this.starSound = this.scene.sound.add('star',{
