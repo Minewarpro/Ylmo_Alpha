@@ -43,6 +43,14 @@ class option extends Phaser.Scene {
                 fontSize: 40
             })
                 .setOrigin(0.5)
+                .setAlpha(0.7)
+
+            this.fleche = this.add.text(width * 0.2, height * 0.7, 'Flèches Directionnelles', {
+                color: '#ffffff',
+                fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif',
+                fontSize: 40
+            })
+                .setOrigin(0.5)
                 .setAlpha(0.7);
 
             this.English = this.add.text(width * 0.5, height * 0.5, 'Anglais', {
@@ -89,6 +97,7 @@ class option extends Phaser.Scene {
                 .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     window.keyboard_QWERTY = true;
                     window.keyboard_AZERTY = false;
+                    window.keyboard_fleche = false;
                     this.keyboard();
                 })
                 .on('pointerover', function () {
@@ -106,6 +115,7 @@ class option extends Phaser.Scene {
                 .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
                     window.keyboard_QWERTY = false;
                     window.keyboard_AZERTY = true;
+                    window.keyboard_fleche = false;
                     this.keyboard();
                 })
                 .on('pointerover', function () {
@@ -115,6 +125,24 @@ class option extends Phaser.Scene {
                 .on('pointerout', function () {
                     if (me.AZERTY.alpha !== 0) {
                         me.AZERTY.setAlpha(0.7)
+                    }
+                })
+
+            this.buttonFleche = this.add.rectangle(this.fleche.x, this.fleche.y, 300, 75, 0xffffff, 0)
+                .setInteractive()
+                .on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, () => {
+                    window.keyboard_QWERTY = false;
+                    window.keyboard_AZERTY = false;
+                    window.keyboard_fleche = true;
+                    this.keyboard();
+                })
+                .on('pointerover', function () {
+                    me.fleche.setAlpha(1)
+                    me.clic.play();
+                })
+                .on('pointerout', function () {
+                    if (me.fleche.alpha !== 0) {
+                        me.fleche.setAlpha(0.7)
                     }
                 })
 
@@ -178,9 +206,15 @@ class option extends Phaser.Scene {
         if(window.keyboard_AZERTY){
             this.AZERTY.setTint(0xff0000);
             this.QWERTY.setTint(0xffffff);
+            this.fleche.setTint(0xffffff);
         } else if (window.keyboard_QWERTY){
             this.QWERTY.setTint(0xff0000);
             this.AZERTY.setTint(0xffffff);
+            this.fleche.setTint(0xffffff);
+        } else if (window.keyboard_fleche){
+            this.QWERTY.setTint(0xffffff);
+            this.AZERTY.setTint(0xffffff);
+            this.fleche.setTint(0xff0000);
         }
 
     }
@@ -192,6 +226,7 @@ class option extends Phaser.Scene {
             this.English.setText('English');
             this.OptionExit.setText('Exit');
             this.French.setText('French');
+            this.fleche.setText('Directional Arrows');
         if (window.startUi){
             window.Play.setText('Start Game');
         }
@@ -208,7 +243,9 @@ class option extends Phaser.Scene {
             this.English.setText('Anglais');
             this.OptionExit.setText('Quitter');
             this.French.setText('Français');
-            if (window.startUi){
+        this.fleche.setText('Flèches Directionnelles');
+
+        if (window.startUi){
                 window.Play.setText('Commencer à Jouer');
             }
             if (window.pauseUi){

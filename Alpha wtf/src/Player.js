@@ -201,7 +201,14 @@ class Player {
                 if (window.KeyboardEnable) {
                     switch (kevent.keyCode) {
                         case Phaser.Input.Keyboard.KeyCodes.SPACE:
-                            me.spaceDown = true;
+                            if (window.keyboard_QWERTY || window.keyboard_AZERTY) {
+                                me.spaceDown = true;
+                            }
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.UP:
+                            if (window.keyboard_fleche) {
+                                me.spaceDown = true;
+                            }
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                             me.shiftDown = true;
@@ -210,7 +217,14 @@ class Player {
                             me.upDown = true;
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.D:
-                            me.dDown = true;
+                            if (window.keyboard_QWERTY || window.keyboard_AZERTY){
+                                me.dDown = true;
+                            }
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.RIGHT:
+                            if (window.keyboard_fleche) {
+                                me.dDown = true;
+                            }
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.Q:
                             if (window.keyboard_AZERTY) {
@@ -219,6 +233,11 @@ class Player {
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.A:
                             if (window.keyboard_QWERTY) {
+                                me.qDown = true;
+                            }
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                            if (window.keyboard_fleche) {
                                 me.qDown = true;
                             }
                             break;
@@ -231,8 +250,14 @@ class Player {
             this.scene.input.keyboard.on('keyup', function (kevent) {
                     switch (kevent.keyCode) {
                         case Phaser.Input.Keyboard.KeyCodes.SPACE:
-                            me.spaceDown = false;
-                            this.animsJump = false;
+                            if (window.keyboard_QWERTY || window.keyboard_AZERTY) {
+                                me.spaceDown = false;
+                            }
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.UP:
+                            if (window.keyboard_fleche) {
+                                me.spaceDown = false;
+                            }
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.SHIFT:
                             me.shiftDown = false;
@@ -241,7 +266,14 @@ class Player {
                             me.upDown = false;
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.D:
-                            me.dDown = false;
+                            if (window.keyboard_QWERTY || window.keyboard_AZERTY){
+                                me.dDown = false;
+                            }
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.RIGHT:
+                            if (window.keyboard_fleche) {
+                                me.dDown = false;
+                            }
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.Q:
                             if (window.keyboard_AZERTY) {
@@ -250,6 +282,11 @@ class Player {
                             break;
                         case Phaser.Input.Keyboard.KeyCodes.A:
                             if (window.keyboard_QWERTY) {
+                                me.qDown = false;
+                            }
+                            break;
+                        case Phaser.Input.Keyboard.KeyCodes.LEFT:
+                            if (window.keyboard_fleche) {
                                 me.qDown = false;
                             }
                             break;

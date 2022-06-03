@@ -2,7 +2,9 @@ class Tuto{
     constructor(scene) {
         this.scene = scene
 
-        this.tuto1QD = this.scene.add.sprite(54, 1001, '').setScale(0.2);
+
+        this.tuto1 = this.scene.add.sprite(54, 1001, '').setScale(0.2);
+
         this.scene.anims.create(
             {
                 key: 'tuto1-QD',
@@ -10,10 +12,25 @@ class Tuto{
                 frameRate: 2,
                 repeat: -1
             });
-        this.tuto1QD.anims.play('tuto1-QD');
 
+        this.scene.anims.create(
+            {
+                key: 'tuto1-AD',
+                frames: this.scene.anims.generateFrameNumbers('tuto1-AD', { start: 0, end: 5 }),
+                frameRate: 2,
+                repeat: -1
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'tuto1-fleche',
+                frames: this.scene.anims.generateFrameNumbers('tuto1-fleche', { start: 0, end: 5 }),
+                frameRate: 2,
+                repeat: -1
+            });
 
         this.tuto2 = this.scene.add.sprite(1296, 772, '').setScale(0.2);
+
         this.scene.anims.create(
             {
                 key: 'tuto2',
@@ -21,7 +38,14 @@ class Tuto{
                 frameRate: 1,
                 repeat: -1
             });
-        this.tuto2.anims.play('tuto2');
+
+        this.scene.anims.create(
+            {
+                key: 'tuto2-anglais',
+                frames: this.scene.anims.generateFrameNumbers('tuto2-anglais', { start: 0, end: 1 }),
+                frameRate: 1,
+                repeat: -1
+            });
 
         this.tuto3 = this.scene.add.sprite(4458, 832, '').setScale(0.2);
         this.scene.anims.create(
@@ -31,7 +55,6 @@ class Tuto{
                 frameRate: 8,
                 repeat: -1
             });
-        this.tuto3.anims.play('tuto3');
 
         this.tuto4 = this.scene.add.sprite(6982, 524, '').setScale(0.2);
         this.scene.anims.create(
@@ -41,7 +64,6 @@ class Tuto{
                 frameRate: 8,
                 repeat: -1
             });
-        this.tuto4.anims.play('tuto4');
 
         this.tuto5 = this.scene.add.sprite(5482, 324, '').setScale(0.2);
         this.scene.anims.create(
@@ -51,6 +73,36 @@ class Tuto{
                 frameRate: 8,
                 repeat: -1
             });
+
+        this.TutoAnims();
+
+    }
+
+    TutoAnims(){
+
+        //TUTO 1
+        if (window.keyboard_AZERTY){
+            this.tuto1.anims.play('tuto1-QD');
+        } else if (window.keyboard_QWERTY){
+            this.tuto1.anims.play('tuto1-AD');
+        } else if (window.keyboard_fleche){
+            this.tuto1.anims.play('tuto1-fleche');
+        }
+
+        //TUTO 2
+        if (window.frenchUi){
+            this.tuto2.anims.play('tuto2');
+        } else if (window.englishUi){
+            this.tuto2.anims.play('tuto2-anglais');
+        }
+
+        //TUTO 3
+        this.tuto3.anims.play('tuto3');
+
+        //TUTO 4
+        this.tuto4.anims.play('tuto4');
+
+        //TUTO 5
         this.tuto5.anims.play('tuto5');
 
     }
