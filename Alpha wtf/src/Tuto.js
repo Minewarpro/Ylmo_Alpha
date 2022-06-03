@@ -47,6 +47,22 @@ class Tuto{
                 repeat: -1
             });
 
+        this.scene.anims.create(
+            {
+                key: 'tuto2-en-fleche',
+                frames: this.scene.anims.generateFrameNumbers('tuto2-en-fleche', { start: 0, end: 1 }),
+                frameRate: 1,
+                repeat: -1
+            });
+
+        this.scene.anims.create(
+            {
+                key: 'tuto2-fr-fleche',
+                frames: this.scene.anims.generateFrameNumbers('tuto2-fr-fleche', { start: 0, end: 1 }),
+                frameRate: 1,
+                repeat: -1
+            });
+
         this.tuto3 = this.scene.add.sprite(4458, 832, '').setScale(0.2);
         this.scene.anims.create(
             {
