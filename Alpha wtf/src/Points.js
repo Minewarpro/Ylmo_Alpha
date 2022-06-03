@@ -72,6 +72,9 @@ class Points {
             alpha: 0,
             scale: 0,
             ease: 'Sine.easeInOut',
+            onComplete: function(){
+                point.setDisplaySize(30,30);
+            },
         });
 
         point.part.visible = false;
