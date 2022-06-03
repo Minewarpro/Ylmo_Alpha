@@ -125,7 +125,7 @@ class BoxOverlap {
                     me.scene.add.sprite( 31534, -2458 ,'Darkstar').setScale(0.6).setAlpha(0.7).setDepth(99999)
                     me.barre = me.scene.add.rectangle( 31360, -2388 ,0,25,0xffff00, 1).setDepth(99999)
 
-                    var pointBarre = window.pointsTotals
+                    var pointBarre = window.pointsTotals;
                     me.barreAugment = me.scene.tweens.add({
                         targets: me.barre,
                         width: pointBarre,

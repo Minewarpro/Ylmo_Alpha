@@ -5,11 +5,11 @@ class Points {
         this.player = player;
         this.scene = scene;
 
-        window.pointsTotals = 50;
+        window.pointsTotals = 0;
         const map = this.scene.make.tilemap({key: 'map'});
 
-        this.particles = this.scene.add.particles('luciole');
-        this.lulu = this.scene.add.particles('luciole');
+        this.particles = this.scene.add.particles('luciole').setDepth(3);
+        this.lulu = this.scene.add.particles('luciole').setDepth(3);
         this.lulu.createEmitter({
             lifespan: 300,
             speed: 150,
@@ -31,7 +31,7 @@ class Points {
 
         for(var i = 0; i < this.points.getChildren().length; i++) {
             this.points.getChildren()[i].setDisplaySize(30,30);
-            this.points.getChildren()[i].setDepth(2);
+            this.points.getChildren()[i].setDepth(3);
 
             this.points.getChildren()[i].part = this.particles.createEmitter({
                 speed: 50,
