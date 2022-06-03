@@ -25,6 +25,8 @@ class Points {
         map.getObjectLayer('Points').objects.forEach((point) => {
             const pointSprite = this.points.create(point.x, point.y, 'luciole');
             this.scene.physics.add.overlap(this.player.player, this.points, this.recolte.bind(this), null, this)
+            pointSprite.initPositionY = point.y;
+            pointSprite.initPositionX = point.x;
         });
 
 

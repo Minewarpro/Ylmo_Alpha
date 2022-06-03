@@ -28,6 +28,8 @@ class BoxOverlap {
         this.scene.physics.add.overlap(this.scene.pointCamera, this.box, this.overlapBox.bind(this))
 
         this.cinematique2Finish=false;
+        this.Cinematique1Finish = false;
+
     }
 
     collectCollectible(player, bonus) {
@@ -36,7 +38,7 @@ class BoxOverlap {
 
         if (bonus.nb === "1") {
 
-            console.log('tuch')
+            me.Cinematique1Finish = true;
             bonus.destroy();
             me.scene.pointCamera.body.x = me.player.player.body.x;
             me.scene.pointCamera.body.y = 885;

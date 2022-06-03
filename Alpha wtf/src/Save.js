@@ -63,8 +63,12 @@ class Save {
         for(var i = 0; i < this.scene.points.points.getChildren().length; i++) {
             if (this.scene.points.points.getChildren()[i].body.x > this.player.player.body.x){
                 this.scene.points.points.getChildren()[i].setAlpha(1);
+                this.scene.points.points.getChildren()[i].setDisplaySize(30,30);
+                this.scene.points.points.getChildren()[i].y = this.scene.points.points.getChildren()[i].initPositionY;
+                this.scene.points.points.getChildren()[i].x = this.scene.points.points.getChildren()[i].initPositionX;
                 this.scene.points.points.getChildren()[i].body.enable = true;
                 this.scene.points.points.getChildren()[i].part.visible = true;
+                console.log('test')
                 this.scene.tweens.add({
                     targets: this.scene.points.points.getChildren()[i],
                     y: this.scene.points.points.getChildren()[i].y + 20,
@@ -89,7 +93,7 @@ class Save {
 
         window.pointsTotals = this.currentPoints;
 
-        if(this.scene.box.cinematique2Finish) {
+        if(this.scene.box.Cinematique1Finish) {
 
             window.KeyboardEnable=false;
 
