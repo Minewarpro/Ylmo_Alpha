@@ -65,7 +65,6 @@ class scene extends Phaser.Scene {
         this.load.audio('dragon', 'Alpha wtf/assets/sounds/dragon.wav');
         this.load.audio('jumpSwoosh', 'Alpha wtf/assets/sounds/jumpSwoosh.wav');
         this.load.audio('dashSwoosh', 'Alpha wtf/assets/sounds/dash.wav');
-        this.load.audio('FallFloor', 'Alpha wtf/assets/sounds/FallingOnFloor.wav');
         this.load.audio('spell', 'Alpha wtf/assets/sounds/spell.wav');
         this.load.audio('CheckpointSound', 'Alpha wtf/assets/sounds/Checkpoint.wav');
         this.load.audio('BonusSound', 'Alpha wtf/assets/sounds/Collect.wav');

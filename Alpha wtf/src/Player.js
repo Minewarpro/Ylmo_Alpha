@@ -27,10 +27,7 @@ class Player {
 
         this.dashSound = this.scene.sound.add('dashSwoosh');
         this.dashSound.setVolume(0.3)
-
-        this.FallSound = this.scene.sound.add('FallFloor');
-        this.FallSound.setVolume(0.1)
-
+        
         this.fireBall.createEmitter({
             speed: 100,
             lifespan: 700,
@@ -544,15 +541,12 @@ class Player {
             if (this.player.body.onFloor() && this.fall){
                 if (this.player.body.velocity.x !==0){
                     this.player.anims.play('tuchGroundWalk');
-                    this.FallSound.play();
                     this.scene.light.setColor(0x0f6fbf);
                     console.log('spoingwalk2')
                     this.spoingWalk = true;
 
                 } else {
                     this.player.anims.play('tuchGroundIdle');
-                    this.FallSound.play();
-
                     this.scene.light.setColor(0x0f6fbf);
                     this.spoingIdle = true;
                 }
@@ -567,7 +561,6 @@ class Player {
                 this.spoingIdle = false;
                 this.spoingWalk = true;
                 this.player.anims.play('tuchGroundWalk',true);
-                this.FallSound.play();
 
                 console.log('spoingwalk1')
             }
